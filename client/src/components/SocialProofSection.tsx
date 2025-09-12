@@ -60,7 +60,7 @@ export default function SocialProofSection() {
           {/* Stats Grid */}
           <div className="grid md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <Card key={index} className="p-6 text-center hover-elevate">
+              <Card key={index} className="p-6 text-center hover-elevate shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                 <div className="space-y-3">
                   <div className={`mx-auto w-12 h-12 rounded-full bg-muted flex items-center justify-center ${stat.color}`}>
                     <stat.icon className="w-6 h-6" />
@@ -79,7 +79,7 @@ export default function SocialProofSection() {
           {/* Testimonials */}
           <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6 hover-elevate">
+              <Card key={index} className="p-6 hover-elevate shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                 <div className="space-y-4">
                   {/* Star rating */}
                   <div className="flex text-chart-2">

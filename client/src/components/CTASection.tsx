@@ -88,7 +88,7 @@ export default function CTASection() {
           </div>
 
           {/* Countdown Timer */}
-          <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-8 mb-12">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-8 mb-12 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
             <div className="text-center space-y-4">
               <h3 className="font-display text-2xl font-bold text-white">Offer Expires In:</h3>
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
@@ -107,7 +107,7 @@ export default function CTASection() {
           </Card>
 
           {/* Pricing Card */}
-          <Card className="bg-white text-foreground p-8 mb-8 relative overflow-hidden">
+          <Card className="bg-white text-foreground p-8 mb-8 relative overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
             {/* Popular badge */}
             <div className="absolute -right-8 top-8 bg-chart-2 text-black px-8 py-2 rotate-45 font-bold text-sm">
               MOST POPULAR
@@ -137,7 +137,7 @@ export default function CTASection() {
                 <Button 
                   size="lg" 
                   onClick={handleGetAccess}
-                  className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-xl px-8 py-6 h-auto font-semibold border border-green-400/30 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200"
+                  className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-xl px-8 py-6 h-auto font-semibold border border-green-400/30 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl"
                   data-testid="button-get-lifetime-access-final"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />

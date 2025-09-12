@@ -25,7 +25,7 @@ export default function HeroSection() {
             <div className="space-y-8 lg:space-y-10">
               {/* Lifetime Deal Badge */}
               <div className="flex items-center gap-2">
-                <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse">
+                <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse rounded-xl">
                   <Zap className="w-4 h-4 mr-2" />
                   🔥 LIFETIME DEAL - LIMITED TIME
                 </Badge>
@@ -48,9 +48,9 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              {/* Video Player */}
-              <div className="relative group max-w-2xl mx-auto">
-                <Card className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-700/50 hover-elevate">
+              {/* Video Player - Mobile only */}
+              <div className="relative group max-w-2xl mx-auto lg:hidden">
+                <Card className="relative overflow-hidden rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
                   <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
                     {/* Video thumbnail/placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>
@@ -79,7 +79,7 @@ export default function HeroSection() {
 
                     {/* "Case Study" badge overlay */}
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-orange-500/90 text-white border-0 text-xs px-3 py-1 font-semibold">
+                      <Badge className="bg-orange-500/90 text-white border-0 text-xs px-3 py-1 font-semibold rounded-lg">
                         <Star className="w-3 h-3 mr-1" />
                         Case Study
                       </Badge>
@@ -106,7 +106,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border border-green-400/30 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200"
+                  className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border border-green-400/30 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl"
                   data-testid="button-get-lifetime-access"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -115,7 +115,7 @@ export default function HeroSection() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 border-2 border-slate-500/50 text-white hover:from-slate-600 hover:via-slate-700 hover:to-slate-800 text-lg px-8 py-6 h-auto font-medium backdrop-blur-sm shadow-[0_3px_10px_0_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] hover:shadow-[0_5px_15px_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] transform hover:translate-y-[-1px] transition-all duration-200"
+                  className="bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 border-2 border-slate-500/50 text-white hover:from-slate-600 hover:via-slate-700 hover:to-slate-800 text-lg px-8 py-6 h-auto font-medium backdrop-blur-sm shadow-[0_3px_10px_0_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] hover:shadow-[0_5px_15px_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl"
                   data-testid="button-watch-demo"
                 >
                   Watch Demo Below ↓
@@ -129,7 +129,7 @@ export default function HeroSection() {
                   { value: "100s", label: "Appointments" },
                   { value: "25%", label: "Close Rate" }
                 ].map((stat, index) => (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate">
+                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                     <div className="text-2xl md:text-3xl font-bold text-green-400 font-display">{stat.value}</div>
                     <div className="text-xs md:text-sm text-slate-400 mt-1">{stat.label}</div>
                   </Card>
@@ -147,19 +147,45 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Right Content - Hero Image */}
-            <div className="relative lg:mt-0 mt-12">
+            {/* Right Content - Video Player (Desktop) */}
+            <div className="relative lg:mt-0 mt-12 hidden lg:block">
               <div className="relative z-10">
-                {/* Main image container */}
-                <div className="relative">
-                  <img 
-                    src={heroImage} 
-                    alt="MyWhatsAgent.ai Interface" 
-                    className="w-full max-w-lg mx-auto rounded-3xl shadow-2xl border border-slate-700/50"
-                  />
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-green-500/20 to-blue-500/20 rounded-3xl blur-xl scale-110 -z-10"></div>
-                </div>
+                <Card className="relative overflow-hidden rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
+                  <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
+                    {/* Video thumbnail/placeholder */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>
+                    
+                    {/* Play button */}
+                    <Button
+                      size="icon"
+                      onClick={handleVideoPlay}
+                      className="w-24 h-24 rounded-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 border border-green-400/30 shadow-[0_6px_20px_0_rgba(34,197,94,0.4),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_0_rgba(34,197,94,0.5),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] relative z-10 transform hover:scale-110 hover:translate-y-[-2px] transition-all duration-200"
+                      data-testid="button-play-video-desktop"
+                    >
+                      <Play className="w-10 h-10 ml-1" fill="currentColor" />
+                    </Button>
+
+                    {/* Video stats overlay */}
+                    <div className="absolute bottom-6 left-6 flex items-center gap-4 text-white">
+                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <Clock className="w-5 h-5" />
+                        <span className="text-sm font-medium">12:34</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <Users className="w-5 h-5" />
+                        <span className="text-sm font-medium">15.2K views</span>
+                      </div>
+                    </div>
+
+                    {/* "Case Study" badge overlay */}
+                    <div className="absolute top-6 right-6">
+                      <Badge className="bg-orange-500/90 text-white border-0 text-sm px-4 py-2 font-semibold rounded-xl">
+                        <Star className="w-4 h-4 mr-2" />
+                        Case Study Video
+                      </Badge>
+                    </div>
+                  </div>
+                </Card>
               </div>
               
               {/* Floating elements */}
@@ -171,12 +197,12 @@ export default function HeroSection() {
               </div>
               
               {/* Success metrics floating cards */}
-              <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-xl">
+              <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
                 <div className="text-green-400 text-sm font-semibold">+$50K this month</div>
                 <div className="text-slate-400 text-xs">Revenue generated</div>
               </div>
               
-              <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-xl">
+              <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
                 <div className="text-blue-400 text-sm font-semibold">42 appointments</div>
                 <div className="text-slate-400 text-xs">Booked this week</div>
               </div>

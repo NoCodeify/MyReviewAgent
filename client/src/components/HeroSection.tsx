@@ -20,11 +20,11 @@ export default function HeroSection() {
       
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen">
-            {/* Left Content */}
+          <div className="max-w-5xl mx-auto text-center min-h-screen flex flex-col justify-center">
+            {/* Main Content */}
             <div className="space-y-8 lg:space-y-10">
               {/* Lifetime Deal Badge */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse rounded-xl">
                   <Zap className="w-4 h-4 mr-2" />
                   🔥 LIFETIME DEAL - LIMITED TIME
@@ -39,7 +39,7 @@ export default function HeroSection() {
                     $2M+ Sales Machine
                   </span>
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl">
+                <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
                   The AI agent that's already closed{" "}
                   <span className="text-green-400 font-semibold">$2M+ in deals</span>, booked{" "}
                   <span className="text-green-400 font-semibold">100s of appointments</span>{" "}
@@ -48,8 +48,8 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              {/* Video Player - Mobile only */}
-              <div className="relative group max-w-2xl mx-auto lg:hidden">
+              {/* Video Player */}
+              <div className="relative group max-w-3xl mx-auto">
                 <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_20px_-6px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
                   <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
                     {/* Video thumbnail/placeholder */}
@@ -137,7 +137,7 @@ export default function HeroSection() {
               </div>
 
               {/* Trust indicators */}
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center justify-center gap-4 pt-4">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />
@@ -147,66 +147,6 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Right Content - Video Player (Desktop) */}
-            <div className="relative lg:mt-0 mt-12 hidden lg:block">
-              <div className="relative z-10">
-                <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_20px_-6px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
-                  <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
-                    {/* Video thumbnail/placeholder */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>
-                    
-                    {/* Play button */}
-                    <Button
-                      size="icon"
-                      onClick={handleVideoPlay}
-                      className="w-24 h-24 rounded-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 border border-green-400/30 shadow-[0_6px_20px_0_rgba(34,197,94,0.4),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_0_rgba(34,197,94,0.5),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] relative z-10 transform hover:scale-110 hover:translate-y-[-2px] transition-all duration-200"
-                      data-testid="button-play-video-desktop"
-                    >
-                      <Play className="w-10 h-10 ml-1" fill="currentColor" />
-                    </Button>
-
-                    {/* Video stats overlay */}
-                    <div className="absolute bottom-6 left-6 flex items-center gap-4 text-white">
-                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                        <Clock className="w-5 h-5" />
-                        <span className="text-sm font-medium">12:34</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                        <Users className="w-5 h-5" />
-                        <span className="text-sm font-medium">15.2K views</span>
-                      </div>
-                    </div>
-
-                    {/* "Case Study" badge overlay */}
-                    <div className="absolute top-6 right-6">
-                      <Badge className="bg-orange-500/90 text-white border-0 text-sm px-4 py-2 font-semibold rounded-xl">
-                        <Star className="w-4 h-4 mr-2" />
-                        Case Study Video
-                      </Badge>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-              
-              {/* Floating elements */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-2xl shadow-2xl shadow-green-500/25 animate-bounce z-20">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-2xl shadow-2xl shadow-blue-500/25 animate-pulse z-20">
-                <MessageCircle className="w-6 h-6" />
-              </div>
-              
-              {/* Success metrics floating cards */}
-              <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
-                <div className="text-green-400 text-sm font-semibold">+$50K this month</div>
-                <div className="text-slate-400 text-xs">Revenue generated</div>
-              </div>
-              
-              <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
-                <div className="text-blue-400 text-sm font-semibold">42 appointments</div>
-                <div className="text-slate-400 text-xs">Booked this week</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

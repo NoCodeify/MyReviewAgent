@@ -47,7 +47,7 @@ export default function SocialProofSection() {
               <Star className="w-4 h-4 mr-2" />
               Real Results
             </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
               Join 1,247+ Businesses Already
               <span className="block text-primary">Crushing Their Sales Goals</span>
             </h2>

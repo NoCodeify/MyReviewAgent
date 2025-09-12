@@ -76,7 +76,7 @@ export default function CTASection() {
               LIMITED TIME OFFER
             </Badge>
             
-            <h2 className="text-4xl lg:text-5xl font-bold">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold">
               Last Chance to Get
               <span className="block text-chart-1">Lifetime Access</span>
             </h2>
@@ -90,7 +90,7 @@ export default function CTASection() {
           {/* Countdown Timer */}
           <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-8 mb-12">
             <div className="text-center space-y-4">
-              <h3 className="text-2xl font-bold text-white">Offer Expires In:</h3>
+              <h3 className="font-display text-2xl font-bold text-white">Offer Expires In:</h3>
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
                 {Object.entries(timeLeft).map(([unit, value]) => (
                   <div key={unit} className="text-center">
@@ -117,7 +117,7 @@ export default function CTASection() {
               {/* Left: Pricing */}
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-3xl font-bold">MyWhatsAgent.ai</h3>
+                  <h3 className="font-display text-3xl font-bold">MyWhatsAgent.ai</h3>
                   <p className="text-muted-foreground">Lifetime Access Deal</p>
                 </div>
 

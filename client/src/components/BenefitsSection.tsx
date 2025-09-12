@@ -91,7 +91,7 @@ export default function BenefitsSection() {
               <Smartphone className="w-4 h-4 mr-2" />
               Why It Works
             </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
               The Complete WhatsApp
               <span className="block text-primary">Sales Automation System</span>
             </h2>
@@ -128,7 +128,7 @@ export default function BenefitsSection() {
           {/* Before vs After Comparison */}
           <div className="space-y-8">
             <div className="text-center space-y-4">
-              <h3 className="text-3xl font-bold text-foreground">
+              <h3 className="font-display text-3xl font-bold text-foreground">
                 Traditional Sales vs. MyWhatsAgent.ai
               </h3>
               <p className="text-muted-foreground">

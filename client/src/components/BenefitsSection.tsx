@@ -104,7 +104,7 @@ export default function BenefitsSection() {
           {/* Benefits Grid */}
           <div className="grid lg:grid-cols-3 gap-8 mb-20">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="p-6 hover-elevate shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+              <Card key={index} className="p-6 hover-elevate shadow-[0_6px_20px_-6px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -136,7 +136,7 @@ export default function BenefitsSection() {
               </p>
             </div>
 
-            <Card className="overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+            <Card className="overflow-hidden shadow-[0_6px_20px_-6px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
               <div className="grid md:grid-cols-4 gap-0">
                 <div className="bg-muted/50 p-4 font-semibold text-foreground border-r border-border">
                   Feature

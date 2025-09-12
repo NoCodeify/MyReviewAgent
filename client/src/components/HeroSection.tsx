@@ -20,33 +20,37 @@ export default function HeroSection() {
       
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen">
+          {/* Centered Header */}
+          <div className="text-center space-y-8 mb-16">
+            {/* Lifetime Deal Badge */}
+            <div className="flex justify-center">
+              <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse rounded-xl">
+                <Zap className="w-4 h-4 mr-2" />
+                🔥 LIFETIME DEAL - LIMITED TIME
+              </Badge>
+            </div>
+
+            {/* Main Headline */}
+            <div className="space-y-6">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-lg">
+                Turn Your WhatsApp Into a{" "}
+                <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                  $2M+ Sales Machine
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
+                The AI agent that's already closed{" "}
+                <span className="text-green-400 font-semibold">$2M+ in deals</span>, booked{" "}
+                <span className="text-green-400 font-semibold">100s of appointments</span>{" "}
+                with a proven{" "}
+                <span className="text-green-400 font-semibold">25% closing rate</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8 lg:space-y-10">
-              {/* Lifetime Deal Badge */}
-              <div className="flex items-center gap-2">
-                <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse rounded-xl">
-                  <Zap className="w-4 h-4 mr-2" />
-                  🔥 LIFETIME DEAL - LIMITED TIME
-                </Badge>
-              </div>
-
-              {/* Main Headline */}
-              <div className="space-y-6">
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-lg">
-                  Turn Your WhatsApp Into a{" "}
-                  <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                    $2M+ Sales Machine
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl">
-                  The AI agent that's already closed{" "}
-                  <span className="text-green-400 font-semibold">$2M+ in deals</span>, booked{" "}
-                  <span className="text-green-400 font-semibold">100s of appointments</span>{" "}
-                  with a proven{" "}
-                  <span className="text-green-400 font-semibold">25% closing rate</span>
-                </p>
-              </div>
 
               {/* Video Player - Mobile only */}
               <div className="relative group max-w-2xl mx-auto lg:hidden">

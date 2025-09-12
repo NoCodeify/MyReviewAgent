@@ -50,7 +50,7 @@ export default function HeroSection() {
 
               {/* Video Player - Mobile only */}
               <div className="relative group max-w-2xl mx-auto lg:hidden">
-                <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
+                <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_20px_-6px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
                   <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
                     {/* Video thumbnail/placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>
@@ -129,7 +129,7 @@ export default function HeroSection() {
                   { value: "100s", label: "Appointments" },
                   { value: "25%", label: "Close Rate" }
                 ].map((stat, index) => (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_0_20px_-6px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_0_15px_-4px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                     <div className="text-2xl md:text-3xl font-bold text-green-400 font-display">{stat.value}</div>
                     <div className="text-xs md:text-sm text-slate-400 mt-1">{stat.label}</div>
                   </Card>
@@ -150,7 +150,7 @@ export default function HeroSection() {
             {/* Right Content - Video Player (Desktop) */}
             <div className="relative lg:mt-0 mt-12 hidden lg:block">
               <div className="relative z-10">
-                <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
+                <Card className="relative overflow-hidden rounded-3xl shadow-[0_0_20px_-6px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] border border-slate-700/50 hover-elevate">
                   <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
                     {/* Video thumbnail/placeholder */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>

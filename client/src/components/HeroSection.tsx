@@ -62,7 +62,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold shadow-2xl shadow-green-500/25 transform hover:scale-105 transition-all duration-200"
+                  className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border border-green-400/30 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200"
                   data-testid="button-get-lifetime-access"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -71,7 +71,7 @@ export default function HeroSection() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-2 border-slate-600 text-white hover:bg-slate-800 text-lg px-8 py-6 h-auto font-medium backdrop-blur-sm"
+                  className="bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 border-2 border-slate-500/50 text-white hover:from-slate-600 hover:via-slate-700 hover:to-slate-800 text-lg px-8 py-6 h-auto font-medium backdrop-blur-sm shadow-[0_3px_10px_0_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] hover:shadow-[0_5px_15px_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] transform hover:translate-y-[-1px] transition-all duration-200"
                   data-testid="button-watch-demo"
                 >
                   Watch Demo Below ↓

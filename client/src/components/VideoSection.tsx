@@ -40,7 +40,7 @@ export default function VideoSection() {
                 <Button
                   size="icon"
                   onClick={handleVideoPlay}
-                  className="w-20 h-20 rounded-full bg-primary hover:bg-primary/90 shadow-2xl relative z-10 transition-transform hover:scale-110"
+                  className="w-20 h-20 rounded-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 border border-green-400/30 shadow-[0_6px_20px_0_rgba(34,197,94,0.4),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_0_rgba(34,197,94,0.5),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] relative z-10 transform hover:scale-110 hover:translate-y-[-2px] transition-all duration-200"
                   data-testid="button-play-video"
                 >
                   <Play className="w-8 h-8 ml-1" fill="currentColor" />

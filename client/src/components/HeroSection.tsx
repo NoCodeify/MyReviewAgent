@@ -189,20 +189,20 @@ export default function HeroSection() {
               </div>
               
               {/* Floating elements */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-2xl shadow-2xl shadow-green-500/25 animate-bounce">
+              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-2xl shadow-2xl shadow-green-500/25 animate-bounce z-20">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-2xl shadow-2xl shadow-blue-500/25 animate-pulse">
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-2xl shadow-2xl shadow-blue-500/25 animate-pulse z-20">
                 <MessageCircle className="w-6 h-6" />
               </div>
               
               {/* Success metrics floating cards */}
-              <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
+              <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
                 <div className="text-green-400 text-sm font-semibold">+$50K this month</div>
                 <div className="text-slate-400 text-xs">Revenue generated</div>
               </div>
               
-              <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)]">
+              <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
                 <div className="text-blue-400 text-sm font-semibold">42 appointments</div>
                 <div className="text-slate-400 text-xs">Booked this week</div>
               </div>

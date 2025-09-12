@@ -33,7 +33,7 @@ export default function HeroSection() {
 
               {/* Main Headline */}
               <div className="space-y-6">
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight">
+                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-lg">
                   Turn Your WhatsApp Into a{" "}
                   <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
                     $2M+ Sales Machine

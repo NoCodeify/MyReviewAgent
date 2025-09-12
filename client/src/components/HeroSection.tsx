@@ -1,10 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MessageCircle, Zap, TrendingUp, CheckCircle, Star } from "lucide-react";
+import { MessageCircle, Zap, TrendingUp, CheckCircle, Star, Play, Clock, Users } from "lucide-react";
 import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_916383d2.png";
 
 export default function HeroSection() {
+  const handleVideoPlay = () => {
+    console.log('Video play triggered');
+    // TODO: Remove mock functionality - integrate real video player
+  };
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white relative overflow-hidden">
       {/* Background effects */}
@@ -42,6 +46,46 @@ export default function HeroSection() {
                   with a proven{" "}
                   <span className="text-green-400 font-semibold">25% closing rate</span>
                 </p>
+              </div>
+
+              {/* Video Player */}
+              <div className="relative group max-w-2xl mx-auto">
+                <Card className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-700/50 hover-elevate">
+                  <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
+                    {/* Video thumbnail/placeholder */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20"></div>
+                    
+                    {/* Play button */}
+                    <Button
+                      size="icon"
+                      onClick={handleVideoPlay}
+                      className="w-20 h-20 rounded-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 border border-green-400/30 shadow-[0_6px_20px_0_rgba(34,197,94,0.4),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_0_rgba(34,197,94,0.5),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] relative z-10 transform hover:scale-110 hover:translate-y-[-2px] transition-all duration-200"
+                      data-testid="button-play-video"
+                    >
+                      <Play className="w-8 h-8 ml-1" fill="currentColor" />
+                    </Button>
+
+                    {/* Video stats overlay */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-4 text-white">
+                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <Clock className="w-4 h-4" />
+                        <span className="text-sm">12:34</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <Users className="w-4 h-4" />
+                        <span className="text-sm">15.2K views</span>
+                      </div>
+                    </div>
+
+                    {/* "Case Study" badge overlay */}
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-orange-500/90 text-white border-0 text-xs px-3 py-1 font-semibold">
+                        <Star className="w-3 h-3 mr-1" />
+                        Case Study
+                      </Badge>
+                    </div>
+                  </div>
+                </Card>
               </div>
 
               {/* Value Props */}

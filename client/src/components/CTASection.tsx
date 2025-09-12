@@ -88,7 +88,7 @@ export default function CTASection() {
           </div>
 
           {/* Countdown Timer */}
-          <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-8 mb-12 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-8 mb-12 shadow-[0_0_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
             <div className="text-center space-y-4">
               <h3 className="font-display text-2xl font-bold text-white">Offer Expires In:</h3>
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
@@ -107,7 +107,7 @@ export default function CTASection() {
           </Card>
 
           {/* Pricing Card */}
-          <Card className="bg-white text-foreground p-8 mb-8 relative overflow-hidden shadow-[0_8px_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+          <Card className="bg-white text-foreground p-8 mb-8 relative overflow-hidden shadow-[0_0_30px_-8px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
             {/* Popular badge */}
             <div className="absolute -right-8 top-8 bg-chart-2 text-black px-8 py-2 rotate-45 font-bold text-sm">
               MOST POPULAR

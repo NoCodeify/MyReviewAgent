@@ -39,7 +39,7 @@ export default function HeroSection() {
             </h1>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center py-24">
             {/* Left Content */}
             <div className="space-y-8 lg:space-y-10">
               {/* Subtitle */}

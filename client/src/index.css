@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global text balancing for better typography */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
+  p, li, blockquote, figcaption, dt, dd {
+    text-wrap: pretty;
+  }
+
+  /* Specific balance for UI elements */
+  .badge, .button, .card-title {
+    text-wrap: balance;
+  }
+}
+
 /* LIGHT MODE */
 :root {
   --button-outline: rgba(0,0,0, .10);

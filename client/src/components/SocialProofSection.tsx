@@ -2,7 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, TrendingUp, Users, DollarSign, Calendar } from "lucide-react";
-import testimonialAvatar from "@assets/generated_images/Professional_Testimonial_Avatar_b8b2babe.png";
+import marcusAvatar from "@assets/generated_images/Marcus_Johnson_testimonial_avatar_b7a4973f.png";
+import sarahAvatar from "@assets/generated_images/Sarah_Chen_testimonial_avatar_3220ea10.png";
+import davidAvatar from "@assets/generated_images/David_Rodriguez_testimonial_avatar_8d71a62c.png";
 
 export default function SocialProofSection() {
   // TODO: Remove mock functionality - replace with real testimonials
@@ -12,21 +14,24 @@ export default function SocialProofSection() {
       title: "Sales Director",
       company: "TechFlow Solutions",
       content: "MyWhatsAgent.ai doubled our appointment booking rate in just 3 weeks. The AI conversations feel completely natural.",
-      result: "$180K revenue increase"
+      result: "$180K revenue increase",
+      avatar: marcusAvatar
     },
     {
       name: "Sarah Chen",
       title: "Founder",
       company: "Digital Marketing Pro",
       content: "I was skeptical about AI sales agents, but this system closed 40% more deals than our human team. Incredible ROI.",
-      result: "40% more conversions"
+      result: "40% more conversions",
+      avatar: sarahAvatar
     },
     {
       name: "David Rodriguez", 
       title: "CEO",
       company: "GrowthHack Inc",
       content: "The lifetime deal was a no-brainer. We've already made back our investment 10x over. Best business decision this year.",
-      result: "10x ROI in 2 months"
+      result: "10x ROI in 2 months",
+      avatar: davidAvatar
     }
   ];
 
@@ -101,7 +106,7 @@ export default function SocialProofSection() {
                   {/* Author info */}
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
                     <Avatar>
-                      <AvatarImage src={testimonialAvatar} alt={testimonial.name} />
+                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                       <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>

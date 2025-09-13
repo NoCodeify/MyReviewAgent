@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
     name: "Dr. Munib Ahmad",
     title: "Founder",
     company: "FueGenix Hair Clinic",
-    content: "As a leading hair transplant surgeon dealing with €50k+ clients worldwide, MyWhatsAgent.ai has been revolutionary. It works better than any extra worker you can hire. Daily we're getting qualified leads and selling is easier than selling water in a desert. Workload has gone down 400% and revenue has gone up 10x.",
+    content: "As a leading hair transplant surgeon dealing with €50k+ clients worldwide, this has been revolutionary. It works better than any extra worker you can hire. Daily we're getting qualified leads and selling is easier than selling water in a desert. Workload has gone down 400% and revenue has gone up 10x.",
     result: "10x Revenue Increase",
     avatar: munibAvatar,
     metrics: {
@@ -70,7 +70,7 @@ export const stats = [
   {
     value: "400%",
     label: "Workload Reduction",
-    subtext: "With MyWhatsAgent.ai",
+    subtext: "With AI Assistant",
     icon: "Calendar"
   },
   {

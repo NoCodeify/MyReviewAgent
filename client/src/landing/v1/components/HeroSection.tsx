@@ -204,9 +204,9 @@ export default function HeroSection() {
                   ))}
                 </div>
                 <span className={`text-sm text-slate-400 min-h-[20px] inline-block transition-opacity duration-500`}>
-                  1,247+ businesses <span className={`transition-opacity duration-500 ${
+                  1,247+ businesses • Average ROI: 1,276%<span className={`transition-opacity duration-500 ${
                     dynamic.location ? 'opacity-100' : 'opacity-0'
-                  }`}>• {dynamic.location ? `${Math.floor(1247 * 0.15)} in ${dynamic.location.country}` : <span className="invisible">000 in Country</span>}</span> • Average ROI: 1,276%
+                  }`}>{dynamic.location ? ` • ${Math.floor(1247 * 0.15)} in ${dynamic.location.country}` : ''}</span>
                 </span>
               </div>
               

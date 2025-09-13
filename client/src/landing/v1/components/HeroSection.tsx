@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-6 pt-20 pb-16 relative z-10">
+      <div className="container mx-auto px-6 pt-12 md:pt-16 pb-16 relative z-10">
         <div className="max-w-7xl mx-auto pt-8">
           {/* Full-width Header Section */}
           <div className="text-center space-y-8 mb-8">

@@ -54,8 +54,22 @@ export default function StickyHeader() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-center lg:justify-between py-3">
-          {/* Left: Scarcity */}
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-2 lg:py-3 gap-2 lg:gap-0">
+          {/* Mobile: Combined scarcity and timer */}
+          <div className="lg:hidden flex items-center gap-3 text-xs">
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-2 py-0.5 animate-pulse text-xs">
+              Only {dynamic.licensesRemaining} licenses left
+            </Badge>
+            <div className="flex items-center text-slate-400">
+              <span className="font-mono text-xs">
+                {dynamic.dayOfWeek} ends in {timeLeft.hours.toString().padStart(2, '0')}:
+                {timeLeft.minutes.toString().padStart(2, '0')}:
+                {timeLeft.seconds.toString().padStart(2, '0')}
+              </span>
+            </div>
+          </div>
+
+          {/* Desktop: Left Scarcity */}
           <div className="hidden lg:flex items-center gap-4">
             <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-3 py-1 animate-pulse">
               Only {dynamic.licensesRemaining} licenses left

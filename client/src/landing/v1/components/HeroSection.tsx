@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SparklesIcon, BoltIcon, CheckCircleIcon, StarIcon, PlayIcon, ClockIcon, UsersIcon, ChatBubbleLeftRightIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_916383d2.png";
-import TrustBadges from "@/components/TrustBadges";
+import TrustBadges from "./TrustBadges";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 
 export default function HeroSection() {

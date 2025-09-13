@@ -76,8 +76,8 @@ export default function CTASection() {
         <div className="max-w-4xl mx-auto">
           {/* Urgency Header */}
           <div className="text-center space-y-6 mb-12">
-            <Badge variant="outline" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black border-0 text-base px-4 py-2 font-bold animate-pulse">
-              <ExclamationTriangleIcon className="w-4 h-4 mr-2" />
+            <Badge variant="outline" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black border-0 text-xs sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 font-bold animate-pulse">
+              <ExclamationTriangleIcon className="w-3 sm:w-4 h-3 sm:h-4 mr-1.5 sm:mr-2" />
               {dynamic.dayOfWeek.toUpperCase()} ONLY - {dynamic.licensesRemaining} LICENSES LEFT
             </Badge>
             
@@ -87,7 +87,7 @@ export default function CTASection() {
             </h2>
             
             <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-              After these 47 licenses, we're closing to new members and switching to
+              After these {dynamic.licensesRemaining} licenses, we're closing to new members and switching to
               $297/month. Lock in lifetime access now for just $497.
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function CTASection() {
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
                 {Object.entries(timeLeft).map(([unit, value]) => (
                   <div key={unit} className="text-center">
-                    <div className="bg-white text-primary text-3xl font-bold p-4 rounded-lg">
+                    <div className="bg-white text-primary text-3xl font-bold p-4 rounded-lg flex items-center justify-center min-h-[80px]">
                       {value.toString().padStart(2, '0')}
                     </div>
                     <div className="text-sm text-primary-foreground/80 mt-2 capitalize">

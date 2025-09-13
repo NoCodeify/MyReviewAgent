@@ -195,9 +195,6 @@ export default function ScarcityIndicator() {
               <span className="whitespace-nowrap">{notification.time}</span>
             </div>
 
-            <div className="text-xs text-chart-1 font-medium pt-1">
-              Lifetime Access secured! (Only {dynamic.licensesRemaining} left)
-            </div>
           </div>
         </div>
       </Card>

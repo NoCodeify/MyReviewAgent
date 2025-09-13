@@ -124,7 +124,7 @@ export default function BonusStack() {
                   <span className="text-4xl font-bold text-muted-foreground/50 line-through">$4,861</span>
                   <span className="text-5xl font-bold text-chart-1">$497</span>
                 </div>
-                <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-lg px-4 py-2 font-bold">
+                <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-sm sm:text-lg px-3 sm:px-4 py-1.5 sm:py-2 font-bold whitespace-normal sm:whitespace-nowrap">
                   You Save $4,364 (89% OFF)
                 </Badge>
               </div>

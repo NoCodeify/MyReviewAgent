@@ -10,7 +10,7 @@ import ScarcityIndicator from "./components/ScarcityIndicator";
 
 export default function LandingV1() {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       <StickyHeader />
       <ScarcityIndicator />
       <HeroSection />

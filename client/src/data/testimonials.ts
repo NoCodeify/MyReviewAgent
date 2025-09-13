@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
     name: "Dr. Munib Ahmad",
     title: "Founder",
     company: "FueGenix Hair Clinic",
-    content: "As a leading hair transplant surgeon dealing with €50k+ clients worldwide, DMChamp has been revolutionary. It works better than any extra worker you can hire. Daily we're getting qualified leads and selling is easier than selling water in a desert. Workload has gone down 400% and revenue has gone up 10x.",
+    content: "As a leading hair transplant surgeon dealing with €50k+ clients worldwide, MyWhatsAgent.ai has been revolutionary. It works better than any extra worker you can hire. Daily we're getting qualified leads and selling is easier than selling water in a desert. Workload has gone down 400% and revenue has gone up 10x.",
     result: "10x Revenue Increase",
     avatar: munibAvatar,
     metrics: {
@@ -44,12 +44,12 @@ export const testimonials: Testimonial[] = [
     name: "Gaspar Cobo",
     title: "Founder",
     company: "Cobo's Streaming",
-    content: "This solution exceeds my expectations. It seamlessly integrates WhatsApp, Instagram, and Messenger into one place, greatly simplifying business communications. I've already made sales thanks to its AI integration. The feature I love most is its ability to interact naturally, just like a human sales agent would.",
+    content: "This solution exceeds my expectations. It seamlessly integrates WhatsApp communications, greatly simplifying business interactions. I've already made sales thanks to its AI integration. The feature I love most is its ability to interact naturally, just like a human sales agent would.",
     result: "Immediate sales from AI",
     avatar: gasparAvatar,
     metrics: {
       before: "Multiple communication channels",
-      after: "All channels unified with AI"
+      after: "WhatsApp unified with AI"
     }
   }
 ];
@@ -70,13 +70,13 @@ export const stats = [
   {
     value: "400%",
     label: "Workload Reduction",
-    subtext: "With DMChamp AI",
+    subtext: "With MyWhatsAgent.ai",
     icon: "Calendar"
   },
   {
-    value: "3",
-    label: "Channels Unified",
-    subtext: "WhatsApp, IG, Messenger",
+    value: "24/7",
+    label: "Always Available",
+    subtext: "WhatsApp AI Assistant",
     icon: "Users"
   }
 ];

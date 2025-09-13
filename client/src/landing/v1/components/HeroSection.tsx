@@ -59,11 +59,15 @@ export default function HeroSection() {
                   24/7 with a{" "}
                   <span className="text-green-400 font-semibold">25.3% closing rate</span>
                 </p>
-                {dynamic.location && (
-                  <p className="text-sm text-slate-400 mt-3 text-center lg:text-left">
-                    🔥 {dynamic.viewerCount} people from {dynamic.location.country} viewing this page right now
-                  </p>
-                )}
+                <p className={`text-sm text-slate-400 mt-3 text-center lg:text-left min-h-[20px] transition-opacity duration-500 ${
+                  dynamic.location ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  {dynamic.location ? (
+                    <>🔥 {dynamic.viewerCount} people from {dynamic.location.country} viewing this page right now</>
+                  ) : (
+                    <span className="invisible">Loading viewer count...</span>
+                  )}
+                </p>
               </div>
 
               {/* Video Player - Mobile only */}
@@ -199,8 +203,10 @@ export default function HeroSection() {
                     <StarIcon key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <span className="text-sm text-slate-400">
-                  1,247+ businesses {dynamic.location && `• ${Math.floor(1247 * 0.15)} in ${dynamic.location.country}`} • Average ROI: 1,276%
+                <span className={`text-sm text-slate-400 min-h-[20px] inline-block transition-opacity duration-500`}>
+                  1,247+ businesses <span className={`transition-opacity duration-500 ${
+                    dynamic.location ? 'opacity-100' : 'opacity-0'
+                  }`}>• {dynamic.location ? `${Math.floor(1247 * 0.15)} in ${dynamic.location.country}` : <span className="invisible">000 in Country</span>}</span> • Average ROI: 1,276%
                 </span>
               </div>
               

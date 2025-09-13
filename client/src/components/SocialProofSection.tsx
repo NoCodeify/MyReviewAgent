@@ -2,44 +2,15 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, TrendingUp, Users, DollarSign, Calendar } from "lucide-react";
-import marcusAvatar from "@assets/generated_images/Marcus_Johnson_testimonial_avatar_b7a4973f.png";
-import sarahAvatar from "@assets/generated_images/Sarah_Chen_testimonial_avatar_3220ea10.png";
-import davidAvatar from "@assets/generated_images/David_Rodriguez_testimonial_avatar_8d71a62c.png";
+import { testimonials } from "@/data/testimonials";
 
 export default function SocialProofSection() {
-  // TODO: Remove mock functionality - replace with real testimonials
-  const testimonials = [
-    {
-      name: "Marcus Johnson",
-      title: "Sales Director",
-      company: "TechFlow Solutions",
-      content: "MyWhatsAgent.ai doubled our appointment booking rate in just 3 weeks. The AI conversations feel completely natural.",
-      result: "$180K revenue increase",
-      avatar: marcusAvatar
-    },
-    {
-      name: "Sarah Chen",
-      title: "Founder",
-      company: "Digital Marketing Pro",
-      content: "I was skeptical about AI sales agents, but this system closed 40% more deals than our human team. Incredible ROI.",
-      result: "40% more conversions",
-      avatar: sarahAvatar
-    },
-    {
-      name: "David Rodriguez", 
-      title: "CEO",
-      company: "GrowthHack Inc",
-      content: "The lifetime deal was a no-brainer. We've already made back our investment 10x over. Best business decision this year.",
-      result: "10x ROI in 2 months",
-      avatar: davidAvatar
-    }
-  ];
 
   const stats = [
-    { icon: DollarSign, value: "$2.1M", label: "Total Revenue Generated", color: "text-chart-1" },
-    { icon: Calendar, value: "387", label: "Appointments Booked", color: "text-chart-2" },
-    { icon: TrendingUp, value: "25.3%", label: "Average Close Rate", color: "text-chart-1" },
-    { icon: Users, value: "1,247", label: "Active Users", color: "text-primary" }
+    { icon: DollarSign, value: "€50k+", label: "Average Deal Size", color: "text-chart-1" },
+    { icon: TrendingUp, value: "10x", label: "Revenue Increase", color: "text-chart-2" },
+    { icon: Calendar, value: "400%", label: "Workload Reduction", color: "text-chart-1" },
+    { icon: Users, value: "3", label: "Channels Unified", color: "text-primary" }
   ];
 
   return (
@@ -53,12 +24,12 @@ export default function SocialProofSection() {
               Real Results
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              Join 1,247+ Businesses Already
-              <span className="block text-primary">Crushing Their Sales Goals</span>
+              Real Success Stories From
+              <span className="block text-primary">Industry Leaders</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Don't just take our word for it. See what real businesses are saying about 
-              their results with MyWhatsAgent.ai
+              From €50k hair transplants to online academies - see how businesses are
+              transforming their sales with AI-powered WhatsApp automation
             </p>
           </div>
 
@@ -94,7 +65,7 @@ export default function SocialProofSection() {
                   </div>
 
                   {/* Testimonial content */}
-                  <blockquote className="text-foreground leading-relaxed">
+                  <blockquote className="text-foreground leading-relaxed text-sm">
                     "{testimonial.content}"
                   </blockquote>
 

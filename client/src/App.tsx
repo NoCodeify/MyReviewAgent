@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DynamicContentProvider } from "@/contexts/DynamicContentContext";
 import LandingV1 from "@/landing/v1";
-import LandingV2 from "@/landing/v2";
+// import LandingV2 from "@/landing/v2";
 import NotFound from "@/pages/not-found";
 import Clarity from '@microsoft/clarity';
 
@@ -13,7 +13,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={LandingV1} />
-      <Route path="/v2" component={LandingV2} />
+      {/* <Route path="/v2" component={LandingV2} /> */}
       <Route component={NotFound} />
     </Switch>
   );

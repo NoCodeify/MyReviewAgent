@@ -3,44 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { StarIcon, ArrowTrendingUpIcon, UsersIcon, CurrencyDollarIcon, CalendarIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
-import marcusAvatar from "@assets/generated_images/Marcus_Johnson_testimonial_avatar_b7a4973f.png";
-import sarahAvatar from "@assets/generated_images/Sarah_Chen_testimonial_avatar_3220ea10.png";
-import davidAvatar from "@assets/generated_images/David_Rodriguez_testimonial_avatar_8d71a62c.png";
+import { testimonials } from "@/data/testimonials";
 
 export default function SocialProofSection() {
-  // TODO: Remove mock functionality - replace with real testimonials
-  const testimonials = [
-    {
-      name: "Marcus Johnson",
-      title: "Sales Director",
-      company: "TechFlow Solutions",
-      content: "Added $487K in Q1 alone. The AI handles objections better than most of my human reps. It's closing deals while we sleep.",
-      result: "$487K in Q1 • 312% ROI",
-      avatar: marcusAvatar
-    },
-    {
-      name: "Sarah Chen",
-      title: "Founder",
-      company: "Digital Marketing Pro",
-      content: "67 deals closed completely autonomously. Zero human intervention. Our WhatsApp is now our #1 revenue channel.",
-      result: "67 deals • $142K revenue",
-      avatar: sarahAvatar
-    },
-    {
-      name: "David Rodriguez",
-      title: "CEO",
-      company: "GrowthHack Inc",
-      content: "Went from 0 to $92K/month using WhatsApp AI. Setup took 30 minutes. First deal closed same day.",
-      result: "$92K/month • Same-day ROI",
-      avatar: davidAvatar
-    }
-  ];
 
   const stats = [
-    { icon: CurrencyDollarIcon, value: "$5M+", label: "Revenue Generated", color: "text-chart-1" },
-    { icon: ArrowTrendingUpIcon, value: "1,276%", label: "Average ROI (90 days)", color: "text-chart-2" },
-    { icon: CalendarIcon, value: "847", label: "Deals Closed by AI", color: "text-chart-1" },
-    { icon: UsersIcon, value: "1,247", label: "Active Businesses", color: "text-primary" }
+    { icon: CurrencyDollarIcon, value: "€50k+", label: "Average Deal Size", color: "text-chart-1" },
+    { icon: ArrowTrendingUpIcon, value: "10x", label: "Revenue Increase", color: "text-chart-2" },
+    { icon: CalendarIcon, value: "400%", label: "Workload Reduction", color: "text-chart-1" },
+    { icon: UsersIcon, value: "3", label: "Channels Unified", color: "text-primary" }
   ];
 
   return (
@@ -95,7 +66,7 @@ export default function SocialProofSection() {
                   </div>
 
                   {/* Testimonial content */}
-                  <blockquote className="text-foreground leading-relaxed">
+                  <blockquote className="text-foreground leading-relaxed text-sm">
                     "{testimonial.content}"
                   </blockquote>
 

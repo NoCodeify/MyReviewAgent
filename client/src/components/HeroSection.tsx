@@ -112,14 +112,6 @@ export default function HeroSection() {
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Get Lifetime Access Now
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 border-2 border-slate-500/50 text-white hover:from-slate-600 hover:via-slate-700 hover:to-slate-800 text-lg px-8 py-6 h-auto font-medium backdrop-blur-sm shadow-[0_3px_10px_0_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] hover:shadow-[0_5px_15px_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.2)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl"
-                  data-testid="button-watch-demo"
-                >
-                  Watch Demo Below ↓
-                </Button>
               </div>
 
               {/* Social Proof Numbers */}

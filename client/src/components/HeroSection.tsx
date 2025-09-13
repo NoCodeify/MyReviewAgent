@@ -114,29 +114,6 @@ export default function HeroSection() {
                 </Button>
               </div>
 
-              {/* Social Proof Numbers */}
-              <div className="grid grid-cols-3 gap-4 pt-8">
-                {[
-                  { value: "$2M+", label: "Deals Closed" },
-                  { value: "100s", label: "Appointments" },
-                  { value: "25%", label: "Close Rate" }
-                ].map((stat, index) => (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_0_15px_-4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
-                    <div className="text-2xl md:text-3xl font-bold text-green-400 font-display">{stat.value}</div>
-                    <div className="text-xs md:text-sm text-slate-400 mt-1">{stat.label}</div>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Trust indicators */}
-              <div className="flex items-center gap-4 pt-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </div>
-                <span className="text-sm text-slate-400">Trusted by 1,247+ businesses</span>
-              </div>
             </div>
 
             {/* Right Content - Video Player (Desktop) */}
@@ -178,6 +155,30 @@ export default function HeroSection() {
                     </div>
                   </div>
                 </Card>
+              </div>
+              
+              {/* Social Proof Numbers */}
+              <div className="grid grid-cols-3 gap-4 pt-8">
+                {[
+                  { value: "$2M+", label: "Deals Closed" },
+                  { value: "100s", label: "Appointments" },
+                  { value: "25%", label: "Close Rate" }
+                ].map((stat, index) => (
+                  <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_0_15px_-4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
+                    <div className="text-2xl md:text-3xl font-bold text-green-400 font-display">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-slate-400 mt-1">{stat.label}</div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Trust indicators */}
+              <div className="flex items-center gap-4 pt-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <span className="text-sm text-slate-400">Trusted by 1,247+ businesses</span>
               </div>
               
               {/* Floating elements */}

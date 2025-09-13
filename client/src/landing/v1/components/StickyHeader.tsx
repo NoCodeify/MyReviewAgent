@@ -30,6 +30,11 @@ export default function StickyHeader() {
     return () => clearInterval(timer);
   }, []);
 
+  // Don't render until location is loaded
+  if (!dynamic.location) {
+    return null;
+  }
+
   return (
     <div
       className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800"
@@ -54,17 +59,8 @@ export default function StickyHeader() {
           {/* Center: Value Prop */}
           <div className="text-center px-4">
             <p className="text-base font-medium text-slate-200">
-              {dynamic.location ? (
-                <>
-                  <span><span className="inline-block w-8 h-6 mr-2 text-2xl leading-none align-middle">{dynamic.location.country_flag}</span><span className="text-base font-medium">{dynamic.holidayOffer} for {dynamic.location.country}:</span></span>
-                  <span className="text-green-400 font-bold ml-2 text-base">Use code EXTRA50 for EXTRA 50% OFF!</span>
-                </>
-              ) : (
-                <>
-                  <span className="hidden md:inline">{dynamic.dayOfWeek} Special: </span>
-                  <span className="text-green-400 font-bold">{dynamic.timeMessage}</span>
-                </>
-              )}
+              <span><span className="inline-block w-8 h-6 mr-2 text-2xl leading-none align-middle">{dynamic.location.country_flag}</span><span className="text-base font-medium">{dynamic.holidayOffer} for {dynamic.location.country}:</span></span>
+              <span className="text-green-400 font-bold ml-2 text-base">Use code EXTRA50 for EXTRA 50% OFF!</span>
             </p>
           </div>
 

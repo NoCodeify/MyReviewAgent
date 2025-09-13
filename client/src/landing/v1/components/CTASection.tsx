@@ -122,7 +122,7 @@ export default function CTASection() {
               {/* Left: Pricing */}
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="font-display text-3xl font-bold">MyWhatsAgent.ai</h3>
+                  <h3 className="font-display text-3xl font-bold">MyWhatsAgent</h3>
                   <p className="text-muted-foreground">The $5M WhatsApp System</p>
                 </div>
 

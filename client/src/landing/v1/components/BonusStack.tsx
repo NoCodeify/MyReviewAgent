@@ -88,7 +88,7 @@ export default function BonusStack() {
                 }`}
               >
                 {bonus.highlight && (
-                  <div className="absolute -right-8 top-3 bg-gradient-to-r from-chart-1 to-chart-2 text-white text-xs font-bold px-8 py-1 rotate-45">
+                  <div className="absolute -right-7 top-2 bg-gradient-to-r from-chart-1 to-chart-2 text-white text-xs font-bold px-8 py-1 rotate-45">
                     HOT
                   </div>
                 )}

@@ -19,7 +19,7 @@ export default function HeroSection() {
       </div>
       
       <div className="container mx-auto px-6 py-16 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto pt-8">
           {/* Full-width Header Section */}
           <div className="text-center space-y-8 mb-8">
             {/* Lifetime Deal Badge */}

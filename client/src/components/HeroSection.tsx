@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Full-width Header Section */}
-          <div className="text-center space-y-8 mb-16">
+          <div className="text-center space-y-8 mb-8">
             {/* Lifetime Deal Badge */}
             <div className="flex items-center justify-center gap-2">
               <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-sm px-4 py-2 font-semibold hover-elevate animate-pulse rounded-xl">

@@ -5,6 +5,7 @@ import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 
 export default function StickyHeader() {
   const dynamic = useDynamicContentContext();
+  const [isVisible, setIsVisible] = useState(false);
 
   // Calculate time until midnight
   const calculateTimeToMidnight = () => {
@@ -30,6 +31,17 @@ export default function StickyHeader() {
     return () => clearInterval(timer);
   }, []);
 
+  // Trigger slide-down animation when location is loaded
+  useEffect(() => {
+    if (dynamic.location) {
+      // Small delay to ensure smooth animation
+      const showTimer = setTimeout(() => {
+        setIsVisible(true);
+      }, 100);
+      return () => clearTimeout(showTimer);
+    }
+  }, [dynamic.location]);
+
   // Don't render until location is loaded
   if (!dynamic.location) {
     return null;
@@ -37,7 +49,9 @@ export default function StickyHeader() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800"
+      className={`fixed left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 transition-all duration-500 ease-out ${
+        isVisible ? 'top-0 opacity-100' : '-top-20 opacity-0'
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center lg:justify-between py-3">

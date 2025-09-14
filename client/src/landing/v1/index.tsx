@@ -21,20 +21,24 @@ import FeatureComparison from "./components/FeatureComparison";
 import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
-import ABTestDashboardV2 from "./components/ABTestDashboardV2";
-import DashboardLink from "@/components/DashboardLink";
-import ExperimentsDebugPanel from "@/experiments/components/ExperimentsDebugPanel";
 import { useEffect } from "react";
 import { trackPageView, updateSession } from "@/services/tracking";
-import { useExperiment } from "@/experiments/hooks/useExperiment";
+
+// Extend window for Clarity
+declare global {
+  interface Window {
+    clarity: (action: string, key: string, value: string) => void;
+  }
+}
 
 export default function LandingV1() {
-  // Check if we should use V2 components with variations
-  const urlParams = new URLSearchParams(window.location.search);
-  const useV2 = urlParams.has('v') || urlParams.get('test') === 'true';
-
-  // Use page structure experiment
-  const { variant: pageStructure } = useExperiment('page-structure');
+  // Track page version in Clarity
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.clarity) {
+      window.clarity('set', 'page_version', 'original');
+      window.clarity('set', 'components', '18');
+    }
+  }, []);
 
   // Initialize tracking
   useEffect(() => {
@@ -73,10 +77,7 @@ export default function LandingV1() {
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />
-      <ABTestDashboardV2 />
-      <DashboardLink />
-      <ExperimentsDebugPanel />
-      {useV2 ? <HeroSectionV2 /> : <HeroSection />}
+      <HeroSection />
       <CustomerLogos />
       <ProblemAgitation />
       <BiggestMistakes />

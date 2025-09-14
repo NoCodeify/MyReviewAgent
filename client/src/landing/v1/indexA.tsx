@@ -1,6 +1,5 @@
 import HeroSection from "./components/HeroSection";
-import ABTestDashboardV2 from "./components/ABTestDashboardV2";
-import DashboardLink from "@/components/DashboardLink";
+import HeroSection from "./components/HeroSection";
 import ProblemAgitation from "./components/ProblemAgitation";
 import BiggestMistakes from "./components/BiggestMistakes";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
@@ -16,14 +15,26 @@ import ExitIntent from "./components/ExitIntent";
 import { useEffect } from "react";
 import { trackPageView, updateSession, trackScrollMilestone } from "@/services/tracking";
 
+// Extend window for Clarity
+declare global {
+  interface Window {
+    clarity: (action: string, key: string, value: string) => void;
+  }
+}
+
 /**
  * Version A: Problem-Focused Flow
  * Based on Clepher's strategy - 70% problem agitation, 30% solution
  * Streamlined from 18 to 10 core components
  */
 export default function LandingV1A() {
-  // Initialize tracking
+  // Track page version in Clarity
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.clarity) {
+      window.clarity('set', 'page_version', 'version_a');
+      window.clarity('set', 'components', '10');
+      window.clarity('set', 'strategy', 'problem_focused');
+    }
     trackPageView();
 
     // Set up scroll tracking
@@ -55,8 +66,6 @@ export default function LandingV1A() {
   return (
     <div className="min-h-screen">
       {/* Persistent Components */}
-      <ABTestDashboardV2 />
-      <DashboardLink />
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />

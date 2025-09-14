@@ -12,7 +12,7 @@ export default function MediaLogos() {
     <div className="py-8">
       <div className="text-center mb-6">
         <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-          As Featured In
+          Featured In
         </p>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12">

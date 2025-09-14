@@ -1,6 +1,5 @@
 import HeroSection from "./components/HeroSection";
-import ABTestDashboardV2 from "./components/ABTestDashboardV2";
-import DashboardLink from "@/components/DashboardLink";
+import HeroSection from "./components/HeroSection";
 import ROICalculator from "./components/ROICalculator";
 import CompetitorPricing from "./components/CompetitorPricing";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
@@ -15,14 +14,26 @@ import ExitIntent from "./components/ExitIntent";
 import { useEffect } from "react";
 import { trackPageView, updateSession, trackScrollMilestone } from "@/services/tracking";
 
+// Extend window for Clarity
+declare global {
+  interface Window {
+    clarity: (action: string, key: string, value: string) => void;
+  }
+}
+
 /**
  * Version B: Value-Focused Flow
  * Based on Pabbly's strategy - immediate ROI focus
  * Streamlined from 18 to 8 core components
  */
 export default function LandingV1B() {
-  // Initialize tracking
+  // Track page version in Clarity
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.clarity) {
+      window.clarity('set', 'page_version', 'version_b');
+      window.clarity('set', 'components', '8');
+      window.clarity('set', 'strategy', 'value_focused');
+    }
     trackPageView();
 
     // Set up scroll tracking
@@ -54,8 +65,6 @@ export default function LandingV1B() {
   return (
     <div className="min-h-screen">
       {/* Persistent Components */}
-      <ABTestDashboardV2 />
-      <DashboardLink />
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />

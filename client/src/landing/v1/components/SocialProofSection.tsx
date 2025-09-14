@@ -8,7 +8,7 @@ import { testimonials } from "@/data/testimonials";
 export default function SocialProofSection() {
 
   const stats = [
-    { icon: CurrencyDollarIcon, value: "€50k+", label: "Average Deal Size", color: "text-chart-1" },
+    { icon: CurrencyDollarIcon, value: "$50k+", label: "Average Deal Size", color: "text-chart-1" },
     { icon: ArrowTrendingUpIcon, value: "10x", label: "Revenue Increase", color: "text-chart-2" },
     { icon: CalendarIcon, value: "400%", label: "Workload Reduction", color: "text-chart-1" },
     { icon: UsersIcon, value: "3", label: "Channels Unified", color: "text-primary" }

@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   ChatBubbleLeftRightIcon,
   CheckCircleIcon,
@@ -190,15 +191,22 @@ export default function WhatsAppScreenshots() {
               <h3 className="text-2xl font-bold text-foreground mb-3">
                 This Happens 24/7 With WhatsAgent
               </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 While you sleep, eat, or spend time with family, WhatsAgent is closing deals.
                 The average business using WhatsAgent sees
                 <span className="font-bold text-primary"> 67 more sales per month</span>.
               </p>
-              <div className="flex items-center justify-center gap-2 text-primary font-semibold">
-                <span>Try it yourself - Let the AI convince you</span>
-                <ArrowRightIcon className="w-4 h-4" />
-              </div>
+              <Button
+                size="lg"
+                className="bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold"
+                onClick={() => {
+                  const ctaSection = document.getElementById('final-cta');
+                  ctaSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Try it yourself - Let the AI convince you
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </Button>
             </Card>
           </div>
 

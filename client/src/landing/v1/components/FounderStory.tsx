@@ -7,9 +7,11 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
   CheckCircleIcon,
-  PhoneIcon
+  PhoneIcon,
+  EnvelopeIcon
 } from "@heroicons/react/24/outline";
 import sohaibImage from "@assets/generated_images/Sohaib.avif";
+import signatureImage from "@assets/generated_images/sohaib signature.png";
 
 export default function FounderStory() {
   return (
@@ -101,29 +103,65 @@ export default function FounderStory() {
                 </p>
               </div>
 
-              {/* Personal Guarantee */}
-              <Card className="bg-gradient-to-r from-chart-1/20 to-chart-2/20 p-6 border border-chart-1/30">
-                <div className="flex items-start gap-4">
-                  <ShieldCheckIcon className="w-8 h-8 flex-shrink-0 text-chart-1" />
-                  <div className="space-y-3">
-                    <h4 className="text-xl font-bold text-foreground">My Personal Guarantee:</h4>
-                    <p className="text-foreground">
-                      If MyWhatsAgent doesn't close at least 10 deals in your first 30 days, I'll:
+              {/* Personal Guarantee Letter */}
+              <Card className="bg-gradient-to-br from-green-50/50 to-blue-50/50 dark:from-green-950/20 dark:to-blue-950/20 p-8 border-2 border-chart-1/30 relative">
+                <div className="absolute top-4 right-4">
+                  <Badge className="bg-green-500/10 text-green-600 border-0">
+                    <ShieldCheckIcon className="w-3 h-3 mr-1" />
+                    30-DAY GUARANTEE
+                  </Badge>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-2xl font-bold text-foreground font-display">
+                    My Personal Promise to You...
+                  </h4>
+
+                  <div className="space-y-3 text-foreground">
+                    <p className="italic">
+                      "I'm so confident WhatsAgent will transform your business that I'm putting my reputation on the line."
                     </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-chart-1" />
-                        <span className="text-foreground">Refund every penny</span>
+
+                    <p className="font-semibold">
+                      If MyWhatsAgent doesn't close at least 10 deals in your first 30 days:
+                    </p>
+
+                    <ul className="space-y-3 pl-4">
+                      <li className="flex items-start gap-3">
+                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
+                        <span><strong>Full refund</strong> - Every penny back, no questions asked</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-chart-1" />
-                        <span className="text-foreground">Personally analyze what went wrong</span>
+                      <li className="flex items-start gap-3">
+                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
+                        <span><strong>Personal audit</strong> - I'll analyze your setup myself</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-chart-1" />
-                        <span className="text-foreground">Give you my personal templates that generated $5M</span>
+                      <li className="flex items-start gap-3">
+                        <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
+                        <span><strong>Bonus templates</strong> - My $5M message sequences, free</span>
                       </li>
                     </ul>
+
+                    <p className="pt-2">
+                      That's how certain I am this will work for you.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 space-y-3">
+                    <img
+                      src={signatureImage}
+                      alt="Sohaib's Signature"
+                      className="h-16 opacity-90 object-contain"
+                    />
+                    <div>
+                      <p className="font-semibold text-foreground">Sohaib</p>
+                      <p className="text-sm text-muted-foreground">Founder, MyWhatsAgent</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <EnvelopeIcon className="w-4 h-4 text-muted-foreground" />
+                        <a href="mailto:sohaib@mywhatsagent.ai" className="text-sm text-primary hover:underline">
+                          sohaib@mywhatsagent.ai
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>

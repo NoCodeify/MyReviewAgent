@@ -111,7 +111,7 @@ export default function ProblemAgitation() {
                     onChange={(e) => setLeadsPerDay(parseInt(e.target.value))}
                     className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
                     style={{
-                      background: `linear-gradient(to right, #fff 0%, #fff ${leadsPerDay}%, rgba(255,255,255,0.2) ${leadsPerDay}%, rgba(255,255,255,0.2) 100%)`
+                      background: `linear-gradient(to right, #fff 0%, #fff ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) 100%)`
                     }}
                   />
                 </div>

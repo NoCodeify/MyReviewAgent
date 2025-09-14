@@ -13,21 +13,27 @@ import {
   ChartBarIcon
 } from "@heroicons/react/24/outline";
 
+// Import company logos
+import fuegenixLogo from "@assets/generated_images/Logo Black Square.png";
+import webAceLogo from "@assets/generated_images/de de web academy logo.jpg";
+import cobhosLogo from "@assets/generated_images/cobhos logo.jpg";
+
 export default function CaseStudyCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const caseStudies = [
     {
       icon: BuildingStorefrontIcon,
+      logo: fuegenixLogo,
       industry: "Hair Transplant Surgery",
       company: testimonials[0].company, // FueGenix Hair Clinic
       name: testimonials[0].name, // Dr. Munib Ahmad
-      challenge: "Dealing with €50k+ international clients requiring constant communication across timezones",
+      challenge: "Dealing with $50k+ international clients requiring constant communication across timezones",
       solution: "AI agent qualifying leads, handling objections, and closing high-ticket deals autonomously",
       results: [
         { metric: "10x", label: "Revenue Increase" },
         { metric: "400%", label: "Workload Reduction" },
-        { metric: "€50K+", label: "Average Deal Size" }
+        { metric: "$50K+", label: "Average Deal Size" }
       ],
       quote: testimonials[0].content,
       author: `${testimonials[0].name}, ${testimonials[0].title}`,
@@ -35,6 +41,7 @@ export default function CaseStudyCarousel() {
     },
     {
       icon: AcademicCapIcon,
+      logo: webAceLogo,
       industry: "Education Technology",
       company: testimonials[1].company, // Web Academie
       name: testimonials[1].name, // Irene
@@ -51,6 +58,7 @@ export default function CaseStudyCarousel() {
     },
     {
       icon: PlayCircleIcon,
+      logo: cobhosLogo,
       industry: "Streaming Services",
       company: testimonials[2].company, // Cobo's Streaming
       name: testimonials[2].name, // Gaspar Cobo
@@ -108,8 +116,12 @@ export default function CaseStudyCarousel() {
               {/* Left: Story */}
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <study.icon className="w-7 h-7 text-primary" />
+                  <div className="w-14 h-14 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center p-1 border border-border">
+                    <img
+                      src={study.logo}
+                      alt={`${study.company} logo`}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <Badge variant="outline" className="text-xs mb-1">

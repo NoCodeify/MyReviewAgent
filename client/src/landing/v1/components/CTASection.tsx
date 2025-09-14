@@ -14,11 +14,12 @@ import {
 import { useState, useEffect } from "react";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { trackCTAClick, trackConversion } from "@/services/tracking";
-import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
+import { useDealPricing, useFormattedPrice, useDealTimer } from "@/hooks/useDealPricing";
 
 export default function CTASection() {
   const dynamic = useDynamicContentContext();
   const dealPricing = useDealPricing();
+  const dealTimer = useDealTimer();
   const starterPricing = useFormattedPrice('STARTER');
   const professionalPricing = useFormattedPrice('PROFESSIONAL');
   const agencyPricing = useFormattedPrice('AGENCY');
@@ -47,11 +48,24 @@ export default function CTASection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeToMidnight());
+      const newTimeLeft = calculateTimeToMidnight();
+      setTimeLeft(newTimeLeft);
+
+      // Check if timer reached 00:00:00 (all values are 0)
+      if (newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
+        // Trigger deal expiration based on current status
+        if (dealPricing.dealStatus === 'regular') {
+          console.log('🚨 CTA Timer expired - triggering first deal expiration');
+          dealTimer.onFirstTimerComplete();
+        } else if (dealPricing.dealStatus === 'first_expired') {
+          console.log('🚨 CTA Timer expired - triggering final deal expiration');
+          dealTimer.onFinalTimerComplete();
+        }
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [dealPricing.dealStatus, dealTimer]);
 
   const handleGetAccess = (tierName: string, price: string) => {
     console.log(`Get ${tierName} access clicked`);

@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
-import { useDealPricing } from "@/hooks/useDealPricing";
+import { useDealPricing, useDealTimer } from "@/hooks/useDealPricing";
 
 export default function StickyHeader() {
   const dynamic = useDynamicContentContext();
   const dealPricing = useDealPricing();
+  const dealTimer = useDealTimer();
   const [isVisible, setIsVisible] = useState(false);
 
 
@@ -30,11 +31,24 @@ export default function StickyHeader() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeToMidnight());
+      const newTimeLeft = calculateTimeToMidnight();
+      setTimeLeft(newTimeLeft);
+
+      // Check if timer reached 00:00:00 (all values are 0)
+      if (newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
+        // Trigger deal expiration based on current status
+        if (dealPricing.dealStatus === 'regular') {
+          console.log('🚨 Timer expired - triggering first deal expiration');
+          dealTimer.onFirstTimerComplete();
+        } else if (dealPricing.dealStatus === 'first_expired') {
+          console.log('🚨 Timer expired - triggering final deal expiration');
+          dealTimer.onFinalTimerComplete();
+        }
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [dealPricing.dealStatus, dealTimer]);
 
 
   // Trigger slide-down animation when location is loaded

@@ -15,7 +15,7 @@ export default function ExitIntent() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
   const dealPricing = useDealPricing();
-  const pricing = useFormattedPrice();
+  const pricing = useFormattedPrice('PROFESSIONAL');
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
@@ -129,8 +129,10 @@ export default function ExitIntent() {
           <div className="flex items-center justify-center gap-2 text-destructive">
             <ClockIcon className="w-5 h-5" />
             <span className="font-semibold">
-              {dealPricing.isFirstExpired || dealPricing.isFinalExpired
-                ? `Last chance at ${pricing.currentPrice} (Next: ${pricing.nextTierPrice})`
+              {dealPricing.isFinalExpired
+                ? `Monthly pricing only - ${pricing.currentPrice}`
+                : dealPricing.isFirstExpired
+                ? `Last chance at ${pricing.currentPrice} (Next: $297/month)`
                 : `Only 3 licenses left at ${pricing.currentPrice} (Next: ${pricing.nextTierPrice})`
               }
             </span>

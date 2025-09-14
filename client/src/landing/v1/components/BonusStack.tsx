@@ -62,6 +62,11 @@ export default function BonusStack() {
 
   const totalValue = 1332; // Sum of all bonus values
 
+  // Don't show bonuses for monthly pricing
+  if (isMonthlyPricing) {
+    return null;
+  }
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">

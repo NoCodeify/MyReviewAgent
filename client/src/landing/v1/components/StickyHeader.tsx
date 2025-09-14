@@ -78,30 +78,44 @@ export default function StickyHeader() {
           {/* Mobile: Combined scarcity and timer */}
           <div className="lg:hidden flex items-center gap-3 text-xs">
             <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-2 py-0.5 text-xs">
-              Only {dynamic.licensesRemaining} licenses left
+              {dealPricing.isFinalExpired ?
+                'Monthly pricing active' :
+                dealPricing.isFirstExpired ?
+                'Last chance pricing' :
+                `Only ${dynamic.licensesRemaining} licenses left`
+              }
             </Badge>
-            <div className="flex items-center text-slate-400">
-              <span className="font-mono text-xs">
-                {dynamic.dayOfWeek} ends in {timeLeft.hours.toString().padStart(2, '0')}:
-                {timeLeft.minutes.toString().padStart(2, '0')}:
-                {timeLeft.seconds.toString().padStart(2, '0')}
-              </span>
-            </div>
+            {!dealPricing.isFinalExpired && (
+              <div className="flex items-center text-slate-400">
+                <span className="font-mono text-xs">
+                  {dynamic.dayOfWeek} ends in {timeLeft.hours.toString().padStart(2, '0')}:
+                  {timeLeft.minutes.toString().padStart(2, '0')}:
+                  {timeLeft.seconds.toString().padStart(2, '0')}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Desktop: Left Scarcity */}
           <div className="hidden lg:flex items-center gap-4">
             <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-3 py-1">
-              Only {dynamic.licensesRemaining} licenses left
+              {dealPricing.isFinalExpired ?
+                'Monthly pricing active' :
+                dealPricing.isFirstExpired ?
+                'Last chance pricing' :
+                `Only ${dynamic.licensesRemaining} licenses left`
+              }
             </Badge>
-            <div className="flex items-center gap-2 text-sm text-slate-400">
-              <ClockIcon className="w-4 h-4" />
-              <span className="font-mono">
-                {dynamic.dayOfWeek} ends in {timeLeft.hours.toString().padStart(2, '0')}:
-                {timeLeft.minutes.toString().padStart(2, '0')}:
-                {timeLeft.seconds.toString().padStart(2, '0')}
-              </span>
-            </div>
+            {!dealPricing.isFinalExpired && (
+              <div className="flex items-center gap-2 text-sm text-slate-400">
+                <ClockIcon className="w-4 h-4" />
+                <span className="font-mono">
+                  {dynamic.dayOfWeek} ends in {timeLeft.hours.toString().padStart(2, '0')}:
+                  {timeLeft.minutes.toString().padStart(2, '0')}:
+                  {timeLeft.seconds.toString().padStart(2, '0')}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Center: Value Prop */}

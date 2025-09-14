@@ -66,19 +66,51 @@ export function useDynamicContent(): DynamicContent {
   else if (hour >= 17 && hour < 21) timeOfDay = 'evening';
   else timeOfDay = 'night';
 
-  // Calculate dynamic licenses (decreases over time)
+  // Cookie utilities for licenses
+  const getLicensesCookie = (): number | null => {
+    const match = document.cookie.match(/whatsagent_licenses=(\d+)/);
+    return match ? parseInt(match[1]) : null;
+  };
+
+  const setLicensesCookie = (licenses: number): void => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (30 * 24 * 60 * 60 * 1000)); // 30 days
+    document.cookie = `whatsagent_licenses=${licenses};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+  };
+
+  // Calculate dynamic licenses (decreases over time, stored in cookie)
   useEffect(() => {
     const updateLicenses = () => {
-      const startDate = new Date('2025-01-01').getTime();
-      const secondsElapsed = Math.floor((Date.now() - startDate) / 1000);
-      // Decrease every 30-45 seconds for realistic urgency
-      const decreaseRate = 35; // seconds per license
-      const remaining = Math.max(7, 47 - Math.floor(secondsElapsed / decreaseRate) % 40); // Cycles between 47 and 7
-      setLicensesRemaining(remaining);
+      // Check if user already has a stored license count
+      const storedLicenses = getLicensesCookie();
+
+      if (storedLicenses !== null) {
+        // User has visited before, use their stored count
+        setLicensesRemaining(storedLicenses);
+      } else {
+        // New user, calculate based on global time
+        const startDate = new Date('2025-01-01').getTime();
+        const secondsElapsed = Math.floor((Date.now() - startDate) / 1000);
+        const decreaseRate = 120; // seconds per license (slower global decrease)
+        const globalRemaining = Math.max(7, 47 - Math.floor(secondsElapsed / decreaseRate));
+
+        // Store this as their personal license count
+        setLicensesCookie(globalRemaining);
+        setLicensesRemaining(globalRemaining);
+      }
     };
 
     updateLicenses(); // Initial calculation
-    const interval = setInterval(updateLicenses, 5000); // Update every 5 seconds to catch changes
+
+    // Decrease licenses every 30-60 seconds for this user
+    const interval = setInterval(() => {
+      const currentLicenses = getLicensesCookie();
+      if (currentLicenses !== null && currentLicenses > 7) {
+        const newCount = currentLicenses - 1;
+        setLicensesCookie(newCount);
+        setLicensesRemaining(newCount);
+      }
+    }, 45000); // Decrease every 45 seconds
 
     return () => clearInterval(interval);
   }, []);

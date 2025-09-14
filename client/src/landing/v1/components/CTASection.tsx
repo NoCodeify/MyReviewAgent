@@ -152,7 +152,12 @@ export default function CTASection() {
           <div className="text-center space-y-6 mb-12">
             <Badge variant="outline" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black border-0 text-xs sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 font-bold animate-pulse shadow-[0_0_20px_-5px_rgba(251,191,36,0.7)] ring-1 ring-yellow-400/50">
               <ExclamationTriangleIcon className="w-3 sm:w-4 h-3 sm:h-4 mr-1.5 sm:mr-2" />
-              {dynamic.dayOfWeek.toUpperCase()} ONLY - {dynamic.licensesRemaining} LICENSES LEFT
+              {isMonthlyPricing ?
+                `${dynamic.dayOfWeek.toUpperCase()} - MONTHLY PRICING ACTIVE` :
+                dealPricing.isFirstExpired ?
+                `${dynamic.dayOfWeek.toUpperCase()} - LAST CHANCE PRICING` :
+                `${dynamic.dayOfWeek.toUpperCase()} ONLY - ${dynamic.licensesRemaining} LICENSES LEFT`
+              }
             </Badge>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold">
@@ -163,29 +168,33 @@ export default function CTASection() {
             <p className="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto">
               {isMonthlyPricing ?
                 'Lifetime deals are no longer available. Get monthly access starting at just $197/month.' :
+                dealPricing.isFirstExpired ?
+                'This is your absolute last chance to get lifetime access. Next step is monthly pricing at $297/month.' :
                 `After these ${dynamic.licensesRemaining} licenses, we're closing to new members and switching to $297/month. Lock in lifetime access starting at just $497.`
               }
             </p>
           </div>
 
-          {/* Countdown Timer */}
-          <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-4 sm:p-8 mb-12 shadow-[0_0_30px_-8px_rgba(255,255,255,0.2),0_0_0_1px_rgba(255,255,255,0.1)] rounded-2xl ring-1 ring-white/10">
-            <div className="text-center space-y-4">
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white">{dynamic.dayOfWeek} Deal Expires In:</h3>
-              <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto">
-                {Object.entries(timeLeft).map(([unit, value]) => (
-                  <div key={unit} className="text-center">
-                    <div className="bg-white text-primary text-xl sm:text-3xl font-bold p-2 sm:p-4 rounded-lg flex items-center justify-center min-h-[50px] sm:min-h-[80px] shadow-[0_0_15px_-5px_rgba(255,255,255,0.6)] ring-1 ring-white/20">
-                      {value.toString().padStart(2, '0')}
+          {/* Countdown Timer - Only show if not monthly pricing */}
+          {!isMonthlyPricing && (
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-4 sm:p-8 mb-12 shadow-[0_0_30px_-8px_rgba(255,255,255,0.2),0_0_0_1px_rgba(255,255,255,0.1)] rounded-2xl ring-1 ring-white/10">
+              <div className="text-center space-y-4">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white">{dynamic.dayOfWeek} Deal Expires In:</h3>
+                <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto">
+                  {Object.entries(timeLeft).map(([unit, value]) => (
+                    <div key={unit} className="text-center">
+                      <div className="bg-white text-primary text-xl sm:text-3xl font-bold p-2 sm:p-4 rounded-lg flex items-center justify-center min-h-[50px] sm:min-h-[80px] shadow-[0_0_15px_-5px_rgba(255,255,255,0.6)] ring-1 ring-white/20">
+                        {value.toString().padStart(2, '0')}
+                      </div>
+                      <div className="text-xs sm:text-sm text-gray-300 mt-1 sm:mt-2 capitalize">
+                        {unit}
+                      </div>
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-300 mt-1 sm:mt-2 capitalize">
-                      {unit}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          )}
 
           {/* 3-Tier Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-16 mb-12">

@@ -67,26 +67,34 @@ export function useDynamicContent(): DynamicContent {
   else timeOfDay = 'night';
 
   // Cookie utilities for licenses
-  const getLicensesCookie = (): number | null => {
-    const match = document.cookie.match(/whatsagent_licenses=(\d+)/);
-    return match ? parseInt(match[1]) : null;
+  const getLicensesCookie = (): { count: number; timestamp: number } | null => {
+    const match = document.cookie.match(/whatsagent_licenses=(\d+)_(\d+)/);
+    return match ? { count: parseInt(match[1]), timestamp: parseInt(match[2]) } : null;
   };
 
   const setLicensesCookie = (licenses: number): void => {
     const expires = new Date();
     expires.setTime(expires.getTime() + (30 * 24 * 60 * 60 * 1000)); // 30 days
-    document.cookie = `whatsagent_licenses=${licenses};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+    const timestamp = Date.now();
+    document.cookie = `whatsagent_licenses=${licenses}_${timestamp};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
   };
 
   // Calculate dynamic licenses (decreases over time, stored in cookie)
   useEffect(() => {
     const updateLicenses = () => {
       // Check if user already has a stored license count
-      const storedLicenses = getLicensesCookie();
+      const storedData = getLicensesCookie();
 
-      if (storedLicenses !== null) {
-        // User has visited before, use their stored count
-        setLicensesRemaining(storedLicenses);
+      if (storedData !== null) {
+        // User has visited before - decrease based on time elapsed
+        const hoursElapsed = Math.floor((Date.now() - storedData.timestamp) / (1000 * 60 * 60));
+        // Decrease by 1-3 licenses per hour they were away
+        const decreaseAmount = Math.min(Math.floor(hoursElapsed / 2) + 1, 10); // Max 10 decrease
+        const newCount = Math.max(7, storedData.count - decreaseAmount);
+
+        // Update cookie with new lower count
+        setLicensesCookie(newCount);
+        setLicensesRemaining(newCount);
       } else {
         // New user, calculate based on global time
         const startDate = new Date('2025-01-01').getTime();
@@ -94,7 +102,7 @@ export function useDynamicContent(): DynamicContent {
         const decreaseRate = 120; // seconds per license (slower global decrease)
         const globalRemaining = Math.max(7, 47 - Math.floor(secondsElapsed / decreaseRate));
 
-        // Store this as their personal license count
+        // Store this as their personal license count with timestamp
         setLicensesCookie(globalRemaining);
         setLicensesRemaining(globalRemaining);
       }
@@ -102,11 +110,11 @@ export function useDynamicContent(): DynamicContent {
 
     updateLicenses(); // Initial calculation
 
-    // Decrease licenses every 30-60 seconds for this user
+    // Decrease licenses every 30-60 seconds for this user while they're on the page
     const interval = setInterval(() => {
-      const currentLicenses = getLicensesCookie();
-      if (currentLicenses !== null && currentLicenses > 7) {
-        const newCount = currentLicenses - 1;
+      const currentData = getLicensesCookie();
+      if (currentData !== null && currentData.count > 7) {
+        const newCount = currentData.count - 1;
         setLicensesCookie(newCount);
         setLicensesRemaining(newCount);
       }

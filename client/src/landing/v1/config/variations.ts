@@ -66,7 +66,7 @@ export const variations: Record<string, Variation> = {
     name: 'Savings-Focused',
     headline: {
       main: 'Replace Your $48,000/year',
-      gradient: 'Sales Team with $497 AI',
+      gradient: 'Sales Team with AI',
       subtitle: '(Save $47,503 & Never Miss a Lead)'
     },
     cta: {

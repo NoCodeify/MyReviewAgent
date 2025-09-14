@@ -8,9 +8,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { QuestionMarkCircleIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
+import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function FAQSection() {
   const dynamic = useDynamicContentContext();
+  const dealPricing = useDealPricing();
+
+  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
 
   const faqs = [
     {
@@ -43,11 +47,15 @@ export default function FAQSection() {
     },
     {
       question: "What happens after I buy? Is there ongoing support?",
-      answer: "After purchase you get instant access to the platform, Zero-Touch Setup Wizard guides you through everything in 5 minutes, access to our private community of 1,247+ users, weekly group coaching calls, and lifetime updates to the software. Plus, you're covered by our 30-day money-back guarantee. No demos, no calls, no waiting - just automated setup and results."
+      answer: isMonthlyPricing ?
+        "After purchase you get instant access to the platform, Zero-Touch Setup Wizard guides you through everything in 5 minutes, access to our private community of 1,247+ users, weekly group coaching calls, and monthly updates to the software. Plus, you're covered by our 30-day money-back guarantee. No demos, no calls, no waiting - just automated setup and results." :
+        "After purchase you get instant access to the platform, Zero-Touch Setup Wizard guides you through everything in 5 minutes, access to our private community of 1,247+ users, weekly group coaching calls, and lifetime updates to the software. Plus, you're covered by our 30-day money-back guarantee. No demos, no calls, no waiting - just automated setup and results."
     },
     {
-      question: "Why lifetime deal instead of monthly subscription?",
-      answer: `Because it's ${dynamic.holidayOffer} ${dynamic.location ? `in ${dynamic.location.country}` : ''} - we're celebrating with lifetime access instead of $297/month subscriptions. This special pricing is only available for the next ${dynamic.licensesRemaining} licenses during this celebration. After that, it's monthly subscriptions only. You're saving $3,564/year and locking in lifetime access forever.`
+      question: isMonthlyPricing ? "Why monthly subscription pricing?" : "Why lifetime deal instead of monthly subscription?",
+      answer: isMonthlyPricing ?
+        `Monthly subscriptions give you flexibility and access to all features at an affordable rate. Starting at just $197/month, you get the same powerful AI system without a large upfront investment. Cancel anytime with no long-term commitment.` :
+        `Because it's ${dynamic.holidayOffer} ${dynamic.location ? `in ${dynamic.location.country}` : ''} - we're celebrating with lifetime access instead of $297/month subscriptions. This special pricing is only available for the next ${dynamic.licensesRemaining} licenses during this celebration. After that, it's monthly subscriptions only. You're saving $3,564/year and locking in lifetime access forever.`
     },
     {
       question: "Can it handle multiple languages and countries?",
@@ -61,7 +69,7 @@ export default function FAQSection() {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center space-y-4 mb-12">
-            <Badge className="bg-green-400/10 text-green-500 border-0 text-base px-4 py-2 font-semibold">
+            <Badge className="bg-green-400/10 text-green-500 border-0 text-sm sm:text-base px-4 py-2 font-semibold">
               <QuestionMarkCircleIcon className="w-4 h-4 mr-2 text-green-500" />
               FREQUENTLY ASKED QUESTIONS
             </Badge>

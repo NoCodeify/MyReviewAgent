@@ -1,13 +1,32 @@
+import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
   CheckIcon,
   XMarkIcon,
   ChartBarIcon,
-  SparklesIcon
+  SparklesIcon,
+  ChevronDownIcon,
+  ChevronUpIcon
 } from "@heroicons/react/24/outline";
+import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function FeatureComparison() {
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([0]));
+  const dealPricing = useDealPricing();
+  const pricing = useFormattedPrice();
+
+  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
+
+  const toggleCategory = (index: number) => {
+    const newExpanded = new Set(expandedCategories);
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index);
+    } else {
+      newExpanded.add(index);
+    }
+    setExpandedCategories(newExpanded);
+  };
   const features = [
     {
       category: "AI & Conversation",
@@ -149,7 +168,7 @@ export default function FeatureComparison() {
         },
         {
           feature: "Cost",
-          whatsagent: "$497 lifetime",
+          whatsagent: isMonthlyPricing ? `${pricing.currentPrice}/month` : `${pricing.currentPrice} lifetime`,
           manychat: "$145/month",
           chatfuel: "$79/month",
           humanva: "$2000/month",
@@ -159,12 +178,12 @@ export default function FeatureComparison() {
     }
   ];
 
-  const renderValue = (value: any) => {
+  const renderValue = (value: any, compact: boolean = false) => {
     if (value === true) {
       return (
         <div className="flex justify-center">
-          <div className="w-8 h-8 bg-green-500/10 rounded-full flex items-center justify-center">
-            <CheckIcon className="w-5 h-5 text-green-500" />
+          <div className={`${compact ? 'w-5 h-5' : 'w-8 h-8'} bg-green-500/10 rounded-full flex items-center justify-center`}>
+            <CheckIcon className={`${compact ? 'w-3 h-3' : 'w-5 h-5'} text-green-500`} />
           </div>
         </div>
       );
@@ -172,24 +191,28 @@ export default function FeatureComparison() {
     if (value === false) {
       return (
         <div className="flex justify-center">
-          <div className="w-8 h-8 bg-red-500/10 rounded-full flex items-center justify-center">
-            <XMarkIcon className="w-5 h-5 text-red-500" />
+          <div className={`${compact ? 'w-5 h-5' : 'w-8 h-8'} bg-red-500/10 rounded-full flex items-center justify-center`}>
+            <XMarkIcon className={`${compact ? 'w-3 h-3' : 'w-5 h-5'} text-red-500`} />
           </div>
         </div>
       );
     }
     if (value === "N/A") {
       return (
-        <div className="text-center text-muted-foreground text-sm">N/A</div>
+        <div className={`text-center text-muted-foreground ${compact ? 'text-xs' : 'text-sm'}`}>N/A</div>
       );
     }
     if (value === "limited") {
       return (
-        <div className="text-center text-orange-500 text-sm font-medium">Limited</div>
+        <div className={`text-center text-orange-500 ${compact ? 'text-xs' : 'text-sm'} font-medium`}>Limited</div>
       );
     }
+    // For text values, truncate if too long for mobile
+    const displayValue = compact && typeof value === 'string' && value.length > 15
+      ? value.substring(0, 12) + '...'
+      : value;
     return (
-      <div className="text-center text-sm font-medium text-foreground">{value}</div>
+      <div className={`text-center ${compact ? 'text-xs' : 'text-sm'} font-medium text-foreground break-words`}>{displayValue}</div>
     );
   };
 
@@ -205,18 +228,110 @@ export default function FeatureComparison() {
               DETAILED COMPARISON
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              WhatsAgent vs The Competition
+              MyWhatsAgent vs The Competition
               <span className="block text-3xl lg:text-4xl mt-2 text-primary">
                 See Why We're 10x Better
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A feature-by-feature breakdown showing exactly why WhatsAgent dominates the market
+              A feature-by-feature breakdown showing exactly why MyWhatsAgent dominates the market
             </p>
           </div>
 
-          {/* Comparison Table */}
-          <Card className="overflow-hidden">
+          {/* Mobile View - Cards */}
+          <div className="block lg:hidden space-y-4">
+            {/* Mobile Summary Card */}
+            <Card className="p-3 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30 border-green-200 dark:border-green-800">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <div className="flex items-center gap-1 mb-1">
+                    <SparklesIcon className="w-4 h-4 text-green-500" />
+                    <span className="font-bold text-xs sm:text-sm">MyWhatsAgent Wins</span>
+                  </div>
+                  <div className="text-xl sm:text-2xl font-bold text-green-600">16/16 Features</div>
+                </div>
+                <Badge className="bg-green-500/20 text-green-600 border-0 px-2 sm:px-3 py-1 text-xs sm:text-sm self-start sm:self-auto">
+                  BEST
+                </Badge>
+              </div>
+            </Card>
+
+            {features.map((category, categoryIndex) => (
+              <Card key={categoryIndex} className="overflow-hidden">
+                {/* Category Header */}
+                <button
+                  onClick={() => toggleCategory(categoryIndex)}
+                  className="w-full p-4 bg-muted/50 flex items-center justify-between hover:bg-muted/70 transition-colors"
+                >
+                  <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">
+                    {category.category}
+                  </h3>
+                  {expandedCategories.has(categoryIndex) ? (
+                    <ChevronUpIcon className="w-5 h-5 text-muted-foreground" />
+                  ) : (
+                    <ChevronDownIcon className="w-5 h-5 text-muted-foreground" />
+                  )}
+                </button>
+
+                {/* Category Items */}
+                {expandedCategories.has(categoryIndex) && (
+                  <div className="p-3 space-y-3">
+                    {category.items.map((item, itemIndex) => (
+                      <Card key={itemIndex} className="p-3 bg-muted/20">
+                        {/* Feature Name */}
+                        <h4 className="font-semibold text-xs sm:text-sm text-foreground mb-2">
+                          {item.feature}
+                        </h4>
+
+                        {/* MyWhatsAgent - Always First & Highlighted */}
+                        <div className="mb-2 p-2 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+                          <div className="flex items-center justify-between gap-1">
+                            <div className="flex items-center gap-1">
+                              <SparklesIcon className="w-3 h-3 text-green-500 flex-shrink-0" />
+                              <span className="font-semibold text-xs truncate">MyWhatsAgent</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              {renderValue(item.whatsagent, true)}
+                              {item.whatsagent === true && (
+                                <Badge className="bg-green-500/20 text-green-600 border-0 text-[10px] px-1 py-0.5 ml-1">
+                                  WIN
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Competitors Grid */}
+                        <div className="grid grid-cols-3 gap-1 text-[10px]">
+                          <div className="p-1.5 bg-background rounded border border-border">
+                            <div className="font-medium text-muted-foreground mb-0.5 truncate">ManyChat</div>
+                            <div className="flex justify-center">
+                              {renderValue(item.manychat, true)}
+                            </div>
+                          </div>
+                          <div className="p-1.5 bg-background rounded border border-border">
+                            <div className="font-medium text-muted-foreground mb-0.5 truncate">Chatfuel</div>
+                            <div className="flex justify-center">
+                              {renderValue(item.chatfuel, true)}
+                            </div>
+                          </div>
+                          <div className="p-1.5 bg-background rounded border border-border">
+                            <div className="font-medium text-muted-foreground mb-0.5 truncate">Human VA</div>
+                            <div className="flex justify-center">
+                              {renderValue(item.humanva, true)}
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </Card>
+            ))}
+          </div>
+
+          {/* Desktop View - Table */}
+          <Card className="overflow-hidden hidden lg:block">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -228,7 +343,7 @@ export default function FeatureComparison() {
                       <div className="space-y-1">
                         <div className="flex items-center justify-center gap-1">
                           <SparklesIcon className="w-5 h-5 text-green-500" />
-                          <span className="font-bold text-foreground">WhatsAgent</span>
+                          <span className="font-bold text-foreground">MyWhatsAgent</span>
                         </div>
                         <Badge className="bg-green-500/10 text-green-600 border-0 text-xs">
                           RECOMMENDED
@@ -248,8 +363,8 @@ export default function FeatureComparison() {
                 </thead>
                 <tbody>
                   {features.map((category, categoryIndex) => (
-                    <>
-                      <tr key={`category-${categoryIndex}`} className="bg-muted/30">
+                    <React.Fragment key={`category-${categoryIndex}`}>
+                      <tr className="bg-muted/30">
                         <td colSpan={5} className="p-3 font-semibold text-sm text-muted-foreground uppercase tracking-wider">
                           {category.category}
                         </td>
@@ -276,7 +391,7 @@ export default function FeatureComparison() {
                           </td>
                         </tr>
                       ))}
-                    </>
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>
@@ -287,7 +402,7 @@ export default function FeatureComparison() {
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             <Card className="p-6 text-center hover-elevate">
               <div className="text-4xl font-bold text-green-500 mb-2">16/16</div>
-              <div className="text-sm font-semibold text-foreground mb-1">Features WhatsAgent Wins</div>
+              <div className="text-sm font-semibold text-foreground mb-1">Features MyWhatsAgent Wins</div>
               <div className="text-xs text-muted-foreground">Complete domination across all categories</div>
             </Card>
             <Card className="p-6 text-center hover-elevate">

@@ -12,6 +12,7 @@ import ProblemAgitation from "./components/ProblemAgitation";
 import FounderStory from "./components/FounderStory";
 import CompetitorPricing from "./components/CompetitorPricing";
 import ROICalculator from "./components/ROICalculator";
+import PricingPlans from "./components/PricingPlans";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
 import Timeline from "./components/Timeline";
 import ExitIntent from "./components/ExitIntent";
@@ -21,6 +22,7 @@ import FeatureComparison from "./components/FeatureComparison";
 import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
+import DealDebug from "./components/DealDebug";
 import { useEffect } from "react";
 import { trackPageView, updateSession } from "@/services/tracking";
 
@@ -85,6 +87,9 @@ export default function LandingV1() {
       <SocialProofSection />
       <CaseStudyCarousel />
       <ROICalculator />
+      <div id="pricing-plans">
+        <PricingPlans />
+      </div>
       <ComparisonTable />
       <FeatureComparison />
       <CompetitorPricing />

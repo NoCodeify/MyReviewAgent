@@ -18,7 +18,7 @@ export default function BiggestMistakes() {
       stat: "78%",
       statLabel: "of customers buy from whoever responds first",
       problem: "While you're busy, typing, or away from your phone, your competitors' AI agents are closing YOUR leads in seconds.",
-      solution: "WhatsAgent responds in under 30 seconds, 24/7, never missing a single opportunity.",
+      solution: "MyWhatsAgent responds in under 30 seconds, 24/7, never missing a single opportunity.",
       icon: ClockIcon,
       color: "from-red-500 to-orange-500"
     },
@@ -28,7 +28,7 @@ export default function BiggestMistakes() {
       stat: "91%",
       statLabel: "of users abandon robotic conversations",
       problem: "Pre-written templates, rigid decision trees, and 'press 1 for sales' responses that frustrate customers and kill conversions.",
-      solution: "WhatsAgent uses natural AI that adapts to each conversation, handles objections, and closes deals like a human would.",
+      solution: "MyWhatsAgent uses natural AI that adapts to each conversation, handles objections, and closes deals like a human would.",
       icon: ChatBubbleBottomCenterTextIcon,
       color: "from-orange-500 to-yellow-500"
     },
@@ -38,7 +38,7 @@ export default function BiggestMistakes() {
       stat: "$4.2M",
       statLabel: "average yearly loss from after-hours leads",
       problem: "Most WhatsApp messages come when you're sleeping, eating dinner, or spending time with family. Those leads go cold forever.",
-      solution: "WhatsAgent works 24/7/365, closing deals at 3 AM while you sleep, turning night owls into paying customers.",
+      solution: "MyWhatsAgent works 24/7/365, closing deals at 3 AM while you sleep, turning night owls into paying customers.",
       icon: MoonIcon,
       color: "from-yellow-500 to-green-500"
     }
@@ -135,7 +135,7 @@ export default function BiggestMistakes() {
                 </h3>
               </div>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Join 1,247+ businesses that fixed all three mistakes with WhatsAgent and saw an average
+                Join 1,247+ businesses that fixed all three mistakes with MyWhatsAgent and saw an average
                 <span className="font-bold text-green-600 dark:text-green-400"> 487% revenue increase </span>
                 in their first 90 days.
               </p>

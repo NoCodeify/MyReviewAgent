@@ -6,8 +6,11 @@ import {
   XMarkIcon,
   CheckIcon
 } from "@heroicons/react/24/outline";
+import { useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function ComparisonTable() {
+  const pricing = useFormattedPrice();
+
   const comparisonData = [
     {
       metric: "Revenue from WhatsApp",
@@ -68,7 +71,7 @@ export default function ComparisonTable() {
     {
       metric: "Cost",
       before: "$48,000/year (salary)",
-      after: "$497 (one-time)",
+      after: `${pricing.currentPrice} (one-time)`,
       improvement: "99% savings",
       highlight: true
     }

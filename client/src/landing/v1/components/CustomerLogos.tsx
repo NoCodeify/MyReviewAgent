@@ -72,7 +72,7 @@ export default function CustomerLogos() {
             Working Across 37+ Industries Worldwide
           </h3>
           <p className="text-muted-foreground">
-            From local shops to global enterprises, WhatsAgent adapts to any business
+            From local shops to global enterprises, MyWhatsAgent adapts to any business
           </p>
         </div>
 
@@ -208,16 +208,36 @@ export default function CustomerLogos() {
         }
 
         .animate-scroll-left {
-          animation: scroll-left 30s linear infinite;
+          animation: scroll-left 10s linear infinite;
           display: flex;
           gap: 1rem;
         }
 
         .animate-scroll-right {
-          animation: scroll-right 30s linear infinite;
+          animation: scroll-right 10s linear infinite;
           animation-direction: reverse;
           display: flex;
           gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .animate-scroll-left {
+            animation-duration: 20s;
+          }
+
+          .animate-scroll-right {
+            animation-duration: 20s;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .animate-scroll-left {
+            animation-duration: 30s;
+          }
+
+          .animate-scroll-right {
+            animation-duration: 30s;
+          }
         }
 
         .animate-scroll-left:hover,

@@ -20,12 +20,12 @@ export default function NotForSection() {
     },
     {
       title: "Companies That Want Template-Based Responses",
-      description: "WhatsAgent uses adaptive AI that creates unique responses for each conversation. If you need rigid, scripted replies, this isn't for you.",
+      description: "MyWhatsAgent uses adaptive AI that creates unique responses for each conversation. If you need rigid, scripted replies, this isn't for you.",
       icon: XMarkIcon
     },
     {
       title: "Businesses Afraid of Automation",
-      description: "If you're not ready to let AI handle your sales conversations and prefer manual control over every message, WhatsAgent won't be a good fit.",
+      description: "If you're not ready to let AI handle your sales conversations and prefer manual control over every message, MyWhatsAgent won't be a good fit.",
       icon: XMarkIcon
     },
     {
@@ -70,14 +70,14 @@ export default function NotForSection() {
               IMPORTANT: READ THIS FIRST
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              WhatsAgent is NOT for Everyone
+              MyWhatsAgent is NOT for Everyone
               <span className="block text-3xl lg:text-4xl mt-2 text-muted-foreground">
                 (And That's By Design)
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're selective about who we work with. If you fall into any of these categories,
-              please don't buy WhatsAgent:
+              please don't buy MyWhatsAgent:
             </p>
           </div>
 
@@ -116,10 +116,10 @@ export default function NotForSection() {
           <Card className="p-8 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 border-green-200 dark:border-green-800">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-foreground mb-2">
-                ✅ WhatsAgent IS Perfect For:
+                ✅ MyWhatsAgent IS Perfect For:
               </h3>
               <p className="text-muted-foreground">
-                If any of these describe you, WhatsAgent will transform your business:
+                If any of these describe you, MyWhatsAgent will transform your business:
               </p>
             </div>
 
@@ -139,7 +139,7 @@ export default function NotForSection() {
 
             <div className="text-center">
               <p className="text-lg font-semibold text-foreground mb-4">
-                If you checked at least 2 of these boxes, WhatsAgent will deliver
+                If you checked at least 2 of these boxes, MyWhatsAgent will deliver
                 <span className="text-green-600 dark:text-green-400"> massive ROI </span>
                 for your business.
               </p>
@@ -151,7 +151,7 @@ export default function NotForSection() {
             <div className="flex items-center gap-3 mb-3">
               <ExclamationTriangleIcon className="w-6 h-6 text-orange-500" />
               <h3 className="text-lg font-bold text-foreground">
-                Final Warning: Only <span className="text-red-600 dark:text-red-400 animate-pulse">{licensesRemaining}</span> Licenses Left
+                Final Warning: Only <span className="text-red-600 dark:text-red-400">{licensesRemaining}</span> Licenses Left
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
@@ -159,7 +159,7 @@ export default function NotForSection() {
               Once these licenses are gone, we're closing doors and switching to $297/month pricing.
             </p>
             <p className="text-sm font-semibold text-foreground">
-              If you're ready to join the 1,247+ businesses already using WhatsAgent to dominate their markets,
+              If you're ready to join the 1,247+ businesses already using MyWhatsAgent to dominate their markets,
               claim your license now before it's too late.
             </p>
           </Card>

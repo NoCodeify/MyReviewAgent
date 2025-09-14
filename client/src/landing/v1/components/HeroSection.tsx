@@ -6,9 +6,14 @@ import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_9163
 import TrustBadges from "./TrustBadges";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { trackCTAClick, trackConversion } from "@/services/tracking";
+import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function HeroSection() {
   const dynamic = useDynamicContentContext();
+  const dealPricing = useDealPricing();
+
+
+
 
   const handleVideoPlay = () => {
     console.log('Video play triggered');
@@ -18,7 +23,7 @@ export default function HeroSection() {
 
   const handleGetAccess = () => {
     trackCTAClick("Get The $5M System", "hero-cta");
-    trackConversion("purchase_intent", 497);
+    trackConversion("purchase_intent", dealPricing.price);
     // Navigate to checkout or open modal
     window.location.href = "#final-cta";
   };
@@ -37,9 +42,19 @@ export default function HeroSection() {
           <div className="text-center space-y-8 mb-8">
             {/* Lifetime Deal Badge */}
             <div className="flex justify-center px-4">
-              <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 text-xs sm:text-sm px-4 py-3 font-semibold hover-elevate animate-pulse rounded-xl text-center leading-relaxed max-w-full">
-                <BoltIcon className="w-4 h-4 mr-1 inline align-middle" />
-                LIFETIME DEAL - {dynamic.licensesRemaining} LICENSES LEFT
+              <Badge className={`text-white border-0 text-xs sm:text-sm px-4 py-3 font-semibold hover-elevate animate-pulse rounded-xl text-center leading-relaxed max-w-full ${
+                dealPricing.isFirstExpired ? 'bg-gradient-to-r from-red-600 to-red-700' :
+                dealPricing.isFinalExpired ? 'bg-gradient-to-r from-red-700 to-red-800' :
+                'bg-gradient-to-r from-orange-500 to-red-500'
+              }`}>
+                <ExclamationTriangleIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? '' : 'hidden'}`} />
+                <BoltIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? 'hidden' : ''}`} />
+                {dealPricing.isFinalExpired ?
+                  'FINAL NOTICE - DEALS GONE!' :
+                  dealPricing.isFirstExpired ?
+                  'LAST CHANCE - DEAL EXPIRED!' :
+                  `LIFETIME DEAL - ${dynamic.licensesRemaining} LICENSES LEFT`
+                }
               </Badge>
             </div>
 
@@ -138,10 +153,15 @@ export default function HeroSection() {
                 <Button
                   size="lg"
                   onClick={handleGetAccess}
-                  className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
+                  className="w-full text-white text-lg px-8 py-6 h-auto font-semibold border-0 transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)]"
                   data-testid="button-get-lifetime-access"
                 >
-                  Get The $5M System - $497
+                  {dealPricing.isFinalExpired ?
+                    'Get Monthly Access Now!' :
+                    dealPricing.isFirstExpired ?
+                    'Claim Last Chance Deal!' :
+                    'Get The $5M System'
+                  }
                 </Button>
               </div>
 

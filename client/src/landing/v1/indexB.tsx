@@ -1,6 +1,6 @@
 import HeroSection from "./components/HeroSection";
-import HeroSection from "./components/HeroSection";
 import ROICalculator from "./components/ROICalculator";
+import PricingPlans from "./components/PricingPlans";
 import CompetitorPricing from "./components/CompetitorPricing";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
 import CustomerLogos from "./components/CustomerLogos";
@@ -75,23 +75,28 @@ export default function LandingV1B() {
       {/* 2. Show immediate value/ROI */}
       <ROICalculator />
 
-      {/* 3. Price comparison - savings focus */}
+      {/* 3. Show pricing options */}
+      <div id="pricing-plans">
+        <PricingPlans />
+      </div>
+
+      {/* 4. Price comparison - savings focus */}
       <CompetitorPricing />
 
-      {/* 4. Prove it works */}
+      {/* 5. Prove it works */}
       <WhatsAppScreenshots />
 
-      {/* 5. Trust indicators merged */}
+      {/* 6. Trust indicators merged */}
       <CustomerLogos />
       <SocialProofSection />
 
-      {/* 6. Stack the value */}
+      {/* 7. Stack the value */}
       <BonusStack />
 
-      {/* 7. Create urgency with qualification */}
+      {/* 8. Create urgency with qualification */}
       <NotForSection />
 
-      {/* 8. Final CTA */}
+      {/* 9. Final CTA */}
       <CTASection />
     </div>
   );

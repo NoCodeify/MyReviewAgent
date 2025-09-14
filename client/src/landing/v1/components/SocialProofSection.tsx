@@ -116,15 +116,15 @@ export default function SocialProofSection() {
           <div className="text-center pt-16">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-muted-foreground text-sm">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0 animate-pulse"></div>
+                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0"></div>
                 <span className="font-medium">30-day money-back guarantee</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0 animate-pulse"></div>
+                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0"></div>
                 <span className="font-medium">Results in first 14 days</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0 animate-pulse"></div>
+                <div className="w-2 h-2 bg-chart-1 rounded-full flex-shrink-0"></div>
                 <span className="font-medium">WhatsApp compliant</span>
               </div>
             </div>

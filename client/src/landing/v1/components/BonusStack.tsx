@@ -10,8 +10,11 @@ import {
   CheckCircleIcon,
   SparklesIcon
 } from "@heroicons/react/24/outline";
+import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function BonusStack() {
+  const dealPricing = useDealPricing();
+  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
   const bonuses = [
     {
       icon: DocumentTextIcon,
@@ -122,10 +125,10 @@ export default function BonusStack() {
                 <p className="text-muted-foreground">Total Value of Everything You Get:</p>
                 <div className="flex items-center justify-center gap-3">
                   <span className="text-4xl font-bold text-muted-foreground/50 line-through">$4,861</span>
-                  <span className="text-5xl font-bold text-chart-1">$497</span>
+                  <span className="text-5xl font-bold text-chart-1">FREE</span>
                 </div>
                 <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-sm sm:text-lg px-3 sm:px-4 py-1.5 sm:py-2 font-bold whitespace-normal sm:whitespace-nowrap">
-                  You Save $4,364 (89% OFF)
+                  All Bonuses Included with Every Plan
                 </Badge>
               </div>
 
@@ -155,7 +158,10 @@ export default function BonusStack() {
                 </Button>
 
                 <p className="text-xs text-muted-foreground">
-                  * Bonuses only available with lifetime deal. Not included with monthly plans.
+                  {isMonthlyPricing ?
+                    '* Bonuses included with Professional and Agency monthly plans.' :
+                    '* Bonuses only available with lifetime deal. Not included with monthly plans.'
+                  }
                 </p>
               </div>
             </div>

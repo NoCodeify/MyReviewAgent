@@ -9,11 +9,15 @@ import {
   ArrowTrendingUpIcon,
   CheckCircleIcon
 } from "@heroicons/react/24/outline";
+import { useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function ROICalculator() {
   const [leadsPerMonth, setLeadsPerMonth] = useState(200);
   const [averageOrderValue, setAverageOrderValue] = useState(500);
   const [currentCloseRate, setCurrentCloseRate] = useState(5);
+
+  // Get dynamic pricing
+  const pricing = useFormattedPrice();
 
   // Calculate improvements with AI
   const aiCloseRate = 25; // Based on your real 25.3% close rate
@@ -31,7 +35,10 @@ export default function ROICalculator() {
   const additionalDeals = aiClosedDeals - currentClosedDeals;
   const additionalRevenue = aiRevenue - currentRevenue;
   const yearlyAdditional = additionalRevenue * 12;
-  const roi = Math.floor((yearlyAdditional / 497) * 100); // ROI based on lifetime price
+
+  // Get current price as number for calculation
+  const currentPrice = parseInt(pricing.currentPrice.replace('$', '').replace(',', ''));
+  const roi = Math.floor((yearlyAdditional / currentPrice) * 100); // ROI based on current price
 
   return (
     <section className="py-20 bg-background">
@@ -56,19 +63,19 @@ export default function ROICalculator() {
           </div>
 
           {/* Calculator */}
-          <Card className="p-8 bg-card">
-            <div className="grid lg:grid-cols-2 gap-8">
+          <Card className="p-4 lg:p-8 bg-card">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
 
               {/* Left: Inputs */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-foreground mb-4">Your Current Metrics</h3>
+                <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-4">Your Current Metrics</h3>
 
                 {/* Leads per month */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">
                     WhatsApp Leads Per Month
                   </label>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 lg:gap-4">
                     <input
                       type="range"
                       min="50"
@@ -78,7 +85,7 @@ export default function ROICalculator() {
                       onChange={(e) => setLeadsPerMonth(parseInt(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="text-2xl font-bold text-primary min-w-[80px] text-right">
+                    <span className="text-lg lg:text-2xl font-bold text-primary min-w-[60px] lg:min-w-[80px] text-right">
                       {leadsPerMonth}
                     </span>
                   </div>
@@ -89,7 +96,7 @@ export default function ROICalculator() {
                   <label className="text-sm font-medium text-foreground">
                     Average Order Value ($)
                   </label>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 lg:gap-4">
                     <input
                       type="range"
                       min="100"
@@ -99,7 +106,7 @@ export default function ROICalculator() {
                       onChange={(e) => setAverageOrderValue(parseInt(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="text-2xl font-bold text-primary min-w-[80px] text-right">
+                    <span className="text-lg lg:text-2xl font-bold text-primary min-w-[70px] lg:min-w-[80px] text-right">
                       ${averageOrderValue}
                     </span>
                   </div>
@@ -110,7 +117,7 @@ export default function ROICalculator() {
                   <label className="text-sm font-medium text-foreground">
                     Current Close Rate (%)
                   </label>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 lg:gap-4">
                     <input
                       type="range"
                       min="1"
@@ -119,7 +126,7 @@ export default function ROICalculator() {
                       onChange={(e) => setCurrentCloseRate(parseInt(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="text-2xl font-bold text-primary min-w-[80px] text-right">
+                    <span className="text-lg lg:text-2xl font-bold text-primary min-w-[50px] lg:min-w-[80px] text-right">
                       {currentCloseRate}%
                     </span>
                   </div>
@@ -128,41 +135,41 @@ export default function ROICalculator() {
 
               {/* Right: Results */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-foreground mb-4">Your Potential Results</h3>
+                <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-4">Your Potential Results</h3>
 
                 {/* Comparison boxes */}
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="p-4 bg-muted/50">
-                    <div className="text-sm text-muted-foreground mb-1">Currently Closing</div>
-                    <div className="text-2xl font-bold text-foreground">{currentClosedDeals}</div>
-                    <div className="text-sm text-muted-foreground">deals/month</div>
+                <div className="grid grid-cols-2 gap-2 lg:gap-4">
+                  <Card className="p-3 lg:p-4 bg-muted/50">
+                    <div className="text-xs lg:text-sm text-muted-foreground mb-1">Currently Closing</div>
+                    <div className="text-lg lg:text-2xl font-bold text-foreground">{currentClosedDeals}</div>
+                    <div className="text-xs lg:text-sm text-muted-foreground">deals/month</div>
                   </Card>
-                  <Card className="p-4 bg-chart-1/10 border-chart-1/20">
-                    <div className="text-sm text-chart-1 mb-1">With AI Agent</div>
-                    <div className="text-2xl font-bold text-chart-1">{aiClosedDeals}</div>
-                    <div className="text-sm text-chart-1">deals/month</div>
+                  <Card className="p-3 lg:p-4 bg-chart-1/10 border-chart-1/20">
+                    <div className="text-xs lg:text-sm text-chart-1 mb-1">With AI Agent</div>
+                    <div className="text-lg lg:text-2xl font-bold text-chart-1">{aiClosedDeals}</div>
+                    <div className="text-xs lg:text-sm text-chart-1">deals/month</div>
                   </Card>
                 </div>
 
                 {/* Revenue impact */}
-                <Card className="p-6 bg-gradient-to-br from-chart-1/20 to-chart-2/20 border-chart-1/30">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">Additional Monthly Revenue</span>
-                      <span className="text-2xl font-bold text-chart-1">
+                <Card className="p-4 lg:p-6 bg-gradient-to-br from-chart-1/20 to-chart-2/20 border-chart-1/30">
+                  <div className="space-y-3 lg:space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                      <span className="text-xs lg:text-sm font-medium text-foreground">Additional Monthly Revenue</span>
+                      <span className="text-lg lg:text-2xl font-bold text-chart-1">
                         +${additionalRevenue.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">Additional Yearly Revenue</span>
-                      <span className="text-3xl font-bold text-chart-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                      <span className="text-xs lg:text-sm font-medium text-foreground">Additional Yearly Revenue</span>
+                      <span className="text-xl lg:text-3xl font-bold text-chart-1">
                         +${yearlyAdditional.toLocaleString()}
                       </span>
                     </div>
-                    <div className="pt-4 border-t border-border">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-foreground">ROI on $497 Investment</span>
-                        <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-lg px-3 py-1">
+                    <div className="pt-3 lg:pt-4 border-t border-border">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                        <span className="text-xs lg:text-sm font-medium text-foreground">ROI on {pricing.currentPrice} Investment</span>
+                        <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-sm lg:text-lg px-2 lg:px-3 py-1">
                           {roi.toLocaleString()}% ROI
                         </Badge>
                       </div>

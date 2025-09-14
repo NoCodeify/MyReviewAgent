@@ -9,10 +9,13 @@ import {
   ClockIcon,
   ArrowRightIcon
 } from "@heroicons/react/24/outline";
+import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function ExitIntent() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const dealPricing = useDealPricing();
+  const pricing = useFormattedPrice();
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
@@ -69,12 +72,24 @@ export default function ExitIntent() {
         {/* Main Offer */}
         <div className="text-center space-y-6">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-            You're About to Miss Out on
-            <span className="block text-destructive">$127,000 in Lost WhatsApp Sales</span>
+            {dealPricing.isFirstExpired || dealPricing.isFinalExpired ? (
+              <>
+                Your Deal Has Expired, But...
+                <span className="block text-destructive">You Can Still Get It for {pricing.currentPrice}</span>
+              </>
+            ) : (
+              <>
+                You're About to Miss Out on
+                <span className="block text-destructive">$127,000 in Lost WhatsApp Sales</span>
+              </>
+            )}
           </h2>
 
           <p className="text-lg text-muted-foreground">
-            Plus, I want to give you something special...
+            {dealPricing.isFirstExpired || dealPricing.isFinalExpired
+              ? "This is your absolute final opportunity before the price goes higher..."
+              : "Plus, I want to give you something special..."
+            }
           </p>
 
           {/* Bonus Offer */}
@@ -114,7 +129,10 @@ export default function ExitIntent() {
           <div className="flex items-center justify-center gap-2 text-destructive">
             <ClockIcon className="w-5 h-5" />
             <span className="font-semibold">
-              Only 3 licenses left at $497 (Next batch: $697)
+              {dealPricing.isFirstExpired || dealPricing.isFinalExpired
+                ? `Last chance at ${pricing.currentPrice} (Next: ${pricing.nextTierPrice})`
+                : `Only 3 licenses left at ${pricing.currentPrice} (Next: ${pricing.nextTierPrice})`
+              }
             </span>
           </div>
 

@@ -184,11 +184,11 @@ export default function ScarcityIndicator() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <UserIcon className="w-4 h-4 text-muted-foreground" />
-              <span className="font-semibold text-foreground">{notification.name}</span>
-              <span className="text-muted-foreground">just purchased</span>
+              <span className="font-semibold text-xs sm:text-base text-foreground">{notification.name}</span>
+              <span className="text-xs sm:text-base text-muted-foreground">just purchased</span>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground flex-wrap">
               <span>{notification.flag}</span>
               <span className="whitespace-nowrap">{notification.location}</span>
               <span className="leading-none">•</span>

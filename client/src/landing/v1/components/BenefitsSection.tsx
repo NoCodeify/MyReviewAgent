@@ -11,8 +11,11 @@ import {
   DevicePhoneMobileIcon,
   CpuChipIcon
 } from "@heroicons/react/24/outline";
+import { useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function BenefitsSection() {
+  const pricing = useFormattedPrice();
+
   // TODO: Remove mock functionality - customize features based on real product capabilities
   const benefits = [
     {
@@ -215,7 +218,7 @@ export default function BenefitsSection() {
               Get The $5M System Now
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              One-time $497 • Save $3,564/year • See results in 24 hours
+              One-time {pricing.currentPrice} • Save $3,564/year • See results in 24 hours
             </p>
           </div>
         </div>

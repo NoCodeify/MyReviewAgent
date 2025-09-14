@@ -8,8 +8,12 @@ import {
   CalculatorIcon,
   InformationCircleIcon
 } from "@heroicons/react/24/outline";
+import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function CompetitorPricing() {
+  const dealPricing = useDealPricing();
+  const pricing = useFormattedPrice('PROFESSIONAL');
+  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
   const competitors = [
     {
       name: "Hiring a VA",
@@ -54,16 +58,19 @@ export default function CompetitorPricing() {
       highlighted: false
     },
     {
-      name: "MyWhatsAgent",
-      price: "$497",
-      period: "lifetime",
-      yearlyTotal: "Pay once, use forever",
+      name: "MyWhatsAgent Professional",
+      price: pricing.currentPrice.replace('$', '$'),
+      period: isMonthlyPricing ? "/month" : "lifetime",
+      yearlyTotal: isMonthlyPricing ? "Monthly subscription - cancel anytime" : "Pay once, use forever",
       pros: [
-        "No monthly fees ever",
-        "Unlimited conversations",
-        "24/7 autonomous selling",
+        isMonthlyPricing ? "Low monthly fees" : "No monthly fees ever",
+        "3 WhatsApp Business numbers",
+        "Advanced AI with objection handling",
+        "BYOK for unlimited conversations",
         "Natural AI conversations",
-        "Free lifetime updates"
+        "Priority support included",
+        "50+ industry templates",
+        isMonthlyPricing ? "Regular updates included" : "Free lifetime updates"
       ],
       highlighted: true
     }
@@ -74,7 +81,7 @@ export default function CompetitorPricing() {
     { name: "Hiring VA", cost: 120000 },
     { name: "ManyChat", cost: 8700 },
     { name: "Intercom", cost: 29940 },
-    { name: "MyWhatsAgent", cost: 497 }
+    { name: "MyWhatsAgent Pro", cost: 997 }
   ];
 
   return (
@@ -89,13 +96,16 @@ export default function CompetitorPricing() {
               PRICING COMPARISON
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              Stop Paying Forever
+              {isMonthlyPricing ? 'Affordable Monthly Plans' : 'Stop Paying Forever'}
               <span className="block text-3xl lg:text-4xl mt-2 text-primary">
-                One Payment. Lifetime Access.
+                {isMonthlyPricing ? 'Cancel Anytime. No Commitment.' : 'One Payment. Lifetime Access.'}
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how much you'll save compared to other WhatsApp automation solutions
+              {isMonthlyPricing ?
+                'Compare our affordable monthly plans with other WhatsApp automation solutions' :
+                "See how much you'll save compared to other WhatsApp automation solutions"
+              }
             </p>
           </div>
 
@@ -154,7 +164,7 @@ export default function CompetitorPricing() {
                         ctaSection?.scrollIntoView({ behavior: 'smooth' });
                       }}
                     >
-                      Get Lifetime Access
+                      {isMonthlyPricing ? 'Get Monthly Access' : 'Get Lifetime Access'}
                     </Button>
                   )}
                 </div>
@@ -175,7 +185,7 @@ export default function CompetitorPricing() {
                   <div
                     key={index}
                     className={`text-center p-4 rounded-lg ${
-                      item.name === "MyWhatsAgent"
+                      item.name === "MyWhatsAgent Pro"
                         ? 'bg-green-500/20 ring-2 ring-green-500'
                         : 'bg-white/10'
                     }`}
@@ -184,9 +194,9 @@ export default function CompetitorPricing() {
                     <div className="text-3xl font-bold">
                       ${item.cost.toLocaleString()}
                     </div>
-                    {item.name !== "MyWhatsAgent" && (
+                    {item.name !== "MyWhatsAgent Pro" && (
                       <div className="text-xs text-red-400 mt-2">
-                        {Math.round(item.cost / 497)}x more expensive
+                        {Math.round(item.cost / 997)}x more expensive
                       </div>
                     )}
                   </div>
@@ -194,9 +204,10 @@ export default function CompetitorPricing() {
               </div>
 
               <div className="text-center pt-4">
-                <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-lg px-6 py-2">
-                  <InformationCircleIcon className="w-5 h-5 mr-2" />
-                  You save $119,503 over 5 years with MyWhatsAgent
+                <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 text-xs sm:text-sm lg:text-lg px-3 lg:px-6 py-2 max-w-full inline-flex items-center flex-wrap justify-center">
+                  <InformationCircleIcon className="w-4 lg:w-5 h-4 lg:h-5 mr-1 lg:mr-2 flex-shrink-0" />
+                  <span className="inline-block">You save $119,003 over 5 years</span>
+                  <span className="inline-block ml-1">with MyWhatsAgent Professional</span>
                 </Badge>
               </div>
             </div>

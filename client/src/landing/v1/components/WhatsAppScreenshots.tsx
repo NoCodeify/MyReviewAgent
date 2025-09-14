@@ -8,8 +8,14 @@ import {
   SparklesIcon,
   ArrowRightIcon
 } from "@heroicons/react/24/outline";
+import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function WhatsAppScreenshots() {
+  const dealPricing = useDealPricing();
+  const pricing = useFormattedPrice();
+
+  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
+
   const beforeMessages = [
     { type: "customer", text: "Hi, I'm interested in your services", time: "10:23 AM" },
     { type: "waiting", text: "Message delivered ✓✓", time: "10:23 AM" },
@@ -23,11 +29,11 @@ export default function WhatsAppScreenshots() {
     { type: "customer", text: "Hi, I'm interested in your services", time: "10:23 AM" },
     { type: "ai", text: "Hello! Thanks for reaching out! I'd love to help you. Which service are you interested in?", time: "10:23 AM" },
     { type: "customer", text: "I need help with WhatsApp automation", time: "10:24 AM" },
-    { type: "ai", text: "Perfect! Our WhatsApp AI agent can handle your sales 24/7. It responds instantly, handles objections, and closes deals. Currently we have a special offer - lifetime access for just $497. Would you like to see how it works?", time: "10:24 AM" },
+    { type: "ai", text: `Perfect! Our WhatsApp AI agent can handle your sales 24/7. It responds instantly, handles objections, and closes deals. Currently we have a special offer - ${isMonthlyPricing ? 'monthly access starting at just $197/month' : `lifetime access for just ${pricing.currentPrice}`}. Would you like to see how it works?`, time: "10:24 AM" },
     { type: "customer", text: "Yes, but is it complicated to set up?", time: "10:25 AM" },
     { type: "ai", text: "Not at all! Setup takes just 5 minutes. You connect WhatsApp, upload your business info, and the AI starts working immediately. We also provide full support. Should I send you a demo?", time: "10:25 AM" },
     { type: "customer", text: "Sounds good. I'll take it!", time: "10:26 AM" },
-    { type: "success", text: "✅ Deal Closed in 3 minutes - $497 sale", time: "" }
+    { type: "success", text: `✅ Deal Closed in 3 minutes - ${pricing.currentPrice} sale`, time: "" }
   ];
 
   return (
@@ -44,57 +50,57 @@ export default function WhatsAppScreenshots() {
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
               See The Difference In Action
               <span className="block text-3xl lg:text-4xl mt-2 text-primary">
-                Before vs After WhatsAgent
+                Before vs After MyWhatsAgent
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real WhatsApp conversations showing how businesses lose leads vs how WhatsAgent closes them
+              Real WhatsApp conversations showing how businesses lose leads vs how MyWhatsAgent closes them
             </p>
           </div>
 
           {/* Screenshots Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
             {/* Before - Without WhatsAgent */}
-            <Card className="p-6 border-red-200 dark:border-red-900 bg-gradient-to-b from-red-50/50 to-white dark:from-red-950/20 dark:to-slate-900">
-              <div className="flex items-center gap-2 mb-6">
-                <XMarkIcon className="w-6 h-6 text-red-500" />
-                <h3 className="text-xl font-bold text-foreground">Without WhatsAgent</h3>
-                <Badge variant="destructive">Lead Lost</Badge>
+            <Card className="p-3 lg:p-6 border-red-200 dark:border-red-900 bg-gradient-to-b from-red-50/50 to-white dark:from-red-950/20 dark:to-slate-900">
+              <div className="flex items-center gap-1 lg:gap-2 mb-4 lg:mb-6">
+                <XMarkIcon className="w-5 lg:w-6 h-5 lg:h-6 text-red-500 flex-shrink-0" />
+                <h3 className="text-sm lg:text-xl font-bold text-foreground">Without MyWhatsAgent</h3>
+                <Badge variant="destructive" className="text-xs lg:text-sm px-2 py-0.5">Lead Lost</Badge>
               </div>
 
               {/* Phone Mockup */}
-              <div className="bg-slate-900 rounded-[2rem] p-3 shadow-xl max-w-sm mx-auto">
-                <div className="bg-[#075E54] rounded-t-2xl p-3 text-white text-sm font-semibold flex items-center justify-between">
-                  <span>Business Name</span>
-                  <span className="text-xs opacity-70">WhatsApp</span>
+              <div className="bg-slate-900 rounded-[1.5rem] lg:rounded-[2rem] p-2 lg:p-3 shadow-xl max-w-[280px] lg:max-w-sm mx-auto">
+                <div className="bg-[#075E54] rounded-t-xl lg:rounded-t-2xl p-2 lg:p-3 text-white text-xs lg:text-sm font-semibold flex items-center justify-between">
+                  <span className="truncate">Business Name</span>
+                  <span className="text-[10px] lg:text-xs opacity-70">WhatsApp</span>
                 </div>
-                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-4 rounded-b-2xl min-h-[400px] space-y-3">
+                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-2 lg:space-y-3">
                   {beforeMessages.map((msg, index) => (
                     <div key={index}>
                       {msg.type === "customer" && (
                         <div className="flex justify-start">
-                          <div className="bg-white dark:bg-slate-800 rounded-lg p-3 max-w-[80%] shadow-sm">
-                            <p className="text-sm text-slate-900 dark:text-slate-100">{msg.text}</p>
-                            <p className="text-xs text-slate-500 mt-1">{msg.time}</p>
+                          <div className="bg-white dark:bg-slate-800 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
+                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
+                            <p className="text-[10px] lg:text-xs text-slate-500 mt-1">{msg.time}</p>
                           </div>
                         </div>
                       )}
                       {msg.type === "business" && (
                         <div className="flex justify-end">
-                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-3 max-w-[80%] shadow-sm">
-                            <p className="text-sm text-slate-900 dark:text-slate-100">{msg.text}</p>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">{msg.time}</p>
+                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
+                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
+                            <p className="text-[10px] lg:text-xs text-slate-600 dark:text-slate-400 mt-1">{msg.time}</p>
                           </div>
                         </div>
                       )}
                       {msg.type === "waiting" && (
                         <div className="text-center">
-                          <p className="text-xs text-slate-500 italic">{msg.text}</p>
+                          <p className="text-[10px] lg:text-xs text-slate-500 italic">{msg.text}</p>
                         </div>
                       )}
                       {msg.type === "lost" && (
-                        <div className="bg-red-100 dark:bg-red-950/50 rounded-lg p-3 text-center mt-4">
-                          <p className="text-sm font-semibold text-red-600 dark:text-red-400">{msg.text}</p>
+                        <div className="bg-red-100 dark:bg-red-950/50 rounded-lg p-2 lg:p-3 text-center mt-3 lg:mt-4">
+                          <p className="text-xs lg:text-sm font-semibold text-red-600 dark:text-red-400 break-words">{msg.text}</p>
                         </div>
                       )}
                     </div>
@@ -103,63 +109,63 @@ export default function WhatsAppScreenshots() {
               </div>
 
               {/* Stats */}
-              <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                  <XMarkIcon className="w-4 h-4" />
-                  <span className="text-sm">Response time: 4+ hours</span>
+              <div className="mt-4 lg:mt-6 space-y-1 lg:space-y-2">
+                <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
+                  <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Response time: 4+ hours</span>
                 </div>
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                  <XMarkIcon className="w-4 h-4" />
-                  <span className="text-sm">Customer lost to competitor</span>
+                <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
+                  <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Customer lost to competitor</span>
                 </div>
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                  <XMarkIcon className="w-4 h-4" />
-                  <span className="text-sm">Revenue: $0</span>
+                <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
+                  <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Revenue: $0</span>
                 </div>
               </div>
             </Card>
 
             {/* After - With WhatsAgent */}
-            <Card className="p-6 border-green-200 dark:border-green-900 bg-gradient-to-b from-green-50/50 to-white dark:from-green-950/20 dark:to-slate-900">
-              <div className="flex items-center gap-2 mb-6">
-                <CheckCircleIcon className="w-6 h-6 text-green-500" />
-                <h3 className="text-xl font-bold text-foreground">With WhatsAgent</h3>
-                <Badge className="bg-green-500/10 text-green-600 border-0">Deal Closed</Badge>
+            <Card className="p-3 lg:p-6 border-green-200 dark:border-green-900 bg-gradient-to-b from-green-50/50 to-white dark:from-green-950/20 dark:to-slate-900">
+              <div className="flex items-center gap-1 lg:gap-2 mb-4 lg:mb-6">
+                <CheckCircleIcon className="w-5 lg:w-6 h-5 lg:h-6 text-green-500 flex-shrink-0" />
+                <h3 className="text-sm lg:text-xl font-bold text-foreground">With MyWhatsAgent</h3>
+                <Badge className="bg-green-500/10 text-green-600 border-0 text-xs lg:text-sm px-2 py-0.5">Deal Closed</Badge>
               </div>
 
               {/* Phone Mockup */}
-              <div className="bg-slate-900 rounded-[2rem] p-3 shadow-xl max-w-sm mx-auto">
-                <div className="bg-[#075E54] rounded-t-2xl p-3 text-white text-sm font-semibold flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span>Business Name</span>
-                    <SparklesIcon className="w-4 h-4 text-yellow-400" />
+              <div className="bg-slate-900 rounded-[1.5rem] lg:rounded-[2rem] p-2 lg:p-3 shadow-xl max-w-[280px] lg:max-w-sm mx-auto">
+                <div className="bg-[#075E54] rounded-t-xl lg:rounded-t-2xl p-2 lg:p-3 text-white text-xs lg:text-sm font-semibold flex items-center justify-between">
+                  <div className="flex items-center gap-1 lg:gap-2">
+                    <span className="truncate">Business Name</span>
+                    <SparklesIcon className="w-3 lg:w-4 h-3 lg:h-4 text-yellow-400" />
                   </div>
-                  <span className="text-xs opacity-70">WhatsApp AI</span>
+                  <span className="text-[10px] lg:text-xs opacity-70">WhatsApp AI</span>
                 </div>
-                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-4 rounded-b-2xl min-h-[400px] space-y-3">
+                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-2 lg:space-y-3">
                   {afterMessages.map((msg, index) => (
                     <div key={index}>
                       {msg.type === "customer" && (
                         <div className="flex justify-start">
-                          <div className="bg-white dark:bg-slate-800 rounded-lg p-3 max-w-[80%] shadow-sm">
-                            <p className="text-sm text-slate-900 dark:text-slate-100">{msg.text}</p>
-                            <p className="text-xs text-slate-500 mt-1">{msg.time}</p>
+                          <div className="bg-white dark:bg-slate-800 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
+                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
+                            <p className="text-[10px] lg:text-xs text-slate-500 mt-1">{msg.time}</p>
                           </div>
                         </div>
                       )}
                       {msg.type === "ai" && (
                         <div className="flex justify-end">
-                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-3 max-w-[80%] shadow-sm border border-green-300 dark:border-green-700">
-                            <p className="text-sm text-slate-900 dark:text-slate-100">{msg.text}</p>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-1">
-                              {msg.time} <SparklesIcon className="w-3 h-3 text-green-600" />
+                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm border border-green-300 dark:border-green-700">
+                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
+                            <p className="text-[10px] lg:text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-1">
+                              {msg.time} <SparklesIcon className="w-2 lg:w-3 h-2 lg:h-3 text-green-600" />
                             </p>
                           </div>
                         </div>
                       )}
                       {msg.type === "success" && (
-                        <div className="bg-green-100 dark:bg-green-950/50 rounded-lg p-3 text-center mt-4">
-                          <p className="text-sm font-semibold text-green-600 dark:text-green-400">{msg.text}</p>
+                        <div className="bg-green-100 dark:bg-green-950/50 rounded-lg p-2 lg:p-3 text-center mt-3 lg:mt-4">
+                          <p className="text-xs lg:text-sm font-semibold text-green-600 dark:text-green-400 break-words">{msg.text}</p>
                         </div>
                       )}
                     </div>
@@ -168,18 +174,18 @@ export default function WhatsAppScreenshots() {
               </div>
 
               {/* Stats */}
-              <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                  <CheckCircleIcon className="w-4 h-4" />
-                  <span className="text-sm">Response time: Instant</span>
+              <div className="mt-4 lg:mt-6 space-y-1 lg:space-y-2">
+                <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
+                  <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Response time: Instant</span>
                 </div>
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                  <CheckCircleIcon className="w-4 h-4" />
-                  <span className="text-sm">Deal closed in 3 minutes</span>
+                <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
+                  <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Deal closed in 3 minutes</span>
                 </div>
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                  <CheckCircleIcon className="w-4 h-4" />
-                  <span className="text-sm">Revenue: $497</span>
+                <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
+                  <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
+                  <span className="text-xs lg:text-sm">Revenue: {pricing.currentPrice}</span>
                 </div>
               </div>
             </Card>
@@ -189,11 +195,11 @@ export default function WhatsAppScreenshots() {
           <div className="mt-12 text-center">
             <Card className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-950/30 dark:to-green-950/30 border-blue-200 dark:border-blue-800 p-8">
               <h3 className="text-2xl font-bold text-foreground mb-3">
-                This Happens 24/7 With WhatsAgent
+                This Happens 24/7 With MyWhatsAgent
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-                While you sleep, eat, or spend time with family, WhatsAgent is closing deals.
-                The average business using WhatsAgent sees
+                While you sleep, eat, or spend time with family, MyWhatsAgent is closing deals.
+                The average business using MyWhatsAgent sees
                 <span className="font-bold text-primary"> 67 more sales per month</span>.
               </p>
               <Button

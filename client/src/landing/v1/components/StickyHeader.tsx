@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
+import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function StickyHeader() {
   const dynamic = useDynamicContentContext();
+  const dealPricing = useDealPricing();
   const [isVisible, setIsVisible] = useState(false);
+
+
+
 
   // Calculate time until midnight
   const calculateTimeToMidnight = () => {
@@ -30,6 +35,7 @@ export default function StickyHeader() {
 
     return () => clearInterval(timer);
   }, []);
+
 
   // Trigger slide-down animation when location is loaded
   useEffect(() => {
@@ -57,7 +63,7 @@ export default function StickyHeader() {
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-2 lg:py-3 gap-2 lg:gap-0">
           {/* Mobile: Combined scarcity and timer */}
           <div className="lg:hidden flex items-center gap-3 text-xs">
-            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-2 py-0.5 animate-pulse text-xs">
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-2 py-0.5 text-xs">
               Only {dynamic.licensesRemaining} licenses left
             </Badge>
             <div className="flex items-center text-slate-400">
@@ -71,7 +77,7 @@ export default function StickyHeader() {
 
           {/* Desktop: Left Scarcity */}
           <div className="hidden lg:flex items-center gap-4">
-            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-3 py-1 animate-pulse">
+            <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 px-3 py-1">
               Only {dynamic.licensesRemaining} licenses left
             </Badge>
             <div className="flex items-center gap-2 text-sm text-slate-400">
@@ -88,7 +94,18 @@ export default function StickyHeader() {
           <div className="text-center px-4">
             <p className="text-base font-medium text-slate-200">
               <span><span className="inline-block w-8 h-6 mr-2 text-2xl leading-none align-middle">{dynamic.location.country_flag}</span><span className="text-base font-medium">{dynamic.holidayOffer} for {dynamic.location.country}:</span></span>
-              <span className="text-green-400 font-bold ml-2 text-base">Use code EXTRA50 for EXTRA 50% OFF!</span>
+              <span className={`font-bold ml-2 text-base ${
+                dealPricing.isFinalExpired ? 'text-red-400' :
+                dealPricing.isFirstExpired ? 'text-orange-400' :
+                'text-green-400'
+              }`}>
+                {dealPricing.isFinalExpired ?
+                  'FINAL CALL - Monthly only!' :
+                  dealPricing.isFirstExpired ?
+                  'LAST CHANCE - Extra 50% OFF!' :
+                  'Use code EXTRA50 for EXTRA 50% OFF!'
+                }
+              </span>
             </p>
           </div>
 

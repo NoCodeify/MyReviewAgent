@@ -31,7 +31,7 @@ export default function FounderStory() {
           </div>
 
           {/* Story Card */}
-          <Card className="p-8 lg:p-12 bg-card relative overflow-hidden">
+          <Card className="p-4 sm:p-6 lg:p-12 bg-card relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{
@@ -104,8 +104,16 @@ export default function FounderStory() {
               </div>
 
               {/* Personal Guarantee Letter */}
-              <Card className="bg-gradient-to-br from-green-50/50 to-blue-50/50 dark:from-green-950/20 dark:to-blue-950/20 p-8 border-2 border-chart-1/30 relative">
-                <div className="absolute top-4 right-4">
+              <Card className="bg-gradient-to-br from-green-50/50 to-blue-50/50 dark:from-green-950/20 dark:to-blue-950/20 p-4 sm:p-6 lg:p-8 border-2 border-chart-1/30 relative">
+                <div className="hidden sm:block absolute top-4 right-4">
+                  <Badge className="bg-green-500/10 text-green-600 border-0">
+                    <ShieldCheckIcon className="w-3 h-3 mr-1" />
+                    30-DAY GUARANTEE
+                  </Badge>
+                </div>
+
+                {/* Mobile badge - positioned below title */}
+                <div className="block sm:hidden mb-4">
                   <Badge className="bg-green-500/10 text-green-600 border-0">
                     <ShieldCheckIcon className="w-3 h-3 mr-1" />
                     30-DAY GUARANTEE
@@ -119,7 +127,7 @@ export default function FounderStory() {
 
                   <div className="space-y-3 text-foreground">
                     <p className="italic">
-                      "I'm so confident WhatsAgent will transform your business that I'm putting my reputation on the line."
+                      "I'm so confident MyWhatsAgent will transform your business that I'm putting my reputation on the line."
                     </p>
 
                     <p className="font-semibold">

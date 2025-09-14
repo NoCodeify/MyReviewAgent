@@ -154,13 +154,13 @@ export default function CaseStudyCarousel() {
               <div className="space-y-6">
                 <h4 className="text-sm font-semibold text-muted-foreground">THE RESULTS</h4>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-2 lg:gap-4">
                   {study.results.map((result, idx) => (
-                    <Card key={idx} className="p-4 text-center bg-gradient-to-br from-chart-1/5 to-chart-2/5">
-                      <div className="text-2xl lg:text-3xl font-bold text-chart-1">
+                    <Card key={idx} className="p-2 lg:p-4 text-center bg-gradient-to-br from-chart-1/5 to-chart-2/5 overflow-hidden">
+                      <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-chart-1 break-all">
                         {result.metric}
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">
+                      <div className="text-[10px] lg:text-xs text-muted-foreground mt-1 break-words">
                         {result.label}
                       </div>
                     </Card>

@@ -1,9 +1,9 @@
 import HeroSection from "./components/HeroSection";
-import HeroSection from "./components/HeroSection";
 import ProblemAgitation from "./components/ProblemAgitation";
 import BiggestMistakes from "./components/BiggestMistakes";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
 import ROICalculator from "./components/ROICalculator";
+import PricingPlans from "./components/PricingPlans";
 import CompetitorPricing from "./components/CompetitorPricing";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
 import SocialProofSection from "./components/SocialProofSection";
@@ -83,19 +83,24 @@ export default function LandingV1A() {
       {/* 4. Prove the value */}
       <ROICalculator />
 
-      {/* 5. Compare to alternatives */}
+      {/* 5. Show pricing options */}
+      <div id="pricing-plans">
+        <PricingPlans />
+      </div>
+
+      {/* 6. Compare to alternatives */}
       <CompetitorPricing />
 
-      {/* 6. Social proof & case studies merged */}
+      {/* 7. Social proof & case studies merged */}
       <div className="space-y-0">
         <CaseStudyCarousel />
         <SocialProofSection />
       </div>
 
-      {/* 7. Personal touch & guarantee */}
+      {/* 8. Personal touch & guarantee */}
       <FounderStory />
 
-      {/* 8. Final push with urgency */}
+      {/* 9. Final push with urgency */}
       <CTASection />
     </div>
   );

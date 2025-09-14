@@ -26,7 +26,7 @@ export default function FounderStory() {
               FROM THE FOUNDER
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              The $7M WhatsApp Discovery
+              The $5M WhatsApp Discovery
             </h2>
           </div>
 
@@ -87,7 +87,7 @@ export default function FounderStory() {
 
                 <Card className="bg-gradient-to-r from-chart-1/10 to-chart-2/10 p-6 border border-chart-1/30">
                   <p className="text-2xl font-bold text-center mb-2 text-foreground">
-                    FueGenix result: $3M → $10M in 18 months
+                    FueGenix result: $3M → $8M in 12 months
                   </p>
                   <p className="text-center text-muted-foreground">
                     After 847 conversations where nobody realized they were talking to AI
@@ -99,7 +99,7 @@ export default function FounderStory() {
                 </p>
 
                 <p>
-                  That's MyWhatsAgent - the exact system that added <span className="font-bold text-chart-1">$7M to FueGenix</span>.
+                  That's MyWhatsAgent - the exact system that added <span className="font-bold text-chart-1">$5M to FueGenix</span>.
                 </p>
               </div>
 

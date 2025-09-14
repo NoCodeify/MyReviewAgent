@@ -50,7 +50,7 @@ export default function HeroSection() {
                 <ExclamationTriangleIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? '' : 'hidden'}`} />
                 <BoltIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? 'hidden' : ''}`} />
                 {dealPricing.isFinalExpired ?
-                  'FINAL NOTICE - DEALS GONE!' :
+                  'DEALS GONE - MONTHLY ONLY' :
                   dealPricing.isFirstExpired ?
                   'LAST CHANCE - DEAL EXPIRED!' :
                   `LIFETIME DEAL - ${dynamic.licensesRemaining} LICENSES LEFT`

@@ -121,18 +121,14 @@ export default function StickyHeader() {
           {/* Center: Value Prop */}
           <div className="text-center px-4">
             <p className="text-base font-medium text-slate-200">
-              <span><span className="inline-block w-8 h-6 mr-2 text-2xl leading-none align-middle">{dynamic.location.country_flag}</span><span className="text-base font-medium">{dynamic.holidayOffer} for {dynamic.location.country}:</span></span>
-              <span className={`font-bold ml-2 text-base ${
-                dealPricing.isFinalExpired ? 'text-red-400' :
-                dealPricing.isFirstExpired ? 'text-orange-400' :
-                'text-green-400'
-              }`}>
-                {dealPricing.isFinalExpired ?
-                  'FINAL CALL - Monthly only!' :
-                  dealPricing.isFirstExpired ?
-                  'LAST CHANCE - Extra 50% OFF!' :
-                  'Use code EXTRA50 for EXTRA 50% OFF!'
-                }
+              {dynamic.location && (
+                <span>
+                  <span className="inline-block w-8 h-6 mr-2 text-2xl leading-none align-middle">{dynamic.location.country_flag}</span>
+                  <span className="text-base font-medium">{dynamic.holidayOffer} for {dynamic.location.country}:</span>
+                </span>
+              )}
+              <span className="font-bold ml-2 text-base text-green-400">
+                Use code EXTRA50 for EXTRA 50% OFF!
               </span>
             </p>
           </div>

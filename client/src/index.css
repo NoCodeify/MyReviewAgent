@@ -18,6 +18,64 @@
   }
 }
 
+/* Custom slider styles */
+@layer components {
+  input[type="range"].slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* Track */
+  input[type="range"].slider::-webkit-slider-track {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  input[type="range"].slider::-moz-range-track {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Thumb */
+  input[type="range"].slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    margin-top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  input[type="range"].slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Progress fill */
+  input[type="range"].slider::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 6px;
+  }
+
+  input[type="range"].slider::-moz-range-progress {
+    height: 12px;
+    border-radius: 6px;
+    background: white;
+  }
+}
+
 /* LIGHT MODE */
 :root {
   --button-outline: rgba(0,0,0, .10);

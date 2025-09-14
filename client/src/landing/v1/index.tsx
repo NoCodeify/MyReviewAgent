@@ -1,4 +1,5 @@
 import HeroSection from "./components/HeroSection";
+import HeroSectionV2 from "./components/HeroSectionV2";
 import SocialProofSection from "./components/SocialProofSection";
 import BenefitsSection from "./components/BenefitsSection";
 import CTASection from "./components/CTASection";
@@ -20,14 +21,20 @@ import FeatureComparison from "./components/FeatureComparison";
 import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
+import ABTestDashboard from "./components/ABTestDashboard";
 
 export default function LandingV1() {
+  // Check if we should use V2 components with variations
+  const urlParams = new URLSearchParams(window.location.search);
+  const useV2 = urlParams.has('v') || urlParams.get('test') === 'true';
+
   return (
     <div className="min-h-screen">
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />
-      <HeroSection />
+      <ABTestDashboard />
+      {useV2 ? <HeroSectionV2 /> : <HeroSection />}
       <CustomerLogos />
       <ProblemAgitation />
       <BiggestMistakes />

@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function ProblemAgitation() {
-  const [leadsPerDay, setLeadsPerDay] = useState(10);
+  const [leadsPerDay, setLeadsPerDay] = useState(50);
   const [avgTicketValue] = useState(347);
 
   // Calculate losses
@@ -103,17 +103,19 @@ export default function ProblemAgitation() {
                   <label className="text-sm font-medium text-white">
                     WhatsApp leads per day: <span className="text-2xl font-bold">{leadsPerDay}</span>
                   </label>
-                  <input
-                    type="range"
-                    min="5"
-                    max="100"
-                    value={leadsPerDay}
-                    onChange={(e) => setLeadsPerDay(parseInt(e.target.value))}
-                    className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #fff 0%, #fff ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) 100%)`
-                    }}
-                  />
+                  <div className="relative">
+                    <input
+                      type="range"
+                      min="5"
+                      max="100"
+                      value={leadsPerDay}
+                      onChange={(e) => setLeadsPerDay(parseInt(e.target.value))}
+                      className="w-full h-3 rounded-lg appearance-none cursor-pointer slider"
+                      style={{
+                        background: `linear-gradient(to right, white 0%, white ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) 100%)`
+                      }}
+                    />
+                  </div>
                 </div>
 
                 {/* Results */}

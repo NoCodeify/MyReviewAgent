@@ -151,7 +151,7 @@ export default function NotForSection() {
             <div className="flex items-center gap-3 mb-3">
               <ExclamationTriangleIcon className="w-6 h-6 text-orange-500" />
               <h3 className="text-lg font-bold text-foreground">
-                Final Warning: Only <span className="text-red-600 dark:text-red-400 animate-pulse">{licensesLeft}</span> Licenses Left
+                Final Warning: Only <span className="text-red-600 dark:text-red-400 animate-pulse">{licensesRemaining}</span> Licenses Left
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">

@@ -91,7 +91,7 @@ export default function BiggestMistakes() {
                             <h3 className="text-xl font-bold text-foreground mb-2">
                               MISTAKE: {mistake.mistake}
                             </h3>
-                            <div className="flex items-baseline gap-2 mb-3">
+                            <div className="flex items-center gap-2 mb-3">
                               <span className="text-4xl font-bold text-red-500">{mistake.stat}</span>
                               <span className="text-muted-foreground">{mistake.statLabel}</span>
                             </div>
@@ -112,13 +112,9 @@ export default function BiggestMistakes() {
                             <h3 className="text-xl font-bold text-foreground mb-2">
                               SOLUTION:
                             </h3>
-                            <p className="text-muted-foreground mb-4">
+                            <p className="text-muted-foreground">
                               {mistake.solution}
                             </p>
-                            <div className="inline-flex items-center gap-2 text-green-600 dark:text-green-400 font-semibold">
-                              <span>See how WhatsAgent fixes this</span>
-                              <ArrowRightIcon className="w-4 h-4" />
-                            </div>
                           </div>
                         </div>
                       </div>

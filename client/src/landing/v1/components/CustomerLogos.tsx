@@ -28,7 +28,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function CustomerLogos() {
-  const industries = [
+  const baseIndustries = [
     { name: "E-commerce", icon: ShoppingBagIcon },
     { name: "Real Estate", icon: HomeIcon },
     { name: "Healthcare", icon: HeartIcon },
@@ -55,14 +55,11 @@ export default function CustomerLogos() {
     { name: "HR Services", icon: UserGroupIcon },
     { name: "Marketing", icon: RocketLaunchIcon },
     { name: "Science", icon: BeakerIcon },
-    // Duplicate for seamless loop
-    { name: "E-commerce", icon: ShoppingBagIcon },
-    { name: "Real Estate", icon: HomeIcon },
-    { name: "Healthcare", icon: HeartIcon },
-    { name: "Education", icon: AcademicCapIcon },
-    { name: "Retail", icon: BuildingStorefrontIcon },
-    { name: "Automotive", icon: TruckIcon },
   ];
+
+  // Split industries for two rows
+  const firstRowIndustries = baseIndustries.slice(0, Math.ceil(baseIndustries.length / 2));
+  const secondRowIndustries = baseIndustries.slice(Math.ceil(baseIndustries.length / 2));
 
   return (
     <section className="py-16 bg-muted/30 overflow-hidden">
@@ -82,45 +79,91 @@ export default function CustomerLogos() {
         {/* Scrolling Container */}
         <div className="relative">
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F4F5F7] dark:from-slate-950 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#F4F5F7] dark:from-slate-950 to-transparent z-10 pointer-events-none"></div>
 
           {/* First Row - Scrolling Left */}
-          <div className="flex gap-4 mb-4 animate-scroll-left">
-            {industries.slice(0, Math.ceil(industries.length / 2)).map((industry, index) => (
-              <div
-                key={`row1-${index}`}
-                className="flex-shrink-0 group"
-              >
-                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <industry.icon className="w-5 h-5 text-primary" />
+          <div className="relative overflow-hidden mb-4">
+            <div className="flex animate-scroll-left">
+              {/* First set */}
+              <div className="flex gap-4 min-w-max">
+                {firstRowIndustries.map((industry, index) => (
+                  <div
+                    key={`row1-set1-${index}`}
+                    className="flex-shrink-0 group"
+                  >
+                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <industry.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-foreground whitespace-nowrap">
+                        {industry.name}
+                      </span>
+                    </div>
                   </div>
-                  <span className="font-medium text-foreground whitespace-nowrap">
-                    {industry.name}
-                  </span>
-                </div>
+                ))}
               </div>
-            ))}
+              {/* Duplicate set for seamless loop */}
+              <div className="flex gap-4 min-w-max">
+                {firstRowIndustries.map((industry, index) => (
+                  <div
+                    key={`row1-set2-${index}`}
+                    className="flex-shrink-0 group"
+                  >
+                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <industry.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-foreground whitespace-nowrap">
+                        {industry.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Second Row - Scrolling Right */}
-          <div className="flex gap-4 animate-scroll-right">
-            {industries.slice(Math.ceil(industries.length / 2)).map((industry, index) => (
-              <div
-                key={`row2-${index}`}
-                className="flex-shrink-0 group"
-              >
-                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <industry.icon className="w-5 h-5 text-primary" />
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll-right">
+              {/* First set */}
+              <div className="flex gap-4 min-w-max">
+                {secondRowIndustries.map((industry, index) => (
+                  <div
+                    key={`row2-set1-${index}`}
+                    className="flex-shrink-0 group"
+                  >
+                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <industry.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-foreground whitespace-nowrap">
+                        {industry.name}
+                      </span>
+                    </div>
                   </div>
-                  <span className="font-medium text-foreground whitespace-nowrap">
-                    {industry.name}
-                  </span>
-                </div>
+                ))}
               </div>
-            ))}
+              {/* Duplicate set for seamless loop */}
+              <div className="flex gap-4 min-w-max">
+                {secondRowIndustries.map((industry, index) => (
+                  <div
+                    key={`row2-set2-${index}`}
+                    className="flex-shrink-0 group"
+                  >
+                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary/50 hover:shadow-md transition-all duration-300 hover-elevate">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <industry.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-foreground whitespace-nowrap">
+                        {industry.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -157,19 +200,24 @@ export default function CustomerLogos() {
 
         @keyframes scroll-right {
           0% {
-            transform: translateX(-50%);
+            transform: translateX(0);
           }
           100% {
-            transform: translateX(0);
+            transform: translateX(-50%);
           }
         }
 
         .animate-scroll-left {
-          animation: scroll-left 40s linear infinite;
+          animation: scroll-left 30s linear infinite;
+          display: flex;
+          gap: 1rem;
         }
 
         .animate-scroll-right {
-          animation: scroll-right 40s linear infinite;
+          animation: scroll-right 30s linear infinite;
+          animation-direction: reverse;
+          display: flex;
+          gap: 1rem;
         }
 
         .animate-scroll-left:hover,

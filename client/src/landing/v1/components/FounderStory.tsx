@@ -56,7 +56,7 @@ export default function FounderStory() {
               {/* Story */}
               <div className="space-y-4 text-lg leading-relaxed text-foreground">
                 <p>
-                  As CMO of FueGenix, I scaled us from <span className="font-bold text-chart-1">$0 to $3M</span> through killer Facebook ads and SEO.
+                  As CMO of FueGenix, I scaled us to <span className="font-bold text-chart-1">$5M</span> through killer Facebook ads and SEO.
                 </p>
 
                 <p>
@@ -87,7 +87,7 @@ export default function FounderStory() {
 
                 <Card className="bg-gradient-to-r from-chart-1/10 to-chart-2/10 p-6 border border-chart-1/30">
                   <p className="text-2xl font-bold text-center mb-2 text-foreground">
-                    FueGenix result: $3M → $8M in 12 months
+                    FueGenix result: $5M → $10M in 12 months
                   </p>
                   <p className="text-center text-muted-foreground">
                     After 847 conversations where nobody realized they were talking to AI

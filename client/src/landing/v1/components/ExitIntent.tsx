@@ -133,10 +133,22 @@ export default function ExitIntent() {
                 ? `Monthly pricing only - ${pricing.currentPrice}`
                 : dealPricing.isFirstExpired
                 ? `Last chance at ${pricing.currentPrice} (Next: $297/month)`
-                : `Only 3 licenses left at ${pricing.currentPrice} (Next: ${pricing.nextTierPrice})`
+                : `Only 3 licenses left at ${pricing.currentPrice} (Next: $297/month)`
               }
             </span>
           </div>
+
+          {/* Alternative offer for regular state */}
+          {dealPricing.dealStatus === 'regular' && (
+            <div className="text-center mb-4">
+              <p className="text-sm text-muted-foreground mb-2">
+                Is the Professional plan too much?
+              </p>
+              <Badge className="bg-blue-500/10 text-blue-600 border-blue-500/30 text-sm px-3 py-1">
+                Try our Starter Plan for just $497 lifetime
+              </Badge>
+            </div>
+          )}
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

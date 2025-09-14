@@ -7,19 +7,30 @@ import TrustBadges from "./TrustBadges";
 import MediaLogos from "./MediaLogos";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { trackCTAClick, trackConversion } from "@/services/tracking";
+import { useExperiment } from "@/experiments/hooks/useExperiment";
 
 export default function HeroSection() {
   const dynamic = useDynamicContentContext();
 
+  // Use headline experiment
+  const { config: headlineConfig, trackGoal: trackHeadlineGoal } = useExperiment('headline-copy');
+
+  // Use CTA experiment
+  const { config: ctaConfig, trackGoal: trackCTAGoal, trackConversion: trackExpConversion } = useExperiment('cta-strategy');
+
   const handleVideoPlay = () => {
     console.log('Video play triggered');
     trackCTAClick("Watch Video", "hero-video");
+    trackHeadlineGoal('video_play');
     // TODO: Remove mock functionality - integrate real video player
   };
 
   const handleGetAccess = () => {
-    trackCTAClick("Get The $5M System", "hero-cta");
+    const ctaText = ctaConfig.primary || "Get The $5M System";
+    trackCTAClick(ctaText, "hero-cta");
     trackConversion("purchase_intent", 497);
+    trackCTAGoal('hero_cta_click', 497);
+    trackExpConversion('purchase_intent', 497);
     // Navigate to checkout or open modal
     window.location.href = "#final-cta";
   };
@@ -44,14 +55,14 @@ export default function HeroSection() {
               </Badge>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline - Using Experiment */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
-              The WhatsApp AI That Generated{" "}
+              {headlineConfig.headline || "The WhatsApp AI That Generated"}{" "}
               <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                $5M in 12 Months
+                {headlineConfig.gradient || "$5M in 12 Months"}
               </span>
               <span className="block text-2xl md:text-3xl lg:text-4xl mt-4 text-slate-300 font-light">
-                (Without Any Human Help)
+                {headlineConfig.subtitle || "(Without Any Human Help)"}
               </span>
             </h1>
           </div>
@@ -142,7 +153,7 @@ export default function HeroSection() {
                   className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
                   data-testid="button-get-lifetime-access"
                 >
-                  Get The $5M System - $497
+                  {ctaConfig.primary || "Get The $5M System - $497"}
                 </Button>
               </div>
 

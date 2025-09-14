@@ -23,13 +23,18 @@ import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
 import ABTestDashboardV2 from "./components/ABTestDashboardV2";
 import DashboardLink from "@/components/DashboardLink";
+import ExperimentsDebugPanel from "@/experiments/components/ExperimentsDebugPanel";
 import { useEffect } from "react";
 import { trackPageView, updateSession } from "@/services/tracking";
+import { useExperiment } from "@/experiments/hooks/useExperiment";
 
 export default function LandingV1() {
   // Check if we should use V2 components with variations
   const urlParams = new URLSearchParams(window.location.search);
   const useV2 = urlParams.has('v') || urlParams.get('test') === 'true';
+
+  // Use page structure experiment
+  const { variant: pageStructure } = useExperiment('page-structure');
 
   // Initialize tracking
   useEffect(() => {
@@ -70,6 +75,7 @@ export default function LandingV1() {
       <ExitIntent />
       <ABTestDashboardV2 />
       <DashboardLink />
+      <ExperimentsDebugPanel />
       {useV2 ? <HeroSectionV2 /> : <HeroSection />}
       <CustomerLogos />
       <ProblemAgitation />

@@ -22,6 +22,7 @@ import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
 import ABTestDashboardV2 from "./components/ABTestDashboardV2";
+import DashboardLink from "@/components/DashboardLink";
 import { useEffect } from "react";
 import { trackPageView, updateSession } from "@/services/tracking";
 
@@ -68,6 +69,7 @@ export default function LandingV1() {
       <ScarcityIndicator />
       <ExitIntent />
       <ABTestDashboardV2 />
+      <DashboardLink />
       {useV2 ? <HeroSectionV2 /> : <HeroSection />}
       <CustomerLogos />
       <ProblemAgitation />

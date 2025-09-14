@@ -9,7 +9,7 @@ import LandingV1A from "@/landing/v1/indexA";
 import LandingV1B from "@/landing/v1/indexB";
 // import LandingV2 from "@/landing/v2";
 import NotFound from "@/pages/not-found";
-import Clarity from '@microsoft/clarity';
+import Dashboard from "@/pages/Dashboard";
 
 function Router() {
   return (
@@ -17,6 +17,7 @@ function Router() {
       <Route path="/" component={LandingV1} />
       <Route path="/a" component={LandingV1A} />
       <Route path="/b" component={LandingV1B} />
+      <Route path="/dashboard" component={Dashboard} />
       {/* <Route path="/v2" component={LandingV2} /> */}
       <Route component={NotFound} />
     </Switch>
@@ -24,9 +25,6 @@ function Router() {
 }
 
 function App() {
-  // Initialize Microsoft Clarity
-  Clarity.init('ta73lpsqxt');
-
   return (
     <QueryClientProvider client={queryClient}>
       <DynamicContentProvider>

@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import ABTestDashboardV2 from "./components/ABTestDashboardV2";
+import DashboardLink from "@/components/DashboardLink";
 import ProblemAgitation from "./components/ProblemAgitation";
 import BiggestMistakes from "./components/BiggestMistakes";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
@@ -55,6 +56,7 @@ export default function LandingV1A() {
     <div className="min-h-screen">
       {/* Persistent Components */}
       <ABTestDashboardV2 />
+      <DashboardLink />
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />

@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import ABTestDashboardV2 from "./components/ABTestDashboardV2";
+import DashboardLink from "@/components/DashboardLink";
 import ROICalculator from "./components/ROICalculator";
 import CompetitorPricing from "./components/CompetitorPricing";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
@@ -54,6 +55,7 @@ export default function LandingV1B() {
     <div className="min-h-screen">
       {/* Persistent Components */}
       <ABTestDashboardV2 />
+      <DashboardLink />
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />

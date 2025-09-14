@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import {
   ExclamationTriangleIcon,
   XMarkIcon,
@@ -10,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function NotForSection() {
+  const { licensesRemaining } = useDynamicContentContext();
   const notForItems = [
     {
       title: "Businesses with Less Than 5 WhatsApp Leads Per Month",
@@ -149,7 +151,7 @@ export default function NotForSection() {
             <div className="flex items-center gap-3 mb-3">
               <ExclamationTriangleIcon className="w-6 h-6 text-orange-500" />
               <h3 className="text-lg font-bold text-foreground">
-                Final Warning: Only {52} Licenses Left
+                Final Warning: Only <span className="text-red-600 dark:text-red-400 animate-pulse">{licensesLeft}</span> Licenses Left
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">

@@ -157,8 +157,8 @@ export default function FounderStory() {
                       <p className="text-sm text-muted-foreground">Founder, MyWhatsAgent</p>
                       <div className="flex items-center gap-2 mt-2">
                         <EnvelopeIcon className="w-4 h-4 text-muted-foreground" />
-                        <a href="mailto:sohaib@mywhatsagent.ai" className="text-sm text-primary hover:underline">
-                          sohaib@mywhatsagent.ai
+                        <a href="mailto:hi@sohaibahmad.me" className="text-sm text-primary hover:underline">
+                          hi@sohaibahmad.me
                         </a>
                       </div>
                     </div>

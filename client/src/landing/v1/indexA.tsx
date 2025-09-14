@@ -1,5 +1,5 @@
 import HeroSection from "./components/HeroSection";
-import ABTestDashboard from "./components/ABTestDashboard";
+import ABTestDashboardV2 from "./components/ABTestDashboardV2";
 import ProblemAgitation from "./components/ProblemAgitation";
 import BiggestMistakes from "./components/BiggestMistakes";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
@@ -12,6 +12,8 @@ import CTASection from "./components/CTASection";
 import StickyHeader from "./components/StickyHeader";
 import ScarcityIndicator from "./components/ScarcityIndicator";
 import ExitIntent from "./components/ExitIntent";
+import { useEffect } from "react";
+import { trackPageView, updateSession, trackScrollMilestone } from "@/services/tracking";
 
 /**
  * Version A: Problem-Focused Flow
@@ -19,10 +21,40 @@ import ExitIntent from "./components/ExitIntent";
  * Streamlined from 18 to 10 core components
  */
 export default function LandingV1A() {
+  // Initialize tracking
+  useEffect(() => {
+    trackPageView();
+
+    // Set up scroll tracking
+    let scrollMilestones = [25, 50, 75, 90];
+    let trackedMilestones = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+
+      for (const milestone of scrollMilestones) {
+        if (scrollPercentage >= milestone && !trackedMilestones.has(milestone)) {
+          trackedMilestones.add(milestone);
+          trackScrollMilestone(milestone);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      updateSession();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Persistent Components */}
-      <ABTestDashboard />
+      <ABTestDashboardV2 />
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />

@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
+import { trackCTAClick, trackConversion } from "@/services/tracking";
 
 export default function CTASection() {
   const dynamic = useDynamicContentContext();
@@ -60,6 +61,10 @@ export default function CTASection() {
 
   const handleGetAccess = () => {
     console.log('Get lifetime access clicked');
+    // Track CTA click
+    trackCTAClick("Get Lifetime Access Now", "final-cta");
+    // Track as a purchase intent conversion
+    trackConversion("purchase_intent", 497);
     // TODO: Remove mock functionality - integrate real purchase flow
   };
 

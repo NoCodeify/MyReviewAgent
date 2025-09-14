@@ -6,13 +6,22 @@ import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_9163
 import TrustBadges from "./TrustBadges";
 import MediaLogos from "./MediaLogos";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
+import { trackCTAClick, trackConversion } from "@/services/tracking";
 
 export default function HeroSection() {
   const dynamic = useDynamicContentContext();
 
   const handleVideoPlay = () => {
     console.log('Video play triggered');
+    trackCTAClick("Watch Video", "hero-video");
     // TODO: Remove mock functionality - integrate real video player
+  };
+
+  const handleGetAccess = () => {
+    trackCTAClick("Get The $5M System", "hero-cta");
+    trackConversion("purchase_intent", 497);
+    // Navigate to checkout or open modal
+    window.location.href = "#final-cta";
   };
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white relative overflow-hidden">
@@ -129,6 +138,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <Button
                   size="lg"
+                  onClick={handleGetAccess}
                   className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
                   data-testid="button-get-lifetime-access"
                 >

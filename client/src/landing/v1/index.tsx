@@ -21,19 +21,53 @@ import FeatureComparison from "./components/FeatureComparison";
 import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
-import ABTestDashboard from "./components/ABTestDashboard";
+import ABTestDashboardV2 from "./components/ABTestDashboardV2";
+import { useEffect } from "react";
+import { trackPageView, updateSession } from "@/services/tracking";
 
 export default function LandingV1() {
   // Check if we should use V2 components with variations
   const urlParams = new URLSearchParams(window.location.search);
   const useV2 = urlParams.has('v') || urlParams.get('test') === 'true';
 
+  // Initialize tracking
+  useEffect(() => {
+    trackPageView();
+
+    // Set up scroll tracking
+    let scrollMilestones = [25, 50, 75, 90];
+    let trackedMilestones = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+
+      for (const milestone of scrollMilestones) {
+        if (scrollPercentage >= milestone && !trackedMilestones.has(milestone)) {
+          trackedMilestones.add(milestone);
+          import('@/services/tracking').then(({ trackScrollMilestone }) => {
+            trackScrollMilestone(milestone);
+          });
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      updateSession();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       <StickyHeader />
       <ScarcityIndicator />
       <ExitIntent />
-      <ABTestDashboard />
+      <ABTestDashboardV2 />
       {useV2 ? <HeroSectionV2 /> : <HeroSection />}
       <CustomerLogos />
       <ProblemAgitation />

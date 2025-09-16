@@ -15,6 +15,7 @@ import {
   getRegularPrice,
   getFirstExpiredPrice,
   getFinalExpiredPrice,
+  checkAndUpdateDealStatus,
   type DealStatus
 } from '@/services/dealManagement';
 
@@ -52,9 +53,10 @@ export function useDealPricing(tier: 'STARTER' | 'PROFESSIONAL' | 'AGENCY' = 'ST
   const [dealStatus, setDealStatus] = useState<DealStatus>('regular');
   const [forceUpdate, setForceUpdate] = useState(0);
 
-  // Initialize first visit tracking on mount
+  // Initialize first visit tracking and check for auto-expiry on mount
   useEffect(() => {
     initializeFirstVisit();
+    checkAndUpdateDealStatus(); // Check if deals should be auto-expired for returning users
   }, []);
 
   // Update deal status when component mounts or force update changes

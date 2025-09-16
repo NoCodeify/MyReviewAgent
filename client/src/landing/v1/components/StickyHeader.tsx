@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { useDealPricing, useDealTimer } from "@/hooks/useDealPricing";
+import { getCookie } from "@/services/dealManagement";
 
 export default function StickyHeader() {
   const dynamic = useDynamicContentContext();
@@ -13,29 +14,47 @@ export default function StickyHeader() {
 
 
 
-  // Calculate time until midnight
-  const calculateTimeToMidnight = () => {
-    const now = new Date();
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
-    const diff = midnight.getTime() - now.getTime();
+  // Calculate remaining time from first_visit timestamp
+  const calculateRemainingTime = () => {
+    const firstVisit = getCookie('whatsagent_first_visit');
+    if (!firstVisit) return { hours: 24, minutes: 0, seconds: 0 };
 
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const elapsed = Date.now() - parseInt(firstVisit);
+    let targetMs;
+
+    if (dealPricing.dealStatus === 'regular') {
+      targetMs = 24 * 60 * 60 * 1000; // 24 hours total
+    } else if (dealPricing.dealStatus === 'first_expired') {
+      targetMs = 48 * 60 * 60 * 1000; // 48 hours total
+    } else {
+      return { hours: 0, minutes: 0, seconds: 0 }; // Already final expired
+    }
+
+    const remaining = targetMs - elapsed;
+
+    // If time has passed, return 0
+    if (remaining <= 0) {
+      return { hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    // Calculate hours, minutes, seconds
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
 
     return { hours, minutes, seconds };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeToMidnight());
+  const [timeLeft, setTimeLeft] = useState(calculateRemainingTime());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const newTimeLeft = calculateTimeToMidnight();
+      const newTimeLeft = calculateRemainingTime();
       setTimeLeft(newTimeLeft);
 
-      // Check if timer reached 00:00:00 (all values are 0)
-      if (newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
+      // Check if timer expired (use total seconds threshold instead of exact equality)
+      const totalSeconds = newTimeLeft.hours * 3600 + newTimeLeft.minutes * 60 + newTimeLeft.seconds;
+      if (totalSeconds <= 0) {
         // Trigger deal expiration based on current status
         if (dealPricing.dealStatus === 'regular') {
           console.log('🚨 Timer expired - triggering first deal expiration');

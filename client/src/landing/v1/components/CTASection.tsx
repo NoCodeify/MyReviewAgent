@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { trackCTAClick, trackConversion } from "@/services/tracking";
 import { useDealPricing, useFormattedPrice, useDealTimer } from "@/hooks/useDealPricing";
+import { getCookie } from "@/services/dealManagement";
 
 export default function CTASection() {
   const dynamic = useDynamicContentContext();
@@ -26,33 +27,51 @@ export default function CTASection() {
 
   const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
 
-  // Calculate time until midnight (resets daily)
-  const calculateTimeToMidnight = () => {
-    const now = new Date();
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
-    const diff = midnight.getTime() - now.getTime();
+  // Calculate remaining time from first_visit timestamp
+  const calculateRemainingTime = () => {
+    const firstVisit = getCookie('whatsagent_first_visit');
+    if (!firstVisit) return { days: 1, hours: 0, minutes: 0, seconds: 0 };
 
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const elapsed = Date.now() - parseInt(firstVisit);
+    let targetMs;
+
+    if (dealPricing.dealStatus === 'regular') {
+      targetMs = 24 * 60 * 60 * 1000; // 24 hours total
+    } else if (dealPricing.dealStatus === 'first_expired') {
+      targetMs = 48 * 60 * 60 * 1000; // 48 hours total
+    } else {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 }; // Already final expired
+    }
+
+    const remaining = targetMs - elapsed;
+
+    // If time has passed, return 0
+    if (remaining <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    // Calculate time components
+    const totalHours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
 
     // Show as "days" for visual impact
-    const days = hours > 24 ? 1 : 0;
-    const displayHours = hours % 24;
+    const days = totalHours >= 24 ? 1 : 0;
+    const displayHours = totalHours % 24;
 
     return { days, hours: displayHours, minutes, seconds };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeToMidnight());
+  const [timeLeft, setTimeLeft] = useState(calculateRemainingTime());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const newTimeLeft = calculateTimeToMidnight();
+      const newTimeLeft = calculateRemainingTime();
       setTimeLeft(newTimeLeft);
 
-      // Check if timer reached 00:00:00 (all values are 0)
-      if (newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
+      // Check if timer expired (use total seconds threshold instead of exact equality)
+      const totalSeconds = newTimeLeft.days * 86400 + newTimeLeft.hours * 3600 + newTimeLeft.minutes * 60 + newTimeLeft.seconds;
+      if (totalSeconds <= 0) {
         // Trigger deal expiration based on current status
         if (dealPricing.dealStatus === 'regular') {
           console.log('🚨 CTA Timer expired - triggering first deal expiration');

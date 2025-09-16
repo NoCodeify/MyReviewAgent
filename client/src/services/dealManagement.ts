@@ -119,12 +119,42 @@ export function isReturningUser(): boolean {
   return (now - firstVisitTime) > (30 * 60 * 1000);
 }
 
+/**
+ * Calculate hours elapsed since first visit
+ */
+export function getElapsedHours(): number {
+  const firstVisit = getCookie(FIRST_VISIT_COOKIE);
+  if (!firstVisit) return 0;
+
+  const elapsed = Date.now() - parseInt(firstVisit);
+  return elapsed / (1000 * 60 * 60); // Convert to hours
+}
+
+/**
+ * Check elapsed time and auto-expire deals if time has passed
+ */
+export function checkAndUpdateDealStatus(): void {
+  const hours = getElapsedHours();
+
+  // Auto-expire to final if 48+ hours have passed
+  if (hours >= 48 && !isFinalExpired()) {
+    markFinalExpired();
+  }
+  // Auto-expire to first if 24+ hours have passed
+  else if (hours >= 24 && !isFirstExpired()) {
+    markFirstExpired();
+  }
+}
+
 export function getDealStatus(): DealStatus {
   // Check URL parameter first (for testing)
   const forced = isExpiredForced();
   if (forced) {
     return forced;
   }
+
+  // Check and update based on elapsed time
+  checkAndUpdateDealStatus();
 
   // Check cookies for actual expiration state
   if (isFinalExpired()) {

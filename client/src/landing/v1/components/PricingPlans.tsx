@@ -118,9 +118,15 @@ export default function PricingPlans() {
 
   const handlePricingClick = (tierName: string, price: string) => {
     trackCTAClick(`Select ${tierName} Plan`, "pricing-plans");
-    // Scroll to CTA section
-    const ctaSection = document.getElementById('final-cta');
-    ctaSection?.scrollIntoView({ behavior: 'smooth' });
+
+    // Get tier key for URL
+    const tierKey = tierName.toUpperCase() as 'STARTER' | 'PROFESSIONAL' | 'AGENCY';
+
+    // Navigate to checkout page with tier and deal status
+    const dealStatus = dealPricing.isFinalExpired ? 'final_expired' :
+                      dealPricing.isFirstExpired ? 'first_expired' : 'regular';
+
+    window.location.href = `/checkout?tier=${tierKey}&dealStatus=${dealStatus}`;
   };
 
   return (

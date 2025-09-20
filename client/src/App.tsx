@@ -10,6 +10,7 @@ import LandingV1B from "@/landing/v1/indexB";
 // import LandingV2 from "@/landing/v2";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/Dashboard";
+import Checkout from "@/pages/Checkout";
 import Clarity from '@microsoft/clarity';
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/a" component={LandingV1A} />
       <Route path="/b" component={LandingV1B} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/checkout" component={Checkout} />
       {/* <Route path="/v2" component={LandingV2} /> */}
       <Route component={NotFound} />
     </Switch>

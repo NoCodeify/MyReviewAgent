@@ -72,7 +72,7 @@ export default function CustomerLogos() {
             Working Across 37+ Industries Worldwide
           </h3>
           <p className="text-muted-foreground">
-            From local shops to global enterprises, MyWhatsAgent adapts to any business
+            From local shops to global enterprises, MyReviewAgent.ai adapts to any business
           </p>
         </div>
 

@@ -1,59 +1,54 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import {
-  ExclamationTriangleIcon,
   XMarkIcon,
   CheckCircleIcon,
-  HandRaisedIcon,
-  ArrowRightIcon
+  HandRaisedIcon
 } from "@heroicons/react/24/outline";
 
 export default function NotForSection() {
-  const { licensesRemaining } = useDynamicContentContext();
   const notForItems = [
     {
-      title: "Businesses with Less Than 5 WhatsApp Leads Per Month",
-      description: "If you're getting fewer than 5 WhatsApp inquiries monthly, you won't see the full ROI potential. Focus on driving more traffic first.",
+      title: "Businesses Without a Booking System",
+      description: "If you don't have customer bookings or appointments, this service won't work for you. We need booking data to trigger review requests.",
       icon: XMarkIcon
     },
     {
-      title: "Companies That Want Template-Based Responses",
-      description: "MyWhatsAgent uses adaptive AI that creates unique responses for each conversation. If you need rigid, scripted replies, this isn't for you.",
+      title: "Companies That Don't Want Automation",
+      description: "If you prefer manually requesting reviews from every customer and aren't comfortable with AI automation, this isn't for you.",
       icon: XMarkIcon
     },
     {
-      title: "Businesses Afraid of Automation",
-      description: "If you're not ready to let AI handle your sales conversations and prefer manual control over every message, MyWhatsAgent won't be a good fit.",
+      title: "Businesses Without WhatsApp or SMS Setup",
+      description: "If you don't have customers' phone numbers or can't send WhatsApp/SMS messages, you can't use MyReviewAgent.ai.",
       icon: XMarkIcon
     },
     {
-      title: "Those Looking for a 'Magic Button' Without Any Setup",
-      description: "While setup takes only 5 minutes, you still need to provide your business info, pricing, and FAQs. If you're not willing to do this minimal setup, look elsewhere.",
+      title: "Those Who Get Zero Online Reviews",
+      description: "If your business doesn't benefit from online reviews (like Google, Yelp, Facebook), you won't see ROI from this service.",
       icon: XMarkIcon
     }
   ];
 
   const perfectForItems = [
     {
-      title: "Growth-Focused Businesses",
-      description: "You want to scale without hiring more staff",
+      title: "Booking-Based Businesses",
+      description: "Restaurants, salons, medical practices, auto repair shops",
       icon: CheckCircleIcon
     },
     {
-      title: "Smart Entrepreneurs",
-      description: "You understand that AI is the future of sales",
+      title: "Reputation-Conscious Owners",
+      description: "You understand that online reviews drive new bookings",
       icon: CheckCircleIcon
     },
     {
       title: "Busy Business Owners",
-      description: "You want sales happening while you sleep",
+      description: "You don't have time to manually request reviews",
       icon: CheckCircleIcon
     },
     {
-      title: "ROI-Driven Leaders",
-      description: "You want measurable results fast",
+      title: "Growth-Focused Leaders",
+      description: "You want more positive reviews compounding monthly",
       icon: CheckCircleIcon
     }
   ];
@@ -70,14 +65,14 @@ export default function NotForSection() {
               IMPORTANT: READ THIS FIRST
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              MyWhatsAgent is NOT for Everyone
+              MyReviewAgent.ai is NOT for Everyone
               <span className="block text-3xl lg:text-4xl mt-2 text-muted-foreground">
                 (And That's By Design)
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're selective about who we work with. If you fall into any of these categories,
-              please don't buy MyWhatsAgent:
+              this service won't be a good fit:
             </p>
           </div>
 
@@ -116,10 +111,10 @@ export default function NotForSection() {
           <Card className="p-8 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 border-green-200 dark:border-green-800">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-foreground mb-2">
-                ✅ MyWhatsAgent IS Perfect For:
+                ✅ MyReviewAgent.ai IS Perfect For:
               </h3>
               <p className="text-muted-foreground">
-                If any of these describe you, MyWhatsAgent will transform your business:
+                If any of these describe you, MyReviewAgent.ai will transform your reputation:
               </p>
             </div>
 
@@ -139,29 +134,11 @@ export default function NotForSection() {
 
             <div className="text-center">
               <p className="text-lg font-semibold text-foreground mb-4">
-                If you checked at least 2 of these boxes, MyWhatsAgent will deliver
-                <span className="text-green-600 dark:text-green-400"> massive ROI </span>
-                for your business.
+                If you checked at least 2 of these boxes, MyReviewAgent.ai will help you collect
+                <span className="text-green-600 dark:text-green-400"> 3x more reviews </span>
+                consistently.
               </p>
             </div>
-          </Card>
-
-          {/* Bottom Warning */}
-          <Card className="mt-8 p-6 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-orange-200 dark:border-orange-800">
-            <div className="flex items-center gap-3 mb-3">
-              <ExclamationTriangleIcon className="w-6 h-6 text-orange-500" />
-              <h3 className="text-lg font-bold text-foreground">
-                Final Warning: Only <span className="text-red-600 dark:text-red-400">{licensesRemaining}</span> Licenses Left
-              </h3>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              We're limiting access to maintain quality and ensure every user gets results.
-              Once these licenses are gone, we're closing doors and switching to $297/month pricing.
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              If you're ready to join the 1,247+ businesses already using MyWhatsAgent to dominate their markets,
-              claim your license now before it's too late.
-            </p>
           </Card>
 
         </div>

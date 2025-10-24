@@ -5,41 +5,40 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   ClockIcon,
-  ChatBubbleBottomCenterTextIcon,
-  MoonIcon,
-  ArrowRightIcon
+  UserMinusIcon,
+  FaceFrownIcon
 } from "@heroicons/react/24/outline";
 
 export default function BiggestMistakes() {
   const mistakes = [
     {
       number: "1",
-      mistake: "Letting WhatsApp Leads Wait More Than 5 Minutes",
-      stat: "78%",
-      statLabel: "of customers buy from whoever responds first",
-      problem: "While you're busy, typing, or away from your phone, your competitors' AI agents are closing YOUR leads in seconds.",
-      solution: "MyWhatsAgent responds in under 30 seconds, 24/7, never missing a single opportunity.",
+      mistake: "Forgetting to Ask for Reviews",
+      stat: "85%",
+      statLabel: "of customers never get asked",
+      problem: "You're busy running your business. By the time you remember to ask for reviews, customers have forgotten their experience and moved on.",
+      solution: "MyReviewAgent.ai automatically sends review requests after every booking. Zero manual work, zero forgotten customers.",
       icon: ClockIcon,
       color: "from-red-500 to-orange-500"
     },
     {
       number: "2",
-      mistake: "Using Template-Based Chatbots That Sound Robotic",
-      stat: "91%",
-      statLabel: "of users abandon robotic conversations",
-      problem: "Pre-written templates, rigid decision trees, and 'press 1 for sales' responses that frustrate customers and kill conversions.",
-      solution: "MyWhatsAgent uses natural AI that adapts to each conversation, handles objections, and closes deals like a human would.",
-      icon: ChatBubbleBottomCenterTextIcon,
+      mistake: "Letting Negative Reviews Go Public",
+      stat: "67%",
+      statLabel: "of prospects avoid businesses with bad reviews",
+      problem: "One angry customer leaves a 1-star review that damages your reputation for years. You never had a chance to fix their issue first.",
+      solution: "MyReviewAgent.ai routes negative feedback to a private form. You fix issues before they hurt your public rating.",
+      icon: FaceFrownIcon,
       color: "from-orange-500 to-yellow-500"
     },
     {
       number: "3",
-      mistake: "Missing 73% of Leads That Come After Business Hours",
-      stat: "$4.2M",
-      statLabel: "average yearly loss from after-hours leads",
-      problem: "Most WhatsApp messages come when you're sleeping, eating dinner, or spending time with family. Those leads go cold forever.",
-      solution: "MyWhatsAgent works 24/7/365, closing deals at 3 AM while you sleep, turning night owls into paying customers.",
-      icon: MoonIcon,
+      mistake: "Manual Review Requests That Get Ignored",
+      stat: "10-15%",
+      statLabel: "response rate for manual requests",
+      problem: "Generic 'please leave us a review' texts get ignored. Customers are busy and forget immediately after reading your message.",
+      solution: "MyReviewAgent.ai sends personalized WhatsApp/SMS messages at the perfect time, achieving 45% response rates.",
+      icon: UserMinusIcon,
       color: "from-yellow-500 to-green-500"
     }
   ];
@@ -56,13 +55,13 @@ export default function BiggestMistakes() {
               CRITICAL WARNING
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              The 3 Biggest WhatsApp Sales Mistakes
+              The 3 Biggest Review Collection Mistakes
               <span className="block text-3xl lg:text-4xl mt-2 text-muted-foreground">
-                (That Are Costing You Millions)
+                (That Are Killing Your Reputation)
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              99% of businesses make at least one of these mistakes. Each one is silently destroying your revenue potential.
+              99% of booking businesses make at least one of these mistakes. Each one is silently destroying your review growth.
             </p>
           </div>
 
@@ -135,9 +134,9 @@ export default function BiggestMistakes() {
                 </h3>
               </div>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Join 1,247+ businesses that fixed all three mistakes with MyWhatsAgent and saw an average
-                <span className="font-bold text-green-600 dark:text-green-400"> 487% revenue increase </span>
-                in their first 90 days.
+                Join 500+ businesses that fixed all three mistakes with MyReviewAgent.ai and saw
+                <span className="font-bold text-green-600 dark:text-green-400"> 3x more reviews </span>
+                in their first 30 days.
               </p>
             </Card>
           </div>

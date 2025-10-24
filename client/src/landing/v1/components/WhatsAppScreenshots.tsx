@@ -6,34 +6,25 @@ import {
   CheckCircleIcon,
   XMarkIcon,
   SparklesIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  StarIcon
 } from "@heroicons/react/24/outline";
-import { useDealPricing, useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function WhatsAppScreenshots() {
-  const dealPricing = useDealPricing();
-  const pricing = useFormattedPrice();
-
-  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
-
   const beforeMessages = [
-    { type: "customer", text: "Hi, I'm interested in your services", time: "10:23 AM" },
-    { type: "waiting", text: "Message delivered ✓✓", time: "10:23 AM" },
-    { type: "waiting", text: "...", time: "2:45 PM" },
-    { type: "business", text: "Hi! Sorry for the late reply. How can I help?", time: "2:45 PM" },
-    { type: "customer", text: "Never mind, I already bought from someone else", time: "2:46 PM" },
-    { type: "lost", text: "Lead Lost - Responded 4 hours late", time: "" }
+    { type: "silence", text: "Customer had great experience...", time: "Yesterday" },
+    { type: "silence", text: "But nobody asked for a review", time: "" },
+    { type: "silence", text: "Customer forgets about the experience", time: "+3 days" },
+    { type: "lost", text: "⚠️ No Review - Opportunity Lost Forever", time: "" }
   ];
 
   const afterMessages = [
-    { type: "customer", text: "Hi, I'm interested in your services", time: "10:23 AM" },
-    { type: "ai", text: "Hello! Thanks for reaching out! I'd love to help you. Which service are you interested in?", time: "10:23 AM" },
-    { type: "customer", text: "I need help with WhatsApp automation", time: "10:24 AM" },
-    { type: "ai", text: `Perfect! Our WhatsApp AI agent can handle your sales 24/7. It responds instantly, handles objections, and closes deals. Currently we have a special offer - ${isMonthlyPricing ? 'monthly access starting at just $197/month' : `lifetime access for just ${pricing.currentPrice}`}. Would you like to see how it works?`, time: "10:24 AM" },
-    { type: "customer", text: "Yes, but is it complicated to set up?", time: "10:25 AM" },
-    { type: "ai", text: "Not at all! Setup takes just 5 minutes. You connect WhatsApp, upload your business info, and the AI starts working immediately. We also provide full support. Should I send you a demo?", time: "10:25 AM" },
-    { type: "customer", text: "Sounds good. I'll take it!", time: "10:26 AM" },
-    { type: "success", text: `✅ Deal Closed in 3 minutes - ${pricing.currentPrice} sale`, time: "" }
+    { type: "ai", text: "Hi Sarah! 👋 Thanks for visiting Bella's Salon yesterday! How was your experience with us?", time: "Next morning, 9:00 AM" },
+    { type: "customer", text: "It was amazing! Best haircut I've had in years", time: "9:12 AM" },
+    { type: "ai", text: "That's wonderful to hear! 🎉 Would you mind sharing your experience on Google? It really helps us grow. Here's the link: [Google Review]", time: "9:12 AM" },
+    { type: "customer", text: "Sure, done! Left you 5 stars ⭐⭐⭐⭐⭐", time: "9:15 AM" },
+    { type: "ai", text: "Thank you so much Sarah! We really appreciate it. Looking forward to seeing you again! 💚", time: "9:15 AM" },
+    { type: "success", text: "✅ 5-Star Review Collected - 15 Minutes Total", time: "" }
   ];
 
   return (
@@ -50,52 +41,37 @@ export default function WhatsAppScreenshots() {
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
               See The Difference In Action
               <span className="block text-3xl lg:text-4xl mt-2 text-primary">
-                Before vs After MyWhatsAgent
+                Before vs After MyReviewAgent.ai
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real WhatsApp conversations showing how businesses lose leads vs how MyWhatsAgent closes them
+              Real WhatsApp conversations showing how businesses miss reviews vs how MyReviewAgent.ai collects them
             </p>
           </div>
 
           {/* Screenshots Grid */}
           <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
-            {/* Before - Without WhatsAgent */}
+            {/* Before - Without MyReviewAgent */}
             <Card className="p-3 lg:p-6 border-red-200 dark:border-red-900 bg-gradient-to-b from-red-50/50 to-white dark:from-red-950/20 dark:to-slate-900">
               <div className="flex items-center gap-1 lg:gap-2 mb-4 lg:mb-6">
                 <XMarkIcon className="w-5 lg:w-6 h-5 lg:h-6 text-red-500 flex-shrink-0" />
-                <h3 className="text-sm lg:text-xl font-bold text-foreground">Without MyWhatsAgent</h3>
-                <Badge variant="destructive" className="text-xs lg:text-sm px-2 py-0.5">Lead Lost</Badge>
+                <h3 className="text-sm lg:text-xl font-bold text-foreground">Without MyReviewAgent.ai</h3>
+                <Badge variant="destructive" className="text-xs lg:text-sm px-2 py-0.5">No Review</Badge>
               </div>
 
               {/* Phone Mockup */}
               <div className="bg-slate-900 rounded-[1.5rem] lg:rounded-[2rem] p-2 lg:p-3 shadow-xl max-w-[280px] lg:max-w-sm mx-auto">
                 <div className="bg-[#075E54] rounded-t-xl lg:rounded-t-2xl p-2 lg:p-3 text-white text-xs lg:text-sm font-semibold flex items-center justify-between">
-                  <span className="truncate">Business Name</span>
+                  <span className="truncate">Bella's Salon</span>
                   <span className="text-[10px] lg:text-xs opacity-70">WhatsApp</span>
                 </div>
-                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-2 lg:space-y-3">
+                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-3 lg:space-y-4 flex flex-col items-center justify-center">
                   {beforeMessages.map((msg, index) => (
-                    <div key={index}>
-                      {msg.type === "customer" && (
-                        <div className="flex justify-start">
-                          <div className="bg-white dark:bg-slate-800 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
-                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
-                            <p className="text-[10px] lg:text-xs text-slate-500 mt-1">{msg.time}</p>
-                          </div>
-                        </div>
-                      )}
-                      {msg.type === "business" && (
-                        <div className="flex justify-end">
-                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
-                            <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
-                            <p className="text-[10px] lg:text-xs text-slate-600 dark:text-slate-400 mt-1">{msg.time}</p>
-                          </div>
-                        </div>
-                      )}
-                      {msg.type === "waiting" && (
+                    <div key={index} className="w-full">
+                      {msg.type === "silence" && (
                         <div className="text-center">
-                          <p className="text-[10px] lg:text-xs text-slate-500 italic">{msg.text}</p>
+                          <p className="text-xs lg:text-sm text-slate-500 dark:text-slate-400 italic mb-1">{msg.text}</p>
+                          {msg.time && <p className="text-[10px] lg:text-xs text-slate-400">{msg.time}</p>}
                         </div>
                       )}
                       {msg.type === "lost" && (
@@ -112,42 +88,42 @@ export default function WhatsAppScreenshots() {
               <div className="mt-4 lg:mt-6 space-y-1 lg:space-y-2">
                 <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
                   <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Response time: 4+ hours</span>
+                  <span className="text-xs lg:text-sm">No follow-up sent</span>
                 </div>
                 <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
                   <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Customer lost to competitor</span>
+                  <span className="text-xs lg:text-sm">Customer never asked</span>
                 </div>
                 <div className="flex items-center gap-1 lg:gap-2 text-red-600 dark:text-red-400">
                   <XMarkIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Revenue: $0</span>
+                  <span className="text-xs lg:text-sm">Reviews collected: 0</span>
                 </div>
               </div>
             </Card>
 
-            {/* After - With WhatsAgent */}
+            {/* After - With MyReviewAgent */}
             <Card className="p-3 lg:p-6 border-green-200 dark:border-green-900 bg-gradient-to-b from-green-50/50 to-white dark:from-green-950/20 dark:to-slate-900">
               <div className="flex items-center gap-1 lg:gap-2 mb-4 lg:mb-6">
                 <CheckCircleIcon className="w-5 lg:w-6 h-5 lg:h-6 text-green-500 flex-shrink-0" />
-                <h3 className="text-sm lg:text-xl font-bold text-foreground">With MyWhatsAgent</h3>
-                <Badge className="bg-green-500/10 text-green-600 border-0 text-xs lg:text-sm px-2 py-0.5">Deal Closed</Badge>
+                <h3 className="text-sm lg:text-xl font-bold text-foreground">With MyReviewAgent.ai</h3>
+                <Badge className="bg-green-500/10 text-green-600 border-0 text-xs lg:text-sm px-2 py-0.5">5★ Review</Badge>
               </div>
 
               {/* Phone Mockup */}
               <div className="bg-slate-900 rounded-[1.5rem] lg:rounded-[2rem] p-2 lg:p-3 shadow-xl max-w-[280px] lg:max-w-sm mx-auto">
                 <div className="bg-[#075E54] rounded-t-xl lg:rounded-t-2xl p-2 lg:p-3 text-white text-xs lg:text-sm font-semibold flex items-center justify-between">
                   <div className="flex items-center gap-1 lg:gap-2">
-                    <span className="truncate">Business Name</span>
+                    <span className="truncate">Bella's Salon</span>
                     <SparklesIcon className="w-3 lg:w-4 h-3 lg:h-4 text-yellow-400" />
                   </div>
-                  <span className="text-[10px] lg:text-xs opacity-70">WhatsApp AI</span>
+                  <span className="text-[10px] lg:text-xs opacity-70">AI Agent</span>
                 </div>
-                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-2 lg:space-y-3">
+                <div className="bg-[#ECE5DD] dark:bg-[#1A1A1A] p-2 lg:p-4 rounded-b-xl lg:rounded-b-2xl min-h-[300px] lg:min-h-[400px] space-y-2 lg:space-y-3 overflow-y-auto">
                   {afterMessages.map((msg, index) => (
                     <div key={index}>
                       {msg.type === "customer" && (
                         <div className="flex justify-start">
-                          <div className="bg-white dark:bg-slate-800 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm">
+                          <div className="bg-white dark:bg-slate-800 rounded-lg p-2 lg:p-3 max-w-[85%] shadow-sm">
                             <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
                             <p className="text-[10px] lg:text-xs text-slate-500 mt-1">{msg.time}</p>
                           </div>
@@ -155,7 +131,7 @@ export default function WhatsAppScreenshots() {
                       )}
                       {msg.type === "ai" && (
                         <div className="flex justify-end">
-                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-2 lg:p-3 max-w-[80%] shadow-sm border border-green-300 dark:border-green-700">
+                          <div className="bg-[#DCF8C6] dark:bg-green-900/30 rounded-lg p-2 lg:p-3 max-w-[85%] shadow-sm border border-green-300 dark:border-green-700">
                             <p className="text-xs lg:text-sm text-slate-900 dark:text-slate-100 break-words">{msg.text}</p>
                             <p className="text-[10px] lg:text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-1">
                               {msg.time} <SparklesIcon className="w-2 lg:w-3 h-2 lg:h-3 text-green-600" />
@@ -177,15 +153,15 @@ export default function WhatsAppScreenshots() {
               <div className="mt-4 lg:mt-6 space-y-1 lg:space-y-2">
                 <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
                   <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Response time: Instant</span>
+                  <span className="text-xs lg:text-sm">Automated follow-up: Next morning</span>
                 </div>
                 <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
                   <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Deal closed in 3 minutes</span>
+                  <span className="text-xs lg:text-sm">Review collected in 15 minutes</span>
                 </div>
                 <div className="flex items-center gap-1 lg:gap-2 text-green-600 dark:text-green-400">
-                  <CheckCircleIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0" />
-                  <span className="text-xs lg:text-sm">Revenue: {pricing.currentPrice}</span>
+                  <StarIcon className="w-3 lg:w-4 h-3 lg:h-4 flex-shrink-0 fill-green-600" />
+                  <span className="text-xs lg:text-sm">5-Star Google Review</span>
                 </div>
               </div>
             </Card>
@@ -195,22 +171,21 @@ export default function WhatsAppScreenshots() {
           <div className="mt-12 text-center">
             <Card className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-950/30 dark:to-green-950/30 border-blue-200 dark:border-blue-800 p-8">
               <h3 className="text-2xl font-bold text-foreground mb-3">
-                This Happens 24/7 With MyWhatsAgent
+                This Happens After Every Booking
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-                While you sleep, eat, or spend time with family, MyWhatsAgent is closing deals.
-                The average business using MyWhatsAgent sees
-                <span className="font-bold text-primary"> 67 more sales per month</span>.
+                While you focus on your business, MyReviewAgent.ai is collecting reviews automatically.
+                The average business using MyReviewAgent.ai collects
+                <span className="font-bold text-primary"> 3x more reviews</span> every month.
               </p>
               <Button
                 size="lg"
-                className="bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(59,130,246,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(59,130,246,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
+                className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
                 onClick={() => {
-                  const ctaSection = document.getElementById('final-cta');
-                  ctaSection?.scrollIntoView({ behavior: 'smooth' });
+                  window.open('https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai', '_blank');
                 }}
               >
-                Try it yourself - Let the AI convince you
+                Start Collecting Reviews on Autopilot
                 <ArrowRightIcon className="w-5 h-5 ml-2" />
               </Button>
             </Card>

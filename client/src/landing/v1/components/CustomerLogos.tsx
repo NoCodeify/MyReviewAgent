@@ -188,7 +188,7 @@ export default function CustomerLogos() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);

@@ -1,0 +1,23 @@
+name = "myreviewagent"
+main = "server/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+
+[env.production]
+name = "myreviewagent-prod"
+
+[vars]
+NODE_ENV = "production"
+
+# Environment variables (set via wrangler secret put)
+# DATABASE_URL - PostgreSQL connection string
+# STRIPE_SECRET_KEY - Stripe secret key
+# STRIPE_WEBHOOK_SECRET - Stripe webhook secret
+# VITE_STRIPE_PUBLISHABLE_KEY - Stripe publishable key (for frontend)
+
+# Assets configuration for serving static files
+[assets]
+directory = "dist/client"

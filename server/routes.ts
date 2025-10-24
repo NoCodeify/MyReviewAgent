@@ -1,8 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import trackingRouter from "./api/tracking.js";
-import checkoutRouter from "./api/checkout.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -10,12 +8,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
-
-  // A/B Test Tracking API
-  app.use("/api/tracking", trackingRouter);
-
-  // Checkout API with Stripe integration
-  app.use("/api/checkout", checkoutRouter);
 
   const httpServer = createServer(app);
 

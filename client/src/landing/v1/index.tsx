@@ -23,56 +23,8 @@ import NotForSection from "./components/NotForSection";
 import MediaLogos from "./components/MediaLogos";
 import WhatsAppScreenshots from "./components/WhatsAppScreenshots";
 import DealDebug from "./components/DealDebug";
-import { useEffect } from "react";
-import { trackPageView, updateSession } from "@/services/tracking";
-
-// Extend window for Clarity
-declare global {
-  interface Window {
-    clarity: (action: string, key: string, value: string) => void;
-  }
-}
 
 export default function LandingV1() {
-  // Track page version in Clarity
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.clarity) {
-      window.clarity('set', 'page_version', 'original');
-      window.clarity('set', 'components', '18');
-    }
-  }, []);
-
-  // Initialize tracking
-  useEffect(() => {
-    trackPageView();
-
-    // Set up scroll tracking
-    let scrollMilestones = [25, 50, 75, 90];
-    let trackedMilestones = new Set<number>();
-
-    const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPosition = window.scrollY;
-      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
-
-      for (const milestone of scrollMilestones) {
-        if (scrollPercentage >= milestone && !trackedMilestones.has(milestone)) {
-          trackedMilestones.add(milestone);
-          import('@/services/tracking').then(({ trackScrollMilestone }) => {
-            trackScrollMilestone(milestone);
-          });
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean up
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      updateSession();
-    };
-  }, []);
 
   return (
     <div className="min-h-screen">

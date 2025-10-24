@@ -6,29 +6,18 @@ import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_9163
 import TrustBadges from "./TrustBadges";
 import MediaLogos from "./MediaLogos";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
-import { getCurrentVariation, trackVariationEvent } from "../config/variations";
-import { useEffect } from "react";
 
 /**
- * Enhanced HeroSection with A/B test variations
- * Uses configuration from variations.ts for testing different headlines and CTAs
+ * HeroSection for MyReviewAgent.ai
  */
 export default function HeroSectionV2() {
   const dynamic = useDynamicContentContext();
-  const variation = getCurrentVariation();
-
-  useEffect(() => {
-    // Track page view with variation
-    trackVariationEvent('hero_view');
-  }, []);
 
   const handleVideoPlay = () => {
-    trackVariationEvent('video_play_clicked');
     console.log('Video play triggered');
   };
 
   const handleCTAClick = () => {
-    trackVariationEvent('hero_cta_clicked');
     const ctaSection = document.getElementById('final-cta');
     ctaSection?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -54,14 +43,14 @@ export default function HeroSectionV2() {
               </Badge>
             </div>
 
-            {/* Main Headline with Variation */}
+            {/* Main Headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
-              {variation.headline.main}{" "}
+              Automate Review Collection{" "}
               <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                {variation.headline.gradient}
+                via WhatsApp & SMS
               </span>
               <span className="block text-2xl md:text-3xl lg:text-4xl mt-4 text-slate-300 font-light">
-                {variation.headline.subtitle}
+                Pay Only Per Feedback
               </span>
             </h1>
           </div>
@@ -104,7 +93,7 @@ export default function HeroSectionV2() {
                 ))}
               </div>
 
-              {/* CTA Button with Variation */}
+              {/* CTA Button */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   size="lg"
@@ -112,7 +101,7 @@ export default function HeroSectionV2() {
                   className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-xl px-10 py-8 h-auto font-bold border-0 shadow-[0_0_20px_0_rgba(34,197,94,0.4),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_0_25px_0_rgba(34,197,94,0.5),inset_0_2px_0_0_rgba(255,255,255,0.2),inset_0_-2px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-2px] transition-all duration-200 rounded-xl whitespace-normal"
                   data-testid="button-hero-cta"
                 >
-                  {variation.cta.primary}
+                  Try AI Review Agent on WhatsApp
                 </Button>
               </div>
 

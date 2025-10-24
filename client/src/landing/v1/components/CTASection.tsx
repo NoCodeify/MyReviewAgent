@@ -315,13 +315,13 @@ export default function CTASection() {
                 asChild
                 className="bg-white/20 hover:bg-white/30 text-white text-sm sm:text-base px-6 py-3 h-auto font-semibold border border-white/30 shadow-[0_4px_12px_0_rgba(255,255,255,0.15),0_0_15px_-5px_rgba(255,255,255,0.1)] hover:shadow-[0_6px_16px_0_rgba(255,255,255,0.2),0_0_20px_-5px_rgba(255,255,255,0.15)] ring-1 ring-white/10 hover:ring-white/20 transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl"
               >
-                <a href="https://wa.me/+447723487983?text=Still skeptical. Let the AI convince me!" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai" target="_blank" rel="noopener noreferrer">
                   <ChatBubbleLeftRightIcon className="w-5 h-5 mr-2" />
-                  Still skeptical? Chat with the actual $5M bot
+                  Have questions? Chat with us on WhatsApp
                 </a>
               </Button>
               <p className="text-sm text-gray-400 mt-2">
-                Fair warning: 25.3% closing rate applies to you too 😏
+                See the AI review agent in action
               </p>
             </div>
           </div>

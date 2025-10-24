@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-WhatsAgent is a landing page for a WhatsApp AI automation service with A/B testing infrastructure. The project uses a Vite + React frontend with TypeScript, Express backend, and includes comprehensive conversion optimization experiments.
+MyReviewAgent.ai is an AI-powered review collection service for booking-based businesses. After a booking (restaurant reservation, salon appointment, medical visit, etc.), the AI automatically sends WhatsApp/SMS messages to collect reviews. The system intelligently routes negative reviews to private feedback forms and guides positive reviews to public platforms. Pay-per-feedback pricing model.
 
 ## Development Commands
 
@@ -23,6 +23,12 @@ npm run check                # Run TypeScript type checking
 
 # Database
 npm run db:push              # Push database schema changes to Neon
+
+# Cloudflare Workers Deployment
+npm run deploy               # Deploy to Cloudflare Workers production
+npm run deploy:dev           # Deploy to Cloudflare Workers dev environment
+npm run wrangler:dev         # Test locally with Workers runtime
+npm run wrangler:login       # Login to Cloudflare account
 ```
 
 ## Architecture
@@ -35,18 +41,15 @@ npm run db:push              # Push database schema changes to Neon
 - **State Management**: React Query (TanStack Query)
 - **Routing**: Wouter (lightweight React router)
 - **UI Components**: Radix UI primitives with custom styling
+- **Deployment**: Cloudflare Workers
 
 ### Directory Structure
 
 ```
 /client/src/
-├── landing/v1/           # Landing page versions for A/B testing
-│   ├── index.tsx        # Control version (18 components)
-│   ├── indexA.tsx       # Version A - Problem-focused (10 components)
-│   ├── indexB.tsx       # Version B - Value-focused (8 components)
-│   ├── config/
-│   │   └── variations.ts # Copy variations configuration
-│   └── components/      # Landing page specific components
+├── landing/v1/          # Landing page for cold email prospects
+│   ├── index.tsx       # Main landing page
+│   └── components/     # Landing page components
 ├── components/          # Shared UI components
 ├── pages/              # Application pages
 ├── hooks/              # Custom React hooks
@@ -56,49 +59,32 @@ npm run db:push              # Push database schema changes to Neon
 ├── index.ts            # Server entry point
 ├── routes.ts           # Route registration
 ├── api/               # API endpoints
-│   └── tracking.ts    # A/B test tracking endpoints
+│   └── checkout.ts    # Stripe checkout integration
 └── db/                # Database configuration
-    ├── schema/        # Database schemas
-    └── memory-store.ts # Session storage
+    └── schema/        # Database schemas
 ```
 
-## A/B Testing System
+## Product Features
 
-The project includes an advanced A/B testing framework for landing page optimization:
+MyReviewAgent.ai automates the review collection process:
 
-### Test Variations
-1. **Page Structure Tests** (Routes: `/`, `/a`, `/b`)
-   - Control: 18 components (full page)
-   - Version A: 10 components (problem-focused)
-   - Version B: 8 components (value-focused)
+1. **Post-Booking Automation**: Triggers after bookings (e.g., next morning after restaurant visit)
+2. **Multi-Channel**: Sends via WhatsApp or SMS
+3. **Smart Routing**:
+   - Negative reviews → Private feedback form
+   - Positive reviews → Guides customer to post publicly (Google, Yelp, etc.)
+4. **Pay-per-Feedback**: Only pay when customers provide feedback
 
-2. **Copy Variations** (URL parameter: `?v=`)
-   - control: $5M focus
-   - problem: Lead loss focus
-   - savings: Cost reduction focus
-   - speed: Quick setup focus
-   - proof: Social proof focus
-
-### Testing URLs
-```bash
-# Debug dashboard (shows all variations)
-http://localhost:5173/?debug=true
-
-# Structure variations
-http://localhost:5173/      # Control
-http://localhost:5173/a     # Version A
-http://localhost:5173/b     # Version B
-
-# Copy variations (combinable with structure)
-http://localhost:5173/?v=problem
-http://localhost:5173/a?v=savings
-http://localhost:5173/b?v=speed
-```
+### Target Audience
+- Restaurants and cafes
+- Salons and spas
+- Medical and dental practices
+- Auto repair shops
+- Hotels and accommodations
+- Any business with booking systems
 
 ### Analytics Integration
-- **Microsoft Clarity**: Site ID `ta73lpsqxt`
-- **Custom tracking**: Via `trackVariationEvent()` function
-- **Tracking API**: `/api/tracking` endpoints for event collection
+- **Microsoft Clarity**: Site ID `ta73lpsqxt` for user behavior analytics
 
 ## Path Aliases
 
@@ -133,18 +119,17 @@ Using Radix UI primitives with custom Tailwind styling:
 
 ## Key Features
 
-1. **Landing Page Variants**: Multiple versions for conversion optimization
-2. **Real-time A/B Testing**: Live variation switching with debug dashboard
-3. **Analytics Tracking**: Microsoft Clarity + custom event tracking
-4. **Session Management**: Express sessions with PostgreSQL storage
-5. **Responsive Design**: Mobile-optimized with WhatsApp-like UI elements
+1. **Landing Page**: Focused on converting cold email prospects
+2. **WhatsApp CTA**: Direct link to try the AI agent
+3. **Stripe Integration**: Checkout flow for future paid plans
+4. **Analytics Tracking**: Microsoft Clarity for user behavior insights
+5. **Responsive Design**: Mobile-optimized for WhatsApp users
 
-## Testing Strategy
+## Landing Page Strategy
 
-The project focuses on conversion rate optimization through:
-- Structured A/B tests with clear hypotheses
-- Real-time performance monitoring
-- Statistical significance tracking (minimum 1,000 visitors per variation)
-- 14-day test cycles with weekly reviews
-
-Reference the `AB_TESTING_GUIDE.md` for detailed testing procedures and `AB_TEST_TRACKING.csv` for experiment tracking.
+The landing page is designed for prospects who receive cold emails:
+- Clear value proposition: Automate review collection
+- Problem-solution framework: Manual reviews are tedious
+- Trust builders: Social proof, testimonials
+- Single CTA: Try the AI via WhatsApp
+- Pay-per-feedback pricing to reduce risk

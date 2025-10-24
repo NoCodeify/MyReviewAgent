@@ -102,12 +102,12 @@ export default function SocialProofSection() {
                 className="bg-gradient-to-b from-purple-400 via-purple-500 to-purple-600 hover:from-purple-500 hover:via-purple-600 hover:to-purple-700 text-white text-lg px-8 py-4 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(147,51,234,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(147,51,234,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
                 data-testid="button-chat-demo-social"
               >
-                <a href="https://wa.me/+447723487983?text=Don't trust testimonials. Let the AI prove itself!" target="_blank" rel="noopener noreferrer" className="text-center">
-                  Don't trust us? Let the AI convince you
+                <a href="https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai" target="_blank" rel="noopener noreferrer" className="text-center">
+                  Try the AI Review Agent
                 </a>
               </Button>
               <p className="text-sm text-muted-foreground">
-                Chat with the actual $5M bot (no human involved)
+                Chat with our AI to see how it works
               </p>
             </div>
           </div>

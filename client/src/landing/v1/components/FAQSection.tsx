@@ -7,14 +7,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { QuestionMarkCircleIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
-import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function FAQSection() {
-  const dynamic = useDynamicContentContext();
-  const dealPricing = useDealPricing();
-
-  const isMonthlyPricing = dealPricing.dealStatus === 'final_expired';
 
   const faqs = [
     {
@@ -46,16 +40,12 @@ export default function FAQSection() {
       answer: "You're charged only when a customer actually leaves feedback (either private or public review). If they ignore the message, you pay nothing. This aligns our success with yours - we only make money when you get valuable reviews."
     },
     {
-      question: "What happens after I buy? Is there ongoing support?",
-      answer: isMonthlyPricing ?
-        "After purchase you get instant access to the platform, Zero-Touch Setup Wizard guides you through everything in 5 minutes, access to our private community of 1,247+ users, weekly group coaching calls, and monthly updates to the software. Plus, you're covered by our 30-day money-back guarantee. No demos, no calls, no waiting - just automated setup and results." :
-        "After purchase you get instant access to the platform, Zero-Touch Setup Wizard guides you through everything in 5 minutes, access to our private community of 1,247+ users, weekly group coaching calls, and lifetime updates to the software. Plus, you're covered by our 30-day money-back guarantee. No demos, no calls, no waiting - just automated setup and results."
+      question: "What happens after I sign up? Is there ongoing support?",
+      answer: "After signing up, you get a personal onboarding call to connect your booking system. We provide full setup support, help customizing your messaging, and configure the review routing. You'll also get ongoing support via WhatsApp/email to ensure you're getting the best results."
     },
     {
-      question: isMonthlyPricing ? "Why monthly subscription pricing?" : "Why lifetime deal instead of monthly subscription?",
-      answer: isMonthlyPricing ?
-        `Monthly subscriptions give you flexibility and access to all features at an affordable rate. Starting at just $197/month, you get the same powerful AI system without a large upfront investment. Cancel anytime with no long-term commitment.` :
-        `Because it's ${dynamic.holidayOffer} ${dynamic.location ? `in ${dynamic.location.country}` : ''} - we're celebrating with lifetime access instead of $297/month subscriptions. This special pricing is only available for the next ${dynamic.licensesRemaining} licenses during this celebration. After that, it's monthly subscriptions only. You're saving $3,564/year and locking in lifetime access forever.`
+      question: "How much does it cost?",
+      answer: "We only charge per feedback received - no upfront fees, no monthly subscriptions. You pay a small fee only when a customer actually leaves feedback (either a review or private feedback). This way, you only pay for results. Try it free with your first 10 customers to see the system in action."
     },
     {
       question: "Can it handle multiple languages and countries?",
@@ -78,7 +68,7 @@ export default function FAQSection() {
               <span className="block text-primary">Before Getting Started</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real answers to the questions everyone asks about our $5M WhatsApp AI system
+              Real answers to the questions everyone asks about automated review collection
             </p>
           </div>
 

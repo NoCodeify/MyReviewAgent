@@ -11,10 +11,8 @@ import {
   DevicePhoneMobileIcon,
   CpuChipIcon
 } from "@heroicons/react/24/outline";
-import { useFormattedPrice } from "@/hooks/useDealPricing";
 
 export default function BenefitsSection() {
-  const pricing = useFormattedPrice();
 
   const benefits = [
     {
@@ -93,12 +91,12 @@ export default function BenefitsSection() {
               WHY IT WORKS
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              The Only WhatsApp AI That
-              <span className="block text-primary">Actually Closes Deals</span>
+              The Only Review Collection AI That
+              <span className="block text-primary">Actually Gets Results</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              While others send pre-written templates, our AI thinks, negotiates, and closes
-              deals autonomously. The same system that generated $5M in 12 months.
+              While others send generic review requests, our AI personalizes every message and
+              intelligently routes feedback to protect your reputation and maximize reviews.
             </p>
           </div>
 
@@ -211,13 +209,14 @@ export default function BenefitsSection() {
           <div className="text-center pt-16">
             <Button
               size="lg"
+              onClick={() => window.open('https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai', '_blank')}
               className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_0_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
-              data-testid="button-get-system-now"
+              data-testid="button-try-review-agent"
             >
-              Get The $5M System Now
+              Try AI Review Agent Now
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              One-time {pricing.currentPrice} • Save $3,564/year • See results in 24 hours
+              Free trial with first 10 customers • See results in 24 hours
             </p>
           </div>
         </div>

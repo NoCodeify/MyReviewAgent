@@ -6,11 +6,9 @@ import heroImage from "@assets/generated_images/WhatsApp_AI_Agent_Interface_9163
 import TrustBadges from "./TrustBadges";
 import { useDynamicContentContext } from "@/contexts/DynamicContentContext";
 import { trackCTAClick, trackConversion } from "@/services/tracking";
-import { useDealPricing } from "@/hooks/useDealPricing";
 
 export default function HeroSection() {
   const dynamic = useDynamicContentContext();
-  const dealPricing = useDealPricing();
 
 
 

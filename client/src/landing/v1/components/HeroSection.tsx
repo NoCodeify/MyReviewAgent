@@ -31,7 +31,7 @@ export default function HeroSection() {
             <div className="flex justify-center px-4">
               <Badge className="bg-gradient-to-r from-green-500 to-blue-500 text-white border-0 text-xs sm:text-sm px-4 py-3 font-semibold rounded-xl text-center leading-relaxed max-w-full">
                 <StarIcon className="w-4 h-4 mr-1 inline align-middle" />
-                AI-Powered Review Collection for Booking Businesses
+                AI Review Collection for Booking Businesses
               </Badge>
             </div>
 

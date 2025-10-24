@@ -26,7 +26,7 @@ export default function FounderStory() {
               FROM THE FOUNDER
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              The $5M WhatsApp Discovery
+              Why I Built MyReviewAgent.ai
             </h2>
           </div>
 
@@ -44,62 +44,65 @@ export default function FounderStory() {
               <div className="flex items-center gap-4">
                 <img
                   src={sohaibImage}
-                  alt="Sohaib - Founder of MyWhatsAgent"
+                  alt="Sohaib - Founder of MyReviewAgent.ai"
                   className="w-20 h-20 rounded-full object-cover border-2 border-chart-1/30"
                 />
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">Hi, I'm Sohaib 👋</h3>
-                  <p className="text-muted-foreground">CMO, FueGenix | Founder, MyWhatsAgent</p>
+                  <p className="text-muted-foreground">Founder, MyReviewAgent.ai</p>
                 </div>
               </div>
 
               {/* Story */}
               <div className="space-y-4 text-lg leading-relaxed text-foreground">
                 <p>
-                  As CMO of FueGenix, I scaled us to <span className="font-bold text-chart-1">$5M</span> through killer Facebook ads and SEO.
+                  I was running growth for several booking-based businesses - restaurants, salons, medical practices.
                 </p>
 
                 <p>
-                  Then I started consulting for 20 other businesses on the side. Same strategies, same ad templates, same everything.
+                  They all had the same problem: <span className="font-bold text-chart-1">getting customers to leave reviews was like pulling teeth</span>.
                 </p>
 
                 <p className="text-xl font-bold text-destructive">
-                  They all failed spectacularly.
+                  Manual review requests? 10-15% response rate at best.
                 </p>
 
                 <p>
-                  FueGenix was closing 40% of WhatsApp leads. My consulting clients? Maybe 5% on a good day.
+                  One restaurant owner was spending <span className="font-semibold">2 hours daily</span> texting customers asking for reviews. Another salon had a staff member whose entire job was review collection (they got fired when I showed them this).
                 </p>
 
                 <p>
-                  The difference? We had a full WhatsApp team at FueGenix working 18 hours daily. But even we were bleeding money - missing all the leads that came in after 10 PM and on weekends.
+                  But here's what really frustrated me...
                 </p>
 
                 <Card className="bg-destructive/10 border-destructive/30 p-4">
                   <p className="text-center font-bold text-foreground">
-                    I watched my consulting clients lose <span className="text-2xl">$2M</span> in combined revenue from slow WhatsApp replies.
+                    Angry customers always find time to leave <span className="text-2xl">1-star reviews</span>.
+                  </p>
+                  <p className="text-center text-sm text-muted-foreground mt-2">
+                    Happy customers? They forget 5 minutes after leaving.
                   </p>
                 </Card>
 
                 <p>
-                  That's when I said "screw it" and built an AI that could actually sell. Not chatbot garbage - real conversations that closed deals at 3 AM.
+                  That's when I built MyReviewAgent.ai - an AI that automatically texts customers via WhatsApp or SMS after their booking.
                 </p>
 
                 <Card className="bg-gradient-to-r from-chart-1/10 to-chart-2/10 p-6 border border-chart-1/30">
                   <p className="text-2xl font-bold text-center mb-2 text-foreground">
-                    FueGenix result: $5M → $10M in 12 months
+                    First beta customer: 3x review increase in 30 days
                   </p>
                   <p className="text-center text-muted-foreground">
-                    After 847 conversations where nobody realized they were talking to AI
+                    4.2★ to 4.8★ rating • Zero manual work
                   </p>
                 </Card>
 
                 <p>
-                  I shut down my consulting and made this available to everyone.
+                  The smart routing was the game-changer: negative feedback goes private, positive reviews go public. Protect your reputation while collecting 3x more reviews.
                 </p>
 
                 <p>
-                  That's MyWhatsAgent - the exact system that added <span className="font-bold text-chart-1">$5M to FueGenix</span>.
+                  Now 500+ booking businesses use it. Pay only per feedback received.
                 </p>
               </div>
 
@@ -122,35 +125,35 @@ export default function FounderStory() {
 
                 <div className="space-y-4">
                   <h4 className="text-2xl font-bold text-foreground font-display">
-                    My Personal Promise to You...
+                    Risk-Free Promise...
                   </h4>
 
                   <div className="space-y-3 text-foreground">
                     <p className="italic">
-                      "I'm so confident MyWhatsAgent will transform your business that I'm putting my reputation on the line."
+                      "I'm confident MyReviewAgent.ai will 3x your reviews. That's why we only charge when it works."
                     </p>
 
                     <p className="font-semibold">
-                      If MyWhatsAgent doesn't close at least 10 deals in your first 30 days:
+                      Here's how we make this completely risk-free:
                     </p>
 
                     <ul className="space-y-3 pl-4">
                       <li className="flex items-start gap-3">
                         <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
-                        <span><strong>Full refund</strong> - Every penny back, no questions asked</span>
+                        <span><strong>Pay per feedback only</strong> - No upfront costs, no monthly fees</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
-                        <span><strong>Personal audit</strong> - I'll analyze your setup myself</span>
+                        <span><strong>Try it free first</strong> - Test with your first 10 customers at no charge</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-green-500" />
-                        <span><strong>Bonus templates</strong> - My $5M message sequences, free</span>
+                        <span><strong>Smart routing included</strong> - Protect your reputation from day one</span>
                       </li>
                     </ul>
 
                     <p className="pt-2">
-                      That's how certain I am this will work for you.
+                      You literally can't lose. If customers don't respond, you pay nothing.
                     </p>
                   </div>
 
@@ -162,7 +165,7 @@ export default function FounderStory() {
                     />
                     <div>
                       <p className="font-semibold text-foreground">Sohaib</p>
-                      <p className="text-sm text-muted-foreground">Founder, MyWhatsAgent</p>
+                      <p className="text-sm text-muted-foreground">Founder, MyReviewAgent.ai</p>
                       <div className="flex items-center gap-2 mt-2">
                         <EnvelopeIcon className="w-4 h-4 text-muted-foreground" />
                         <a href="mailto:hi@sohaibahmad.me" className="text-sm text-primary hover:underline">
@@ -177,7 +180,7 @@ export default function FounderStory() {
               {/* Contact */}
               <div className="text-center space-y-4 pt-4">
                 <p className="text-lg text-foreground">
-                  Got questions? WhatsApp me directly:
+                  Ready to 3x your reviews? Try it now:
                 </p>
                 <Button
                   size="lg"
@@ -185,10 +188,10 @@ export default function FounderStory() {
                   onClick={() => window.open('https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai', '_blank')}
                 >
                   <ChatBubbleLeftRightIcon className="w-5 h-5 mr-2" />
-                  WhatsApp Sohaib
+                  Try AI Review Agent Now
                 </Button>
                 <p className="text-sm text-muted-foreground">
-                  (Yes, it's MyWhatsAgent responding. Try to tell 😉)
+                  WhatsApp me directly - I'll set you up personally
                 </p>
               </div>
 

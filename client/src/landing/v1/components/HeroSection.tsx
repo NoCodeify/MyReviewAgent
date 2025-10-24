@@ -103,12 +103,12 @@ export default function HeroSection() {
               {/* Floating Review Card */}
               <Card className="bg-white border border-slate-200 shadow-xl p-6 rounded-2xl transform hover:scale-105 transition-transform">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    SM
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">
+                    1N
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-slate-900">Sarah Martinez</span>
+                      <span className="font-semibold text-slate-900">1Nul8 Restaurant</span>
                       <Badge className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full border-0">
                         Verified
                       </Badge>
@@ -119,13 +119,13 @@ export default function HeroSection() {
                       ))}
                     </div>
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      "We went from 3 reviews per month to 45. The AI handles everything automatically!"
+                      "We climbed from middle of the pack to #1 on TripAdvisor in our city. The AI handles everything automatically - we just focus on great food and service."
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span className="text-xs text-slate-500">Bella's Hair Salon</span>
-                  <span className="text-xs font-medium text-green-500">+127 reviews</span>
+                  <span className="text-xs text-slate-500">Restaurant</span>
+                  <span className="text-xs font-medium text-green-500">#1 TripAdvisor</span>
                 </div>
               </Card>
 
@@ -150,10 +150,10 @@ export default function HeroSection() {
               {/* Success Badge */}
               <Card className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 p-5 rounded-xl">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 shrink-0 bg-green-500 rounded-full flex items-center justify-center">
                     <CheckCircleIcon className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="font-semibold text-slate-900 mb-0.5">1Nul8 Restaurant</div>
                     <div className="text-sm text-slate-600">Climbed to #1 on TripAdvisor in 60 days</div>
                   </div>

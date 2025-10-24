@@ -14,41 +14,42 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function ProblemAgitation() {
-  const [leadsPerDay, setLeadsPerDay] = useState(50);
-  const [avgTicketValue] = useState(347);
+  const [customersPerDay, setCustomersPerDay] = useState(20);
 
-  // Calculate losses
-  const missedLeadsPerDay = Math.floor(leadsPerDay * 0.73); // 73% missed after hours
-  const monthlyLoss = missedLeadsPerDay * avgTicketValue * 30;
-  const yearlyLoss = monthlyLoss * 12;
+  // Calculate review losses
+  const withoutAutomation = Math.floor(customersPerDay * 0.15); // Only 15% leave reviews manually
+  const withAutomation = Math.floor(customersPerDay * 0.45); // 45% with AI follow-up
+  const missedReviewsPerDay = withAutomation - withoutAutomation;
+  const missedReviewsPerMonth = missedReviewsPerDay * 30;
+  const timeWastedPerMonth = customersPerDay * 5 * 30; // 5 mins per manual request
 
   const problems = [
     {
       icon: ClockIcon,
-      stat: "14 hours",
-      label: "Average WhatsApp response time",
-      comparison: "vs 30 seconds for businesses with AI",
+      stat: "5 mins",
+      label: "Per manual review request",
+      comparison: "That's 2.5 hours daily for 30 customers",
       color: "text-red-500"
     },
     {
       icon: UserMinusIcon,
-      stat: "73%",
-      label: "Messages unanswered after 5pm",
-      comparison: "That's 7 out of 10 customers gone",
+      stat: "85%",
+      label: "Customers don't leave reviews",
+      comparison: "Without automated follow-up",
       color: "text-orange-500"
     },
     {
-      icon: CurrencyDollarIcon,
-      stat: "$347",
-      label: "Lost per missed WhatsApp lead",
-      comparison: "Average customer lifetime value",
+      icon: ExclamationTriangleIcon,
+      stat: "3x",
+      label: "More likely to review when angry",
+      comparison: "Negative reviews come naturally",
       color: "text-red-600"
     },
     {
       icon: ChartBarIcon,
       stat: "89%",
-      label: "Customers buy from fastest responder",
-      comparison: "Speed beats everything else",
+      label: "Check reviews before booking",
+      comparison: "Your reputation is everything",
       color: "text-yellow-600"
     }
   ];
@@ -62,16 +63,16 @@ export default function ProblemAgitation() {
           <div className="text-center space-y-4 mb-12">
             <Badge className="bg-red-500/10 text-red-500 border-0 text-base px-4 py-2 font-semibold">
               <ExclamationTriangleIcon className="w-4 h-4 mr-2" />
-              THE HIDDEN CRISIS
+              THE REVIEW GAP
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              The WhatsApp Black Hole
+              Missing Hundreds of Reviews
               <span className="block text-3xl lg:text-4xl mt-2 text-destructive">
-                Eating Your Revenue 24/7
+                Every Single Month
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              While you sleep, eat, or spend time with family, your competitors with AI agents are closing YOUR leads
+              Manual review requests are costing you reputation, rankings, and new customers
             </p>
           </div>
 
@@ -94,25 +95,25 @@ export default function ProblemAgitation() {
             <div className="text-center space-y-6">
               <div className="flex items-center justify-center gap-2">
                 <FireIcon className="w-8 h-8 text-chart-1" />
-                <h3 className="text-2xl font-bold">Calculate Your Revenue Leak</h3>
+                <h3 className="text-2xl font-bold">Calculate Your Missing Reviews</h3>
               </div>
 
               <div className="max-w-2xl mx-auto space-y-6">
                 {/* Slider */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">
-                    WhatsApp leads per day: <span className="text-2xl font-bold">{leadsPerDay}</span>
+                    Customers per day: <span className="text-2xl font-bold">{customersPerDay}</span>
                   </label>
                   <div className="relative">
                     <input
                       type="range"
                       min="5"
                       max="100"
-                      value={leadsPerDay}
-                      onChange={(e) => setLeadsPerDay(parseInt(e.target.value))}
+                      value={customersPerDay}
+                      onChange={(e) => setCustomersPerDay(parseInt(e.target.value))}
                       className="w-full h-3 rounded-lg appearance-none cursor-pointer slider"
                       style={{
-                        background: `linear-gradient(to right, white 0%, white ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) ${((leadsPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) 100%)`
+                        background: `linear-gradient(to right, white 0%, white ${((customersPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) ${((customersPerDay - 5) / (100 - 5)) * 100}%, rgba(255,255,255,0.2) 100%)`
                       }}
                     />
                   </div>
@@ -121,33 +122,32 @@ export default function ProblemAgitation() {
                 {/* Results */}
                 <div className="grid md:grid-cols-3 gap-4 pt-4">
                   <div className="bg-white/10 backdrop-blur rounded-lg p-4">
-                    <div className="text-3xl font-bold">{missedLeadsPerDay}</div>
-                    <div className="text-sm opacity-90">Leads lost daily</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur rounded-lg p-4">
-                    <div className="text-3xl font-bold">${monthlyLoss.toLocaleString()}</div>
-                    <div className="text-sm opacity-90">Lost per month</div>
+                    <div className="text-3xl font-bold">{missedReviewsPerDay}</div>
+                    <div className="text-sm opacity-90">Reviews lost daily</div>
                   </div>
                   <div className="bg-white/20 backdrop-blur rounded-lg p-4 ring-2 ring-white/50">
-                    <div className="text-3xl font-bold">${yearlyLoss.toLocaleString()}</div>
-                    <div className="text-sm opacity-90 font-semibold">Lost per year</div>
+                    <div className="text-3xl font-bold">{missedReviewsPerMonth}</div>
+                    <div className="text-sm opacity-90 font-semibold">Reviews lost monthly</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur rounded-lg p-4">
+                    <div className="text-3xl font-bold">{Math.floor(timeWastedPerMonth / 60)}h</div>
+                    <div className="text-sm opacity-90">Time wasted monthly</div>
                   </div>
                 </div>
 
                 {/* CTA */}
                 <div className="pt-4 space-y-4">
                   <p className="text-lg font-medium">
-                    Every hour you wait = ${Math.floor(yearlyLoss / 365 / 24)} down the drain
+                    Every week = {missedReviewsPerDay * 7} reviews you'll never get back
                   </p>
                   <Button
                     size="lg"
                     className="bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white text-lg px-8 py-6 h-auto font-semibold border-0 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal"
                     onClick={() => {
-                      const ctaSection = document.getElementById('final-cta');
-                      ctaSection?.scrollIntoView({ behavior: 'smooth' });
+                      window.open('https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai', '_blank');
                     }}
                   >
-                    Stop The Bleeding Now
+                    Start Collecting 3x More Reviews
                     <ChevronRightIcon className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
@@ -160,7 +160,7 @@ export default function ProblemAgitation() {
             <Card className="inline-flex items-center gap-3 px-6 py-4 bg-yellow-50 border-yellow-200">
               <ExclamationTriangleIcon className="w-5 h-5 text-yellow-600" />
               <p className="text-sm font-medium text-slate-700">
-                <span className="font-bold">Fun Fact:</span> Your competitors using AI agents are capturing these leads right now, at 2 AM, while you're sleeping
+                <span className="font-bold">Reality Check:</span> Your competitors with automated review collection are building 5-star reputations while you're asking customers "one at a time"
               </p>
             </Card>
           </div>

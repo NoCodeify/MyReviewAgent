@@ -18,32 +18,32 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "Is the $5M result typical? What can I realistically expect?",
-      answer: "The $5M result came from a high-ticket B2B service over 12 months. Your results will vary based on your industry and pricing. Our users typically see: Small businesses ($10-50K/month revenue): Add $5-15K/month. Mid-size ($50-200K/month): Add $20-50K/month. Enterprise: Results like our case study. The average ROI across all users is 1,276% in the first 90 days."
+      question: "How does the AI know when to send review requests?",
+      answer: "MyReviewAgent.ai integrates with your booking system. After a booking is completed (e.g., next morning after a restaurant visit), the AI automatically sends a personalized WhatsApp or SMS message. You control the timing - immediate, 1 hour, next day, etc."
     },
     {
-      question: "Will this get my WhatsApp number banned?",
-      answer: "No. Our system uses official WhatsApp Business accounts with intelligent automation - not the restrictive API that gets others banned. We operate with the full WhatsApp platform, avoid spam triggers, and have been operating safely for 3+ years. We've never had a single customer account banned when following our guidelines."
+      question: "What happens with negative reviews?",
+      answer: "This is the magic! When a customer rates their experience low (1-3 stars), they're directed to a private feedback form that goes directly to you - NOT to Google, Yelp, or other public platforms. You get the chance to fix the issue before it hurts your reputation. Positive reviews (4-5 stars) are guided to post publicly."
     },
     {
-      question: "How is this different from ManyChat or other WhatsApp tools?",
-      answer: "ManyChat and similar tools are stuck with WhatsApp's restrictive API - limited templates, 24-hour messaging windows, and rigid conversation flows. We use the full WhatsApp Business platform with no API restrictions. Our AI creates natural conversations, negotiates prices, handles complex objections, and closes deals 24/7 without any limitations. It's like having a senior salesperson with unlimited WhatsApp access vs. a restricted chatbot."
+      question: "Does this work for my type of business?",
+      answer: "If you have bookings/appointments, yes! We work with restaurants, salons, spas, medical/dental practices, auto repair shops, hotels, fitness studios, and any business where customers book appointments. The AI adapts its messaging to your industry automatically."
     },
     {
-      question: "How long does it take to set up?",
-      answer: "5 minutes for basic setup, 30 minutes to customize for your business. You'll connect your WhatsApp Business account, add your product/service details, set your pricing parameters, and configure calendar integration. Most users see their first automated conversation within an hour."
+      question: "How long does setup take?",
+      answer: "About 10 minutes. You'll connect your booking system (or we can set up webhooks), customize the message template for your brand, and configure where reviews should go (Google, Yelp, Facebook, etc.). Most businesses are collecting reviews within the same day."
     },
     {
-      question: "What if it doesn't work for my industry?",
-      answer: "We're currently working successfully in 37+ industries including real estate, coaching, SaaS, e-commerce, healthcare, education, and professional services. If you don't see real appointments booked and deals progressing within 30 days, you get a full refund. No questions asked."
+      question: "What if customers don't have WhatsApp?",
+      answer: "No problem! The system can send via SMS as a fallback. You configure your preferred channels - WhatsApp first, then SMS, or vice versa. The AI uses whichever channel is more likely to get a response."
     },
     {
-      question: "Can I see actual WhatsApp conversations it's had?",
-      answer: "Yes! In our 12-minute case study video, we show real, unedited WhatsApp conversations including a $47K deal closed entirely by AI, complex objection handling over 50+ messages, and appointment booking with rescheduling. You can also request a live demo where we'll show current conversations happening right now."
+      question: "Will this spam my customers?",
+      answer: "Absolutely not. The AI sends ONE personalized message per customer after their visit. If they don't respond, it follows up once after 24 hours, then stops. No aggressive spamming - just friendly, professional review requests that feel personal."
     },
     {
-      question: "Do I need technical skills to use this?",
-      answer: "No technical skills required. If you can use WhatsApp, you can use our system. Everything is visual drag-and-drop. We also provide done-for-you templates, video tutorials for every feature, and priority support if you need help."
+      question: "How do I pay only per feedback?",
+      answer: "You're charged only when a customer actually leaves feedback (either private or public review). If they ignore the message, you pay nothing. This aligns our success with yours - we only make money when you get valuable reviews."
     },
     {
       question: "What happens after I buy? Is there ongoing support?",

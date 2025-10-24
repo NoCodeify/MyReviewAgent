@@ -18,14 +18,11 @@ export default function HeroSection() {
   const handleVideoPlay = () => {
     console.log('Video play triggered');
     trackCTAClick("Watch Video", "hero-video");
-    // TODO: Remove mock functionality - integrate real video player
   };
 
   const handleGetAccess = () => {
-    trackCTAClick("Get The $5M System", "hero-cta");
-    trackConversion("purchase_intent", dealPricing.price);
-    // Navigate to checkout or open modal
-    window.location.href = "#final-cta";
+    trackCTAClick("Try AI Review Agent", "hero-cta");
+    window.open('https://wa.me/31658015937?text=Hi! I want to try MyReviewAgent.ai', '_blank');
   };
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white relative overflow-hidden">
@@ -40,32 +37,22 @@ export default function HeroSection() {
         <div className="max-w-7xl mx-auto pt-8">
           {/* Full-width Header Section */}
           <div className="text-center space-y-8 mb-8">
-            {/* Lifetime Deal Badge */}
+            {/* Badge */}
             <div className="flex justify-center px-4">
-              <Badge className={`text-white border-0 text-xs sm:text-sm px-4 py-3 font-semibold hover-elevate animate-pulse rounded-xl text-center leading-relaxed max-w-full ${
-                dealPricing.isFirstExpired ? 'bg-gradient-to-r from-red-600 to-red-700' :
-                dealPricing.isFinalExpired ? 'bg-gradient-to-r from-red-700 to-red-800' :
-                'bg-gradient-to-r from-orange-500 to-red-500'
-              }`}>
-                <ExclamationTriangleIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? '' : 'hidden'}`} />
-                <BoltIcon className={`w-4 h-4 mr-1 inline align-middle ${dealPricing.isFirstExpired || dealPricing.isFinalExpired ? 'hidden' : ''}`} />
-                {dealPricing.isFinalExpired ?
-                  'DEALS GONE - MONTHLY ONLY' :
-                  dealPricing.isFirstExpired ?
-                  'LAST CHANCE - DEAL EXPIRED!' :
-                  `LIFETIME DEAL - ${dynamic.licensesRemaining} LICENSES LEFT`
-                }
+              <Badge className="bg-gradient-to-r from-green-500 to-blue-500 text-white border-0 text-xs sm:text-sm px-4 py-3 font-semibold rounded-xl text-center leading-relaxed max-w-full">
+                <StarIcon className="w-4 h-4 mr-1 inline align-middle" />
+                AI-Powered Review Collection for Booking Businesses
               </Badge>
             </div>
 
-            {/* Main Headline - Using Experiment */}
+            {/* Main Headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
-              The WhatsApp AI That Generated{" "}
+              Get 3x More Reviews{" "}
               <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                $5M in 12 Months
+                On Autopilot
               </span>
               <span className="block text-2xl md:text-3xl lg:text-4xl mt-4 text-slate-300 font-light">
-                (Without Any Human Help)
+                AI Agent Collects Reviews via WhatsApp & SMS
               </span>
             </h1>
           </div>
@@ -76,18 +63,17 @@ export default function HeroSection() {
               {/* Subtitle */}
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
-                  See exactly how one business added{" "}
-                  <span className="text-green-400 font-semibold">$5 million in revenue</span> using our
-                  autonomous WhatsApp agent that{" "}
-                  <span className="text-green-400 font-semibold">thinks, negotiates, and closes deals</span>{" "}
-                  24/7 with a{" "}
-                  <span className="text-green-400 font-semibold">25.3% closing rate</span>
+                  After every booking, our AI automatically sends{" "}
+                  <span className="text-green-400 font-semibold">personalized WhatsApp or SMS messages</span> to collect reviews.
+                  Negative feedback goes to a{" "}
+                  <span className="text-green-400 font-semibold">private form</span>, positive reviews get posted{" "}
+                  <span className="text-green-400 font-semibold">publicly</span>. Only pay per feedback received.
                 </p>
                 <p className={`text-sm text-slate-400 mt-3 text-center lg:text-left min-h-[20px] transition-opacity duration-500 ${
                   dynamic.location ? 'opacity-100' : 'opacity-0'
                 }`}>
                   {dynamic.location ? (
-                    <>🔥 {dynamic.viewerCount} people from {dynamic.location.country} viewing this page right now</>
+                    <>⭐ {dynamic.viewerCount} booking businesses from {dynamic.location.country} using this right now</>
                   ) : (
                     <span className="invisible">Loading viewer count...</span>
                   )}
@@ -123,11 +109,11 @@ export default function HeroSection() {
                       </div>
                     </div>
 
-                    {/* "Case Study" badge overlay */}
+                    {/* Badge overlay */}
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-orange-500/90 text-white border-0 text-xs px-3 py-1 font-semibold rounded-lg">
+                      <Badge className="bg-green-500/90 text-white border-0 text-xs px-3 py-1 font-semibold rounded-lg">
                         <StarIcon className="w-3 h-3 mr-1" />
-                        Updated: {dynamic.todayDate}
+                        See How It Works
                       </Badge>
                     </div>
                   </div>
@@ -137,9 +123,9 @@ export default function HeroSection() {
               {/* Value Props */}
               <div className="space-y-4">
                 {[
-                  "100% autonomous - no templates, no human intervention",
-                  "Handles full sales cycles in WhatsApp from hello to payment",
-                  "Proven system working in 37+ industries right now"
+                  "Triggers automatically after bookings - zero manual work",
+                  "Smart routing: negative → private feedback, positive → public reviews",
+                  "Works for restaurants, salons, medical practices, auto repair & more"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3 text-lg text-slate-200">
                     <CheckCircleIcon className="w-5 h-5 text-green-400 flex-shrink-0 mt-1" />
@@ -156,12 +142,8 @@ export default function HeroSection() {
                   className="w-full text-white text-lg px-8 py-6 h-auto font-semibold border-0 transform hover:translate-y-[-1px] transition-all duration-200 rounded-xl whitespace-normal bg-gradient-to-b from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 shadow-[0_4px_14px_0_rgba(34,197,94,0.4),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_0_rgba(34,197,94,0.5),inset_0_1px_0_0_rgba(255,255,255,0.2),inset_0_-1px_0_0_rgba(0,0,0,0.1)]"
                   data-testid="button-get-lifetime-access"
                 >
-                  {dealPricing.isFinalExpired ?
-                    'Get Monthly Access Now!' :
-                    dealPricing.isFirstExpired ?
-                    'Claim Last Chance Deal!' :
-                    'Get The $5M System'
-                  }
+                  <ChatBubbleLeftRightIcon className="w-5 h-5 mr-2 inline" />
+                  Try AI Review Agent on WhatsApp
                 </Button>
               </div>
 
@@ -201,11 +183,11 @@ export default function HeroSection() {
                       </div>
                     </div>
 
-                    {/* "Case Study" badge overlay */}
+                    {/* Badge overlay */}
                     <div className="absolute top-6 right-6">
-                      <Badge className="bg-orange-500/90 text-white border-0 text-sm px-4 py-2 font-semibold rounded-xl">
+                      <Badge className="bg-green-500/90 text-white border-0 text-sm px-4 py-2 font-semibold rounded-xl">
                         <StarIcon className="w-4 h-4 mr-2" />
-                        Watch $5M Case Study
+                        See How It Works
                       </Badge>
                     </div>
                   </div>
@@ -215,9 +197,9 @@ export default function HeroSection() {
               {/* Social Proof Numbers */}
               <div className="grid grid-cols-3 gap-4 pt-8">
                 {[
-                  { value: "$5M", label: "in 12 Months" },
-                  { value: "847", label: "Deals Closed" },
-                  { value: "1,276%", label: "Avg ROI" }
+                  { value: "10K+", label: "Reviews Collected" },
+                  { value: "4.8★", label: "Avg Rating" },
+                  { value: "3x", label: "More Reviews" }
                 ].map((stat, index) => (
                   <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm p-4 text-center hover-elevate shadow-[0_0_15px_-4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.05)] rounded-2xl">
                     <div className="text-2xl md:text-3xl font-bold text-green-400 font-display">{stat.value}</div>
@@ -234,22 +216,22 @@ export default function HeroSection() {
                   ))}
                 </div>
                 <span className={`text-sm text-slate-400 min-h-[20px] inline-block transition-opacity duration-500`}>
-                  1,247+ businesses • Average ROI: 1,276%<span className={`transition-opacity duration-500 ${
+                  500+ businesses • 10K+ reviews collected<span className={`transition-opacity duration-500 ${
                     dynamic.location ? 'opacity-100' : 'opacity-0'
-                  }`}>{dynamic.location ? ` • ${Math.floor(1247 * 0.15)} in ${dynamic.location.country}` : ''}</span>
+                  }`}>{dynamic.location ? ` • ${Math.floor(500 * 0.15)} in ${dynamic.location.country}` : ''}</span>
                 </span>
               </div>
-              
-              
+
+
               {/* Success metrics floating cards */}
               <div className="absolute top-20 -left-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
-                <div className="text-green-400 text-sm font-semibold">$487K in Q1</div>
-                <div className="text-slate-400 text-xs">Marcus Johnson</div>
+                <div className="text-green-400 text-sm font-semibold">+127 reviews</div>
+                <div className="text-slate-400 text-xs">Bella's Salon</div>
               </div>
 
               <div className="absolute bottom-32 -right-8 bg-slate-900/90 backdrop-blur-sm border border-slate-700 p-3 rounded-xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] z-20">
-                <div className="text-blue-400 text-sm font-semibold">67 deals closed</div>
-                <div className="text-slate-400 text-xs">Sarah Chen - Autonomously</div>
+                <div className="text-blue-400 text-sm font-semibold">4.9★ rating boost</div>
+                <div className="text-slate-400 text-xs">Downtown Dental</div>
               </div>
             </div>
           </div>

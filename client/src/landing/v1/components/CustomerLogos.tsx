@@ -66,13 +66,13 @@ export default function CustomerLogos() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <Badge className="bg-primary/10 text-primary border-0 text-base px-4 py-2 font-semibold mb-4">
-            TRUSTED BY 1,247+ BUSINESSES
+            TRUSTED BY 500+ BUSINESSES
           </Badge>
           <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
-            Working Across 37+ Industries Worldwide
+            Collecting 10K+ Reviews Automatically
           </h3>
           <p className="text-muted-foreground">
-            From local shops to global enterprises, MyReviewAgent.ai adapts to any business
+            From restaurants to medical practices, MyReviewAgent.ai works for any booking business
           </p>
         </div>
 
@@ -170,19 +170,19 @@ export default function CustomerLogos() {
         {/* Bottom Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary">37+</div>
-            <div className="text-sm text-muted-foreground">Industries</div>
+            <div className="text-3xl font-bold text-primary">500+</div>
+            <div className="text-sm text-muted-foreground">Businesses</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary">1,247+</div>
-            <div className="text-sm text-muted-foreground">Active Users</div>
+            <div className="text-3xl font-bold text-primary">10K+</div>
+            <div className="text-sm text-muted-foreground">Reviews Collected</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary">52</div>
-            <div className="text-sm text-muted-foreground">Countries</div>
+            <div className="text-3xl font-bold text-primary">45%</div>
+            <div className="text-sm text-muted-foreground">Response Rate</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-primary">4.9★</div>
+            <div className="text-3xl font-bold text-primary">4.8★</div>
             <div className="text-sm text-muted-foreground">Avg Rating</div>
           </div>
         </div>

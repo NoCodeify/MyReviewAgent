@@ -25,12 +25,12 @@ export default function SocialProofSection() {
               REAL RESULTS
             </Badge>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              1,247+ Businesses Are Already
-              <span className="block text-primary">Generating Revenue on Autopilot</span>
+              500+ Businesses Are Already
+              <span className="block text-primary">Collecting Reviews on Autopilot</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real businesses. Real revenue. Real WhatsApp conversations closing deals 24/7.
-              Average ROI: 1,276% in the first 90 days.
+              Real businesses. Real reviews. Automated WhatsApp & SMS messages collecting feedback 24/7.
+              Average response rate: 45% (3x industry standard).
             </p>
           </div>
 

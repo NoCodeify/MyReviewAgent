@@ -16,70 +16,69 @@ import { useFormattedPrice } from "@/hooks/useDealPricing";
 export default function BenefitsSection() {
   const pricing = useFormattedPrice();
 
-  // TODO: Remove mock functionality - customize features based on real product capabilities
   const benefits = [
     {
       icon: CpuChipIcon,
-      title: "Fully Autonomous AI Agent",
-      description: "Not templates or decision trees. Real AI that thinks, negotiates, handles objections, and closes deals without any human help.",
-      highlight: "100% autonomous closing"
+      title: "Fully Automated Review Collection",
+      description: "AI automatically sends personalized WhatsApp/SMS messages after every booking. Zero manual work, zero forgotten customers.",
+      highlight: "100% automated"
     },
     {
       icon: DevicePhoneMobileIcon,
-      title: "WhatsApp-Native Intelligence",
-      description: "Built for REAL WhatsApp Business - not the limited API. Full features: voice notes, images, documents, groups, and unlimited conversations.",
-      highlight: "WhatsApp optimized"
+      title: "Smart Negative Review Protection",
+      description: "Unhappy customers (1-3 stars) are directed to a private feedback form. You fix issues before they damage your public reputation.",
+      highlight: "Reputation protection"
     },
     {
       icon: ClockIcon,
-      title: "24/7 Deal Closing Machine",
-      description: "Proven to close $5M in deals. Works every hour of every day, never misses a lead, never forgets to follow up.",
-      highlight: "$5M proven system"
+      title: "Perfect Timing, Every Time",
+      description: "Sends messages at the optimal moment after service completion. Next morning for restaurants, 2 hours for salons - you choose.",
+      highlight: "Optimized timing"
     },
     {
       icon: ArrowTrendingUpIcon,
-      title: "25.3% Closing Rate",
-      description: "Outperforms human sales teams. Remembers every detail, perfect pitch every time, handles unlimited conversations simultaneously.",
-      highlight: "Beats human reps"
+      title: "3x More Reviews in 30 Days",
+      description: "From 15% review rate to 45% review rate. More positive reviews = higher ratings = more bookings. The growth compounds.",
+      highlight: "3x more reviews"
     },
     {
       icon: BoltIcon,
-      title: "30-Minute Setup, Same-Day ROI",
-      description: "Connect WhatsApp, add your products, set your parameters. Most users see their first closed deal within 24 hours.",
-      highlight: "ROI in 24 hours"
+      title: "10-Minute Setup, Instant Results",
+      description: "Connect your booking system, customize your message, and you're live. Most businesses collect their first review same-day.",
+      highlight: "Same-day results"
     },
     {
       icon: ShieldCheckIcon,
-      title: "100% WhatsApp Compliant",
-      description: "3+ years, zero bans. Works with standard WhatsApp Business - no API restrictions or limitations. Full messaging freedom.",
-      highlight: "Never gets banned"
+      title: "Pay Only Per Feedback Received",
+      description: "No upfront costs, no monthly fees. Only pay when a customer actually leaves feedback. Completely risk-free pricing.",
+      highlight: "Pay per feedback"
     }
   ];
 
   const comparison = [
     {
-      feature: "Conversation Type",
-      traditional: "Pre-written templates",
-      mywhatsagent: "Dynamic AI responses",
-      improvement: "Real thinking"
+      feature: "Review Collection",
+      traditional: "Manual text messages",
+      mywhatsagent: "Automated AI messages",
+      improvement: "Zero manual work"
     },
     {
-      feature: "Objection Handling",
-      traditional: "Can't handle",
-      mywhatsagent: "Handles like a pro",
-      improvement: "100% coverage"
+      feature: "Response Rate",
+      traditional: "10-15% respond",
+      mywhatsagent: "45% respond",
+      improvement: "3x more reviews"
     },
     {
-      feature: "Deal Closing",
-      traditional: "Just collects info",
-      mywhatsagent: "Closes autonomously",
-      improvement: "25.3% close rate"
+      feature: "Negative Reviews",
+      traditional: "Go straight to Google",
+      mywhatsagent: "Routed to private form",
+      improvement: "Reputation protected"
     },
     {
-      feature: "Context Memory",
-      traditional: "Resets each chat",
-      mywhatsagent: "Remembers everything",
-      improvement: "Infinite memory"
+      feature: "Time Investment",
+      traditional: "2+ hours daily",
+      mywhatsagent: "Fully automated",
+      improvement: "Save 60+ hours/month"
     }
   ];
 

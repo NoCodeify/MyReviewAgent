@@ -128,10 +128,10 @@ export default function BenefitsSection() {
           <div className="space-y-8">
             <div className="text-center space-y-4">
               <h3 className="font-display text-3xl font-bold text-foreground">
-                Basic Chatbots vs. Our Autonomous AI
+                Manual Review Requests vs. Automated AI
               </h3>
               <p className="text-muted-foreground">
-                See why template-based bots can't compete with real AI thinking
+                See how automation transforms your review collection process
               </p>
             </div>
 
@@ -142,10 +142,10 @@ export default function BenefitsSection() {
                   Feature
                 </div>
                 <div className="bg-destructive/10 p-4 font-semibold text-foreground border-r border-border">
-                  Basic Chatbots
+                  Manual Requests
                 </div>
                 <div className="bg-chart-1/10 p-4 font-semibold text-foreground border-r border-border">
-                  MyWhatsAgent.ai
+                  MyReviewAgent.ai
                 </div>
                 <div className="bg-primary/10 p-4 font-semibold text-foreground">
                   Improvement
@@ -186,14 +186,14 @@ export default function BenefitsSection() {
                     {/* Comparison */}
                     <div className="space-y-3">
                       <div className="space-y-1">
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Basic Chatbots</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Manual Requests</div>
                         <div className="text-sm text-muted-foreground bg-destructive/5 px-3 py-2 rounded-lg">
                           {row.traditional}
                         </div>
                       </div>
 
                       <div className="space-y-1">
-                        <div className="text-xs font-medium text-chart-1 uppercase tracking-wider">MyWhatsAgent.ai</div>
+                        <div className="text-xs font-medium text-chart-1 uppercase tracking-wider">MyReviewAgent.ai</div>
                         <div className="text-sm font-medium text-foreground bg-chart-1/5 px-3 py-2 rounded-lg">
                           {row.mywhatsagent}
                         </div>

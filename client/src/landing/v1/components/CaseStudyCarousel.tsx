@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 // Import company logos
-import fuegenixLogo from "@assets/generated_images/Logo Black Square.png";
+import oneNul8Logo from "@assets/generated_images/1nul8.png";
 import webAceLogo from "@assets/generated_images/de de web academy logo.jpg";
 import cobhosLogo from "@assets/generated_images/cobhos logo.jpg";
 
@@ -24,19 +24,19 @@ export default function CaseStudyCarousel() {
   const caseStudies = [
     {
       icon: BuildingStorefrontIcon,
-      logo: fuegenixLogo,
-      industry: "Hair Transplant Surgery",
-      company: testimonials[0].company, // FueGenix Hair Clinic
-      name: testimonials[0].name, // Dr. Munib Ahmad
-      challenge: "Dealing with $50k+ international clients requiring constant communication across timezones",
-      solution: "AI agent qualifying leads, handling objections, and closing high-ticket deals autonomously",
+      logo: oneNul8Logo,
+      industry: "Restaurant",
+      company: "1Nul8 Restaurant",
+      name: "Restaurant Owner",
+      challenge: "Struggling to get consistent reviews on TripAdvisor. Ranking was mediocre and competitors were outpacing them.",
+      solution: "AI automatically requests reviews after every dining experience via WhatsApp. Negative feedback handled privately, positive reviews directed to TripAdvisor.",
       results: [
-        { metric: "10x", label: "Revenue Increase" },
-        { metric: "400%", label: "Workload Reduction" },
-        { metric: "$50K+", label: "Average Deal Size" }
+        { metric: "#1", label: "TripAdvisor Rank" },
+        { metric: "5x", label: "More Reviews" },
+        { metric: "4.9★", label: "Average Rating" }
       ],
-      quote: testimonials[0].content,
-      author: `${testimonials[0].name}, ${testimonials[0].title}`,
+      quote: "We climbed from middle of the pack to #1 on TripAdvisor in our city. The AI handles everything automatically - we just focus on great food and service.",
+      author: "1Nul8 Restaurant Owner",
       highlight: true
     },
     {
@@ -107,12 +107,12 @@ export default function CaseStudyCarousel() {
           {/* Carousel */}
           <Card className="p-8 lg:p-12 relative overflow-hidden">
             {study.highlight && (
-              <Badge className="absolute top-4 right-4 bg-chart-1/20 text-chart-1 border-chart-1/30">
+              <Badge className="absolute top-4 right-2 lg:top-6 lg:right-2 z-10 bg-chart-1/20 text-chart-1 border-chart-1/30 mb-4">
                 FEATURED
               </Badge>
             )}
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8 pt-8 lg:pt-6">
               {/* Left: Story */}
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
@@ -157,7 +157,7 @@ export default function CaseStudyCarousel() {
                 <div className="grid grid-cols-3 gap-2 lg:gap-4">
                   {study.results.map((result, idx) => (
                     <Card key={idx} className="p-2 lg:p-4 text-center bg-gradient-to-br from-chart-1/5 to-chart-2/5 overflow-hidden">
-                      <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-chart-1 break-all">
+                      <div className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-chart-1">
                         {result.metric}
                       </div>
                       <div className="text-[10px] lg:text-xs text-muted-foreground mt-1 break-words">
@@ -172,8 +172,8 @@ export default function CaseStudyCarousel() {
                     <ChartBarIcon className="w-8 h-8 text-chart-1" />
                     <div>
                       <p className="text-sm text-muted-foreground">Implementation Time</p>
-                      <p className="text-xl font-bold text-foreground">5 minutes</p>
-                      <p className="text-xs text-muted-foreground">From signup to first sale</p>
+                      <p className="text-xl font-bold text-foreground">10 minutes</p>
+                      <p className="text-xs text-muted-foreground">From setup to first review</p>
                     </div>
                   </div>
                 </Card>
@@ -221,7 +221,7 @@ export default function CaseStudyCarousel() {
           {/* Bottom CTA */}
           <div className="text-center mt-8">
             <p className="text-muted-foreground mb-4">
-              Join these successful businesses already transforming their WhatsApp sales with AI
+              Join these successful businesses already collecting reviews automatically with AI
             </p>
             <Button
               size="lg"
